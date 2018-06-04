@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { defaultTheme, styleVariableInfo } from '../data'
-import { safeGetValue } from '../utils'
+import { safeGetValue, safeSetValue, setCssVariable } from '../utils'
 
 Vue.use(Vuex)
 
@@ -30,15 +30,16 @@ const store = new Vuex.Store({
 
     },
     updateTheme (state, options = {}) {
-      const { themeIndex, moduleName, itemName, name, key } = options
+      const { themeIndex, moduleName, itemName, name, value } = options
       const theme = state.themes[themeIndex]
-      const 
+      const variables = safeGetValue(theme, 'data', null)
 
-      if (!theme) {
+      if (!theme || !variables) {
         return null
       }
-      
 
+      safeSetValue(variables, `${moduleName}['${itemName}']['${name}']`, value)
+      setCssVariable(name, value)
     }
   }
 })

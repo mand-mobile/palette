@@ -10,7 +10,7 @@ export default {
       'color-text-caption': '#999',
       'color-text-disabled': '#ccc',
       'color-text-placeholder': '#ccc',
-      'color-text-hightlight': '#fc9153',
+      'color-text-highlight': '#fc9153',
       'color-text-link': '#3ca0e6',
       'color-border-base': '#d9d9d9',
       'color-border-minor': '#ebebeb',
@@ -19,7 +19,7 @@ export default {
       'color-bg-disabled': '#ccc',
       'color-bg-mask': 'rgba(0, 0, 0, .4)',
       'color-bg-tap': 'rgba(0, 0, 0, .08)',
-      'color-bg-tap-hightlight': 'rgba(252, 145, 83, .08)'
+      'color-bg-tap-highlight': 'rgba(252, 145, 83, .08)'
     },
     'font': {
       'font-heading-large': '42px',
@@ -53,109 +53,152 @@ export default {
       'action-bar-width': '100%',
       'action-bar-height': '100px',
       'action-bar-button-font-size': '32px',
+      'action-bar-button-font-weight': 'font-weight-medium',
+      'action-bar-button-color': 'color-text-base',
+      'action-bar-button-color-highlight': 'color-text-base-inverse',
+      'action-bar-button-fill': 'color-bg-base',
+      'action-bar-button-fill-highlight': 'color-primary',
+      'action-bar-button-disabled-opacity': 'opacity-disabled',
+      'action-bar-button-disabled-bg': 'color-bg-disabled',
+      'action-bar-button-disabled-color': 'color-text-base-inverse',
+      'action-bar-button-tap-bg': 'color-bg-tap',
+      'action-bar-text-color': 'color-primary',
       'action-bar-text-font-size': '36px',
-      'action-bar-button-color': '#333',
-      'action-bar-button-color-hightlight': '#fff',
-      'action-bar-text-color': '#fc9153',
-      'action-bar-button-fill': '#fff',
-      'action-bar-button-fill-hightlight': '#fc9153',
-      'action-bar-zindex': 100
+      'action-bar-text-left': 'h-gap-lg'
     },
     'action-sheet': {
       'action-sheet-height': '120px',
+      'action-sheet-color': 'color-text-base',
+      'action-sheet-color-highlight': 'color-primary',
+      'action-sheet-color-cancel': 'color-text-base',
       'action-sheet-font-size': '30px',
-      'action-sheet-zindex': 1100
+      'action-sheet-bg': 'color-bg-base',
+      'action-sheet-disabled-opacity': 'opacity-disabled',
+      'action-sheet-cancel-gap-bg': 'color-primary-background'
     },
     'agree': {
-      'agree-fill': '#fc9153',
-      'agree-fill-inverse': '#ccc',
-      'agree-size-sm': '32px',
-      'agree-size-lg': '44px'
+      'agree-fill': 'color-primary',
+      'agree-disabled-opacity': 'opacity-disabled'
     },
     'button': {
-      'button-primary-fill': '#fc9153',
-      'button-primary-fill-disabled': '#ccc',
-      'button-primary-fill-tap': 'rgba(0, 0, 0, .08)',
+      'button-primary-fill': 'color-primary',
+      'button-primary-fill-disabled': 'color-bg-disabled',
+      'button-primary-fill-tap': 'color-bg-tap',
       'button-primary-width': '100%',
       'button-primary-height': '100px',
       'button-primary-font-size': '32px',
-      'button-ghost-fill': '#fff',
-      'button-ghost-fill-tap': 'rgba(0, 0, 0, .08)',
-      'button-ghost-primary-fill-tap': 'rgba(252, 145, 83, .08)',
+      'button-primary-font-weight': 'font-weight-medium',
+      'button-primary-radius': 'radius-normal',
+      // 'button-ghost-fill': '#fff',
+      'button-ghost-fill-tap': 'color-bg-tap',
+      'button-ghost-primary-fill-tap': 'color-bg-tap-highlight',
       'button-ghost-width': '160px',
       'button-ghost-height': '60px',
       'button-ghost-width-sm': '130px',
       'button-ghost-height-sm': '50px',
       'button-ghost-font-size': '24px',
-      'button-ghost-color': '#999',
-      'button-ghost-primary-color': '#fc9153'
+      'button-ghost-color': 'color-border-element',
+      'button-ghost-primary-color': 'color-primary',
+      'button-ghost-radius': '8px',
+      'button-link-fill': 'color-bg-base',
+      'button-link-fill-tap': 'color-bg-tap',
+      'button-link-width': '100%',
+      'button-link-height': '100px',
+      'button-link-color': 'color-primary-tap',
+      'button-link-border': 'color-border-base',
+      'button-icon-gap': 'h-gap-sm',
+      'button-disabled-opacity': 'opacity-disabled'
     },
     'captcha': {
-      'captcha-zindex': 1400,
-      'captcha-keyboard-zindex': 1403,
-      'captcha-content-offset-top': '60px'
+      'captcha-title-color': 'color-text-base',
+      'captcha-title-font-size': 'font-heading-normal',
+      'captcha-error-color': '#FF525D',
+      'captcha-countbtn-gap': 'h-gap-lg'
+    },
+    'cashier': {
+      'cashier-bg': 'color-bg-base',
+      'cashier-choose-title-font-size': 'font-body-normal',
+      'cashier-choose-title-color': 'color-text-minor',
+      'cashier-choose-amount-font-size': '72px',
+      'cashier-choose-amount-color': 'color-text-base',
+      'cashier-choose-describe-font-size': 'font-minor-normal',
+      'cashier-choose-describe-color': 'color-text-minor',
+      'cashier-choose-channel-font-size': 'font-minor-large',
+      'cashier-choose-channel-color': 'color-text-minor',
+      'cashier-choose-channel-icon-color': 'color-primary',
+      'cashier-choose-more-font-size': 'font-minor-large',
+      'cashier-choose-more-color': 'color-text-minor'
     },
     'chart': {
       'chart-line-color': '#ccc',
-      'chart-path-color': '#fa8919',
-      'chart-text-color': '#666',
+      'chart-path-color': 'color-primary',
+      'chart-text-color': 'color-text-minor',
       'chart-label-size': '22px',
       'chart-value-size': '20px'
     },
     'codebox': {
-      'codebox-font-size': '28px',
+      'codebox-font-size': 'font-body-normal',
       'codebox-width': '80px',
       'codebox-gutter': '8px',
-      'codebox-border-color': '#d9d9d9',
-      'codebox-border-active-color': '#fc9153',
-      'codebox-blink-color': '#fc9153',
+      'codebox-border-color': 'color-border-base',
+      'codebox-border-active-color': 'color-primary',
+      'codebox-blink-color': 'color-primary',
       'codebox-input-height': '68px',
       'codebox-input-padding': '16px 32px',
       'codebox-input-font-size': '28px',
-      'codebox-input-border-color': '#d9d9d9',
+      'codebox-input-border-color': 'color-border-base',
+      'codebox-input-radius': 'radius-normal',
       'codebox-dot-color': '#000'
     },
     'date-picker': {
-      'date-picker-font-size': '28px',
-      'date-time-picker-font-size': '24px'
+      'date-picker-font-size': 'font-body-normal',
+      'date-time-picker-font-size': 'font-minor-large'
     },
     'dialog': {
       'dialog-width': '534px',
-      'dialog-radius': '0 0 0 0',
-      'dialog-title-font-size': '32px',
-      'dialog-text-font-size': '28px',
+      'dialog-radius': '0',
+      'dialog-title-font-size': 'font-heading-normal',
+      'dialog-title-color': 'color-text-base',
+      'dialog-text-font-size': 'font-body-normal',
+      'dialog-text-color': 'color-text-minor',
       'dialog-action-height': '100px',
-      'dialog-action-font-size': '32px',
+      'dialog-action-font-size': 'font-heading-normal',
+      'dialog-action-border-color': 'color-border-base',
+      'dialog-close-color': 'color-text-caption',
+      'dialog-action-highlight-color': 'color-primary',
       'dialog-icon-size': '100px',
-      'dialog-icon-fill': '#999',
+      'dialog-icon-fill': 'color-text-caption',
       'dialog-zindex': 1402
     },
     'drop-menu': {
       'drop-menu-height': '82px',
-      'drop-menu-color': '#3ca0e6',
-      'drop-menu-font-size': '28px',
-      'drop-menu-zindex': '1200'
+      'drop-menu-color': 'color-text-link',
+      'drop-menu-font-size': 'font-body-normal',
+      'drop-menu-zindex': '1200',
+      'drop-menu-bar-bg': 'color-bg-base',
+      'drop-menu-bar-border-color': 'color-border-base',
+      'drop-menu-list-bg': 'color-bg-base',
+      'drop-menu-disabled-opacity': 'opacity-disabled'
     },
     'field': {
-      'field-padding': '32px',
+      'field-padding': 'h-gap-lg',
       'field-padding-h': '32px',
       'field-padding-v': '29px',
-      'field-title-font-size': '28px',
-      'field-title-weight': 500,
-      'field-title-color': '#333',
-      'field-title-font-weight': 500,
+      'field-title-font-size': 'font-body-normal',
+      'field-title-weight': 'font-weight-medium',
+      'field-title-color': 'color-text-base',
+      'field-title-font-weight': 'font-weight-medium',
       'field-title-margin': '26px',
-      'field-item-height': '100px',
       'field-item-padding-v': '22px',
-      'field-item-bg-color': '#fff',
-      'field-item-color': '#333',
-      'field-item-color-check': '#666',
-      'field-item-color-action': '#3ca0e6',
-      'field-item-font-size': '28px',
-      'field-item-font-size-check': '24px',
+      'field-item-bg-color': 'color-bg-base',
+      'field-item-bg-tap-color': 'color-bg-tap',
+      'field-item-color': 'color-text-base',
+      'field-item-font-size': 'font-body-normal',
       'field-item-icon-color': '#ccc',
-      'field-item-border-color': '#e6e6e6',
-      'field-item-color-disabled': '0.4'
+      'field-item-border-color': 'color-border-minor',
+      'field-item-color-disabled': 'opacity-disabled',
+      'field-item-brief-font-size': 'font-minor-large',
+      'field-item-brief-color': 'color-text-caption'
     },
     'icon': {
       'icon-size-xs': '20px',
@@ -176,18 +219,18 @@ export default {
       'input-item-title-latent-font-size': '26px',
       'input-item-font-size-large': '42px',
       'input-item-font-size-error': '22px',
-      'input-item-font-weight': 400,
-      'input-item-color': '#333',
-      'input-item-title-latent-color': '#666',
-      'input-item-color-disabled': 0.4,
+      'input-item-font-weight': 'font-weight-normal',
+      'input-item-color': 'color-text-base',
+      'input-item-title-latent-color': 'color-text-minor',
+      'input-item-color-disabled': 'opacity-disabled',
       'input-item-color-error': '#ff525d',
-      'input-item-placeholder': '#ccc',
-      'input-item-placeholder-hightlight': '#fc9153',
-      'input-item-icon': '#333'
+      'input-item-placeholder': 'color-text-placeholder',
+      'input-item-placeholder-highlight': 'color-primary',
+      'input-item-icon': 'color-text-placeholder'
     },
     'notice-bar': {
       'notice-bar-fill': '#4A4C5B',
-      'notice-bar-color': '#fff',
+      'notice-bar-color': 'color-text-base-inverse',
       'notice-bar-zindex': 1300
     },
     'number-keyboard': {
@@ -196,39 +239,46 @@ export default {
       'number-keyboard-key-height': '107px',
       'number-keyboard-key-bg': '#ebebeb',
       'number-keyboard-key-bg-tap': '#f0f0f0',
-      'number-keyboard-key-confirm-bg': '#fc9153',
+      'number-keyboard-key-confirm-bg': 'color-primary',
       'number-keyboard-key-confirm-bg-tap': '#dd7f49',
       'number-keyboard-key-font-size': '48px',
-      'number-keyboard-key-color': '#666',
+      'number-keyboard-key-color': 'color-text-minor',
       'number-keyboard-key-color-simple': '#000',
       'number-keyboard-zindex': 1403
     },
     'picker': {
       'picker-font-size': '30px',
       'picker-disabled-opacity': 0.2,
-      'picker-color': '#333',
+      'picker-color': 'color-text-base',
       'picker-zindex': 1100
     },
     'popup': {
+      'popup-title-bar-bg': 'color-bg-base',
+      'popup-title-bar-border-color': 'color-border-base',
       'popup-title-bar-height': '110px',
       'popup-title-bar-font-size-button': '28px',
       'popup-title-bar-font-size-title': '36px',
+      'popup-title-bar-color-title': 'color-text-base',
+      'popup-title-bar-color-button-left': 'color-text-minor',
+      'popup-title-bar-color-button-right': 'color-text-highlight',
+      'popup-mask-bg': 'rgba(0, 0, 0, .4)',
       'popup-zindex': '1000'
     },
     'radio': {
-      'radio-fill': '#3ca0e6'
+      'radio-fill': 'color-primary-tap'
     },
     'selector': {
       'selector-height': '100px',
       'selector-disabled-opacity': 0.2,
       'selector-font-size': '30px',
       'selector-color': '#333',
+      'selector-active-color': 'color-primary',
       'selector-zindex': '1102'
     },
     'stepper': {
-      'stepper-fill': '#f3f4f5',
-      'stepper-disabled-opacity': 0.4,
-      'stepper-color': '#333',
+      'stepper-fill': 'color-primary-background',
+      'stepper-disabled-opacity': 'opacity-disabled',
+      'stepper-color': 'color-text-base',
       'stepper-height': '50px',
       'stepper-width-button': '50px',
       'stepper-width-input': '60px',
@@ -236,42 +286,60 @@ export default {
       'stepper-radius-input': '0 0 0 0'
     },
     'steps': {
-      'steps-color': '#fc9153',
-      'steps-color-active': 0.4,
+      'steps-color': 'color-text-disabled',
+      'steps-color-active': 'color-primary',
       'steps-border': 'dotted 2px #ccc',
       'steps-border-active': 'solid 2px #ccc',
       'steps-size': '12px',
-      'steps-size-active': '32px'
+      'steps-size-active': '32px',
+      'steps-text-color': 'color-text-base',
+      'steps-text-font-size': 'font-minor-large'
     },
     'switch': {
-      'switch-fill': '#fc9153',
-      'switch-fill-inverse': '#ccc',
+      'switch-fill': 'color-primary',
+      'switch-fill-inverse': 'color-bg-disabled',
       'switch-handle-color': '#fff',
-      'switch-item-color-disabled': 0.4
+      'switch-item-color-disabled': 'opacity-disabled'
     },
     'tab-picker': {
       'tab-picker-font-size': '28px',
-      'tab-picker-color': '#333',
-      'tab-picker-hignlight-color': '#fc9153',
+      'tab-picker-color': 'color-text-base',
+      'tab-picker-highlight-color': 'color-primary',
       'tab-picker-min-height': '100px'
     },
     'tabs': {
-      'tab-color': '#3ca0e6',
+      'tab-color': 'color-primary-tap',
       'tab-font-size': '28px',
+      'tab-text-color': 'color-text-base',
+      'tab-bg': 'color-bg-base',
+      'tab-border-color': 'color-border-minor',
       'tab-height': '80px',
       'tab-ink-bar-height': '3px',
       'tab-zindex': 101
+    },
+    'tag': {
+      'tag-color': 'color-primary',
+      'tag-fillet-radius': 'radius-normal',
+      'tag-large-font-size': 'font-body-normal',
+      'tag-small-font-size': 'font-minor-normal',
+      'tag-tiny-font-size': '12px'
     },
     'tip': {
       'tip-fill': 'rgba(74, 76, 91, 0.8)',
       'tip-font-size': '24px',
       'tip-color': '#fff',
+      'tip-radius': 'radius-normal',
+      'tip-gap': '20px 50px 20px 30px',
+      'tip-close-size': '16px',
       'tip-zindex': 1300
     },
     'toast': {
       'toast-fill': 'rgba(0, 0, 0, .8)',
       'toast-font-size': '28px',
       'toast-color': '#ccc',
+      'toast-radius': 'radius-normal',
+      'toast-text-left': '88px',
+      'toast-gap': '26px',
       'toast-zindex': 1501
     }
   }
