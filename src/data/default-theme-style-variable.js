@@ -79,7 +79,7 @@ export default {
       'button-primary-width': '100%',
       'button-primary-height': '100px',
       'button-primary-font-size': '32px',
-      'button-ghost-fill': '#fff',
+      // 'button-ghost-fill': '#fff',
       'button-ghost-fill-tap': 'rgba(0, 0, 0, .08)',
       'button-ghost-primary-fill-tap': 'rgba(252, 145, 83, .08)',
       'button-ghost-width': '160px',

@@ -3,6 +3,11 @@ export function safeGetValue (source, key, defaults = '') {
   return factory(source, defaults)
 }
 
+export function safeSetValue (source, key, value) {
+  const factory = new Function('source', 'value', `try { source.${key} = value } catch (e) { }`)
+  return factory(source, value)
+}
+
 function getStorage (type, key) {
   const storage = window[type]
   const json = /^[{[][\w\W]*[}\]]$/
@@ -41,7 +46,7 @@ export function localStore (key, value) {
 }
 
 export function setCssVariable (name, value) {
-  document.body.setProperty(name, value)
+  document.body.style.setProperty(`--${name}`, value)
 }
 
 export function insertCssVariable (css) {
