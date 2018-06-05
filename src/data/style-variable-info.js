@@ -2,7 +2,7 @@ export default {
   'color-primary': {
     type: 'color',
     text: '第一主色，常用于按钮和不可点击的高亮文字',
-    textEn: '1st main color for buttons & hightlight text which is not clickable'
+    textEn: '1st main color for buttons & highlight text which is not clickable'
   },
   'color-primary-tap': {
     type: 'color',
@@ -44,7 +44,7 @@ export default {
     text: '输入框占位字符颜色',
     textEn: 'input placeholder'
   },
-  'color-text-hightlight': {
+  'color-text-highlight': {
     type: 'color',
     text: '高亮文字颜色',
     textEn: 'hight text color'
@@ -89,10 +89,10 @@ export default {
     text: '元素点击态蒙层背景色',
     textEn: 'background color for element click state'
   },
-  'color-bg-tap-hightlight': {
+  'color-bg-tap-highlight': {
     type: 'color',
     text: '高亮元素点击态蒙层背景色',
-    textEn: 'background color for hightlight element click state'
+    textEn: 'background color for highlight element click state'
   },
   'font-heading-large': {
     type: 'size',
@@ -220,7 +220,15 @@ export default {
   },
   'button-primary-font-size': {
     type: 'size',
-    text: '主按钮字体大小'
+    text: '主按钮文字大小'
+  },
+  'button-primary-font-weight': {
+    type: 'other',
+    text: '主按钮文字字重'
+  },
+  'button-primary-radius': {
+    type: 'size',
+    text: '主按钮边角半径'
   },
   'button-ghost-fill': {
     type: 'color',
@@ -230,12 +238,12 @@ export default {
   'button-ghost-fill-tap': {
     type: 'color',
     text: '线性按钮点击态蒙层背景色',
-    textEn: 'ghost button background color of click state'
+    textEn: 'ghost button mask color of click state'
   },
   'button-ghost-primary-fill-tap': {
     type: 'color',
     text: '主线性按钮点击态蒙层背景色',
-    textEn: 'ghost-primary button background color of click state'
+    textEn: 'ghost-primary button mask color of click state'
   },
   'button-ghost-width': {
     type: 'size',
@@ -270,5 +278,67 @@ export default {
     type: 'color',
     text: '主线性按钮文字和边框颜色',
     textEn: 'ghost-primary button text and border color'
+  },
+  'button-ghost-radius': {
+    type: 'size',
+    text: '线性按钮边角半径'
+  },
+  'button-link-fill': {
+    type: 'color',
+    text: '链接按钮背景色',
+    textEn: 'link button background color'
+  },
+  'button-link-fill-tap': {
+    type: 'color',
+    text: '链接按钮点击态蒙层背景色',
+    textEn: 'link button mask color of click state'
+  },
+  'button-link-width': {
+    type: 'size',
+    text: '链接按钮宽度'
+  },
+  'button-link-height': {
+    type: 'size',
+    text: '链接按钮高度'
+  },
+  'button-link-color': {
+    type: 'color',
+    text: '链接按钮文字颜色',
+    textEn: 'link button text color'
+  },
+  'button-link-border': {
+    type: 'color',
+    text: '链接按钮上下边框颜色',
+    textEn: 'link button border color'
+  },
+  'button-icon-gap': {
+    type: 'size',
+    text: '按钮图标与文字间距',
+    textEn: 'gap size between icon and text'
+  },
+  'button-disabled-opacity': {
+    type: 'size',
+    text: '按钮禁用透明度',
+    textEn: 'opacity of disabled button'
+  },
+  'icon-size-xs': {
+    type: 'size',
+    text: '超小图标尺寸',
+    textEn: 'xs icon size'
+  },
+  'icon-size-sm': {
+    type: 'size',
+    text: '小图标尺寸',
+    textEn: 'sm icon size'
+  },
+  'icon-size-md': {
+    type: 'size',
+    text: '中等图标尺寸',
+    textEn: 'md icon size'
+  },
+  'icon-size-lg': {
+    type: 'size',
+    text: '大图标尺寸',
+    textEn: 'lg icon size'
   }
 }

@@ -8,9 +8,20 @@
         class="palette-list-category clearfix"
       >
         <h3 class="palette-list-category-title">
-          <span v-if="moduleName === 'basic'">基础</span>
-          <span v-else>组件</span>
-          {{moduleName}}
+          <template v-if="moduleName === 'basic'">
+            <p class="text">{{moduleName}}</p>
+            <p class="tip">
+              <i class="el-icon-info"></i>
+              基础全局样式变量，可作用于所有组件
+            </p>
+          </template>
+          <template v-else>
+            <p class="text">{{moduleName}}</p>
+            <p class="tip">
+              <i class="el-icon-info"></i>
+              组件私有样式变量，仅作用于当前组件
+            </p>
+          </template>
         </h3>
         <ul>
           <li
@@ -102,14 +113,22 @@ export default {
       float left
       width 100%
       margin-bottom 20px
-      padding-left 35px
+      // padding-left 35px
       color #333
       font-size 28px
       font-weight 400
-      span
+      span.type
         position absolute
         top 0
         left 0
+        font-size 12px
+        color #999
+      p.text
+        float left
+      p.tip
+        float left
+        margin-top 12px
+        margin-left 20px
         font-size 12px
         color #999
     .palette-list-category-item

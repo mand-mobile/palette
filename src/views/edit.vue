@@ -19,39 +19,51 @@
       <div class="palette-edit-content-inner">
         <h1 class="palette-edit-title">{{itemName}}</h1>
         <div class="palette-edit-form clearfix" :key="tmp">
-          <div
-            v-for="(value, name) in styleVariable"
-            :key="`variable-${name}`"
-            class="palette-edit-item"
-          >
-            <div for="" class="item-label">
-              {{name}}
-              <span v-if="styleVariableInfo[name].text">
-                {{styleVariableInfo[name].text}}
-              </span>
-            </div>
-            <el-color-picker
-              v-if="styleVariableInfo[name].type === 'color'"
-              v-model="tmpStyleVariable[name]"
-              size="medium"
-              show-alpha
-              @change="onVariableChange(name, $event)"
+          <template v-for="(value, name) in styleVariable">
+            <div
+              v-if="tmpStyleVariable[name]"
+              :key="`variable-${name}`"
+              class="palette-edit-item"
             >
-            </el-color-picker>
-            <el-input
-              v-else
-              v-model="tmpStyleVariable[name]"
-              @blur="onVariableChange(name, tmpStyleVariable[name])"
-            ></el-input>
-            <el-tooltip class="item" effect="dark" content="恢复默认" placement="bottom">
-              <i class="item-tool el-icon-refresh"></i>
-            </el-tooltip>
-            <!-- <i class="item-tool el-icon-menu"></i> -->
-          </div>
-          <!-- <div class="palette-edit-item">
-            <label for="" class="item-label">number-keyboard-key-confirm-bg-tap</label>
-            <el-input-number label="描述文字"></el-input-number>
-          </div> -->
+              <div for="" class="item-label">
+                {{name}}
+                <span v-if="styleVariableInfo[name].text">
+                  {{styleVariableInfo[name].text}}
+                </span>
+              </div>
+              <el-color-picker
+                v-if="styleVariableInfo[name].type === 'color'"
+                v-model="tmpStyleVariable[name].value"
+                size="medium"
+                show-alpha
+                @change="onVariableChange(name, $event)"
+              >
+              </el-color-picker>
+              <el-input
+                v-else
+                v-model="tmpStyleVariable[name].value"
+                @blur="onVariableChange(name, tmpStyleVariable[name])"
+              ></el-input>
+              <div class="item-operator">
+                <el-tooltip
+                  v-if="tmpStyleVariable[name].from"
+                  class="item"
+                  effect="dark"
+                  :content="`也可直接更改全局变量${tmpStyleVariable[name].from}`"
+                  placement="bottom"
+                >
+                  <i class="item-tip">
+                    <i class="el-icon-star-off"></i> {{ tmpStyleVariable[name].from }}
+                  </i>
+                </el-tooltip>
+                <el-tooltip class="item" effect="dark" content="恢复默认" placement="bottom">
+                  <i class="item-tip">
+                    <i class="item-tool el-icon-refresh"></i> 重置
+                  </i>
+                </el-tooltip>
+              </div>
+            </div>
+          </template>
         </div>
       </div>
       <div class="palette-edit-operate">
@@ -67,7 +79,8 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import Demo from '../demos/button'
-import { generateCssVariable, insertCssVariable } from '../utils'
+import { styleVariableInfo } from '../data'
+import { generateCssVariable, insertCssVariable, findKeyValue } from '../utils'
 
 export default {
   name: 'palette-edit',
@@ -105,18 +118,27 @@ export default {
       this.innerHeight = window.innerHeight - 120
     })
     this.initCssVariable()
-    this.initStyleVariable()
+    this.initStyleValue()
   },
   methods: {
     ...mapMutations(['updateTheme']),
-    initStyleVariable () {
+    initStyleValue () {
       const styleVariable = this.styleVariable
       if (!styleVariable) {
         return
       }
       for (const name in styleVariable) {
         if (styleVariable.hasOwnProperty(name)) {
-          this.tmpStyleVariable[name] = styleVariable[name]
+          let styleValue = styleVariable[name]
+          let from = ''
+          if (styleVariableInfo.hasOwnProperty(styleValue)) {
+            from = styleValue
+            styleValue = findKeyValue(this.theme.data, from)
+          }
+          this.tmpStyleVariable[name] = {
+            value: styleValue,
+            from
+          }
         }
       }
       this.tmp = Date.now()
@@ -209,13 +231,22 @@ export default {
               color #999
               &:before
                 content '/ '
-          .item-tool
+          .item-operator
             float left
-            margin-left 20px
-            color #ccc
             display none
-            transition all .3s
+          .item-tip
+            float left
+            margin-left 15px
+            color #999
+            font-size 12px
+            font-style normal
             cursor pointer
+          .item-tool
+            position relative
+            float left
+            top 2px
+            margin-right 5px
+            color #ccc
           .el-color-picker
             float left
           .el-input
@@ -223,7 +254,7 @@ export default {
             width 180px
             overflow hidden
           &:hover
-            .item-tool
+            .item-operator
               display block
           // .reset-theme
           //   position absolute
