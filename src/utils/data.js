@@ -1,10 +1,19 @@
+function composeKeys (key) {
+  if (Array.isArray(key)) {
+    key = key.reduce((pre, cur, index) => {
+      return !index ? cur : `${pre}['${cur}']`
+    })
+  }
+  return key
+}
+
 export function safeGetValue (source, key, defaults = '') {
-  const factory = new Function('source', 'defaults', `try { return source.${key} === undefined ? defaults : source.${key} } catch (e) { return defaults }`)
+  const factory = new Function('source', 'defaults', `try { return source.${composeKeys(key)} === undefined ? defaults : source.${composeKeys(key)} } catch (e) { return defaults }`)
   return factory(source, defaults)
 }
 
 export function safeSetValue (source, key, value) {
-  const factory = new Function('source', 'value', `try { source.${key} = value } catch (e) { }`)
+  const factory = new Function('source', 'value', `try { source.${composeKeys(key)} = value } catch (e) { }`)
   return factory(source, value)
 }
 
@@ -27,8 +36,12 @@ export function isPlainObject (obj) {
 export function traverseObject (data, handler, deepest = true) {
   let path = []
   let level = 0
+  let forceBreak = false
   const walk = curData => {
     for (const key in curData) {
+      if (forceBreak) {
+        break
+      }
       if (curData.hasOwnProperty(key)) {
         const subData = curData[key]
         path[level] = key
@@ -36,8 +49,8 @@ export function traverseObject (data, handler, deepest = true) {
           level++
           walk(subData)
         } else {
-          handler(key, subData, path)
-          if (!deepest) {
+          forceBreak = !!handler(key, subData, path)
+          if (!deepest || forceBreak) {
             break
           }
         }
@@ -55,8 +68,19 @@ export function findKeyValue (data, key) {
   traverseObject(data, (key, value, path) => {
     map = {
       ...map,
-      ...safeGetValue(data, path.slice(0, path.length - 1).join('.'), {})
+      ...safeGetValue(data, path.slice(0, path.length - 1), {})
     }
   }, false)
   return map[key]
+}
+
+export function findKeyFrom (data, key) {
+  let path = []
+  traverseObject(data, (curKey, curValue, curPath) => {
+    if (curKey === key) {
+      path = JSON.parse(JSON.stringify(curPath))
+      return true
+    }
+  })
+  return path
 }

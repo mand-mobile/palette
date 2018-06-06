@@ -146,6 +146,11 @@ export default {
         position absolute
         left 0
         top 0
+      .palette-card-img
+        transition all .3s
+      &:hover
+        .palette-card-img
+          transform translateY(-50px) scale(1.5)
   .palette-list-dialog
     // top 50%
     // height 800px

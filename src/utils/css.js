@@ -2,6 +2,13 @@ import { styleVariableInfo } from '../data'
 import { traverseObject } from './data'
 
 export function setCssVariable (name, value) {
+  /**
+   * If the value is a basic variable,
+   * it needs to be packaged as css variable
+   */
+  if (styleVariableInfo.hasOwnProperty(value)) {
+    value = `var(--${value})`
+  }
   document.body.style.setProperty(`--${name}`, value)
 }
 
@@ -34,7 +41,7 @@ export function generateCssVariable (variables) {
 
   traverseObject(variables, (name, value) => {
     /**
-     * If the value is a base variable,
+     * If the value is a basic variable,
      * it needs to be packaged as css variable
      */
     if (styleVariableInfo.hasOwnProperty(value)) {

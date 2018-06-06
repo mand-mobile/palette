@@ -34,30 +34,31 @@
               <el-color-picker
                 v-if="styleVariableInfo[name].type === 'color'"
                 v-model="tmpStyleVariable[name].value"
-                size="medium"
+                size="mini"
                 show-alpha
-                @change="onVariableChange(name, $event)"
+                @change="onStyleValueChange(name, $event)"
               >
               </el-color-picker>
               <el-input
                 v-else
                 v-model="tmpStyleVariable[name].value"
-                @blur="onVariableChange(name, tmpStyleVariable[name])"
+                size="mini"
+                @blur="onStyleValueChange(name, tmpStyleVariable[name].value)"
               ></el-input>
               <div class="item-operator">
                 <el-tooltip
                   v-if="tmpStyleVariable[name].from"
                   class="item"
                   effect="dark"
-                  :content="`也可直接更改全局变量${tmpStyleVariable[name].from}`"
+                  :content="`编辑全局变量${tmpStyleVariable[name].from}`"
                   placement="bottom"
                 >
-                  <i class="item-tip">
-                    <i class="el-icon-star-off"></i> {{ tmpStyleVariable[name].from }}
+                  <i class="item-tip" @click="goToOther(tmpStyleVariable[name].from)">
+                    <i class="el-icon-share"></i> {{ tmpStyleVariable[name].from }}
                   </i>
                 </el-tooltip>
                 <el-tooltip class="item" effect="dark" content="恢复默认" placement="bottom">
-                  <i class="item-tip">
+                  <i class="item-tip" @click="resetStyleValue(name)">
                     <i class="item-tool el-icon-refresh"></i> 重置
                   </i>
                 </el-tooltip>
@@ -66,21 +67,39 @@
           </template>
         </div>
       </div>
-      <div class="palette-edit-operate">
-        <el-tooltip class="item" effect="dark" content="关闭编辑主题" placement="bottom">
-          <i class="close-theme el-icon-close"></i>
-        </el-tooltip>
-      </div>
     </div>
     <div class="palette-edit-boxshadow"></div>
+    <div class="palette-edit-operate">
+      <el-button
+        v-if="lastRoute"
+        size="medium"
+        round
+        @click="goBack"
+      >
+        返回{{lastRoute.itemName}}
+      </el-button>
+      <el-button
+        type="danger"
+        size="medium"
+        round
+        @click="closeEditor"
+      >
+        关闭编辑器
+      </el-button>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapMutations } from 'vuex'
-import Demo from '../demos/button'
-import { styleVariableInfo } from '../data'
-import { generateCssVariable, insertCssVariable, findKeyValue } from '../utils'
+import Demo from '../demos/action-sheet'
+import { defaultTheme, styleVariableInfo } from '../data'
+import {
+  generateCssVariable,
+  insertCssVariable,
+  findKeyValue,
+  findKeyFrom
+} from '../utils'
 
 export default {
   name: 'palette-edit',
@@ -92,6 +111,7 @@ export default {
       itemName: this.$route.query.itemName,
       tmpStyleVariable: {},
       tmp: Date.now(),
+      lastRoute: null,
       previewDemo: Demo
     }
   },
@@ -122,40 +142,111 @@ export default {
   },
   methods: {
     ...mapMutations(['updateTheme']),
-    initStyleValue () {
-      const styleVariable = this.styleVariable
-      if (!styleVariable) {
-        return
+
+    onStyleValueChange (name, value) {
+      if (this.getStyleValue(name) !== value) {
+        this.updateTheme({
+          themeIndex: this.themeIndex,
+          moduleName: this.moduleName,
+          itemName: this.itemName,
+          name,
+          value
+        })
       }
-      for (const name in styleVariable) {
-        if (styleVariable.hasOwnProperty(name)) {
-          let styleValue = styleVariable[name]
-          let from = ''
-          if (styleVariableInfo.hasOwnProperty(styleValue)) {
-            from = styleValue
-            styleValue = findKeyValue(this.theme.data, from)
-          }
-          this.tmpStyleVariable[name] = {
-            value: styleValue,
-            from
-          }
-        }
-      }
-      this.tmp = Date.now()
     },
+
     initCssVariable () {
       if (this.theme) {
         const variables = generateCssVariable(this.theme.data)
         insertCssVariable(variables)
       }
     },
-    onVariableChange (name, value) {
+
+    // load new module & item style variables
+    loadStyleVariable (moduleName, itemName) {
+      this.moduleName = moduleName
+      this.itemName = itemName
+      this.initStyleValue()
+
+      // this.$router.replace({
+      //   path: 'edit',
+      //   query: {
+      //     themeIndex: this.themeIndex,
+      //     moduleName: this.moduleName,
+      //     itemName: this.itemName
+      //   }
+      // })
+    },
+
+    initStyleValue () {
+      const styleVariable = this.styleVariable
+
+      if (!styleVariable) {
+        return
+      }
+      for (const name in styleVariable) {
+        if (styleVariable.hasOwnProperty(name)) {
+          const styleValue = styleVariable[name]
+          this.tmpStyleVariable[name] = {
+            value: this.getStyleValue(name),
+            from: styleVariableInfo.hasOwnProperty(styleValue) ? styleValue : ''
+          }
+        }
+      }
+
+      this.tmp = Date.now()
+    },
+    getStyleValue (name) {
+      const styleVariable = this.styleVariable
+      let styleValue = styleVariable[name]
+
+      // Find value when the value is a basic variable
+      if (styleVariableInfo.hasOwnProperty(styleValue)) {
+        styleValue = findKeyValue(this.theme.data, styleValue)
+      }
+
+      return styleValue
+    },
+    resetStyleValue (name) {
+      const defaultValue = findKeyValue(defaultTheme, name)
+      // reset theme variable
       this.updateTheme({
         themeIndex: this.themeIndex,
         moduleName: this.moduleName,
         itemName: this.itemName,
         name,
-        value
+        value: defaultValue
+      })
+
+      // reset temporary variable
+      this.$set(this.tmpStyleVariable, name, {
+        ...this.tmpStyleVariable[name],
+        value: this.getStyleValue(name)
+      })
+
+      this.tmp = Date.now()
+    },
+
+    goToOther (key) {
+      const path = findKeyFrom(this.theme.data, key)
+      // temporarily save current route info
+      this.lastRoute = {
+        themeIndex: this.themeIndex,
+        moduleName: this.moduleName,
+        itemName: this.itemName
+      }
+      this.loadStyleVariable(path[0], path[1])
+    },
+    goBack () {
+      this.loadStyleVariable(this.lastRoute.moduleName, this.lastRoute.itemName)
+      this.lastRoute = null
+    },
+    closeEditor () {
+      this.$router.replace({
+        path: 'list',
+        query: {
+          themeIndex: this.themeIndex
+        }
       })
     }
   }
@@ -166,12 +257,15 @@ export default {
 .palette-edit
   position relative
   box-sizing border-box
+  // background #FFF
   overflow hidden
   .palette-edit-preview
     float left
     width 432px
     height 100%
     overflow scroll
+    &::-webkit-scrollbar
+      display none
     .palette-edit-preview-inner
       position relative
       padding 30px 0 50px
@@ -180,16 +274,20 @@ export default {
       .palette-edit-preview-box
         position absolute
         z-index 2
-        top 36px
-        left 12.5px
-        width 403px
-        height 830px
-        padding 80px 14px 0
-        // background red
+        top 116px
+        left 14px
+        width 375px
+        height 740px
+        margin 0 14px
+        // padding 80px 0 0
+        background #fbfbfb
         // opacity .5
         box-sizing border-box
-        border-radius 56px
+        border-radius 0 0 56px 56px
+        overflow hidden
         .palette-demo
+          padding 20px
+          box-sizing border-box
           zoom calc(375/750)
       .palette-edit-preview-tip
         margin-top 10px
@@ -205,6 +303,8 @@ export default {
     padding-left 50px
     box-sizing border-box
     overflow scroll
+    &::-webkit-scrollbar
+      display none
     .palette-edit-content-inner
       padding 30px 0 50px
       .palette-edit-title
@@ -224,7 +324,7 @@ export default {
             float left
             width 100%
             line-height 40px
-            font-size 16px
+            font-size 14px
             span
               margin-left 10px
               font-size 12px
@@ -251,26 +351,15 @@ export default {
             float left
           .el-input
             float left
-            width 180px
+            width 140px
             overflow hidden
           &:hover
             .item-operator
               display block
-          // .reset-theme
-          //   position absolute
-          //   right 0
-          //   top 0
-          //   .el-input__inner
-          //     border none
-          //     border-bottom solid 1px #f0f0f0
-    .palette-edit-operate
-      position absolute
-      right 0
-      top 0
-      i
-        margin-left 10px
-        font-size 16px
-        cursor pointer
+  .palette-edit-operate
+    position absolute
+    right 0
+    top 30px
   .palette-edit-boxshadow
     position absolute
     bottom -10px

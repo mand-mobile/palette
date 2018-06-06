@@ -86,7 +86,7 @@ export default {
   width 100%
   padding 20px
   box-sizing border-box
-  box-shadow 0 2px 8px #f0f1f2
+  box-shadow 0 2px 8px #ebebeb
   cursor pointer
   transition all .3s
   // &:hover

@@ -54,28 +54,27 @@ export default {
       'action-bar-height': '100px',
       'action-bar-button-font-size': '32px',
       'action-bar-button-font-weight': 'font-weight-medium',
-      'action-bar-button-disabled-opacity': 'opacity-disabled',
-      'action-bar-button-disabled-bg': 'color-bg-disabled',
-      'action-bar-button-disabled-color': 'color-text-base-inverse',
-      'action-bar-button-tap-bg': 'color-bg-tap',
       'action-bar-button-color': 'color-text-base',
       'action-bar-button-color-highlight': 'color-text-base-inverse',
       'action-bar-button-fill': 'color-bg-base',
       'action-bar-button-fill-highlight': 'color-primary',
+      'action-bar-button-disabled-opacity': 'opacity-disabled',
+      'action-bar-button-disabled-bg': 'color-bg-disabled',
+      'action-bar-button-disabled-color': 'color-text-base-inverse',
+      'action-bar-button-tap-bg': 'color-bg-tap',
       'action-bar-text-color': 'color-primary',
       'action-bar-text-font-size': '36px',
-      'action-bar-text-left': 'h-gap-lg',
-      'action-bar-shadow': 'shadow-top',
-      'action-bar-zindex': 100
+      'action-bar-text-left': 'h-gap-lg'
     },
     'action-sheet': {
       'action-sheet-height': '120px',
       'action-sheet-color': 'color-text-base',
+      'action-sheet-color-highlight': 'color-primary',
+      'action-sheet-color-cancel': 'color-text-base',
       'action-sheet-font-size': '30px',
       'action-sheet-bg': 'color-bg-base',
       'action-sheet-disabled-opacity': 'opacity-disabled',
-      'action-sheet-cancel-gap-bg': 'color-primary-background',
-      'action-sheet-zindex': 1101
+      'action-sheet-cancel-gap-bg': 'color-primary-background'
     },
     'agree': {
       'agree-fill': 'color-primary',

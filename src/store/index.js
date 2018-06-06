@@ -38,8 +38,7 @@ const store = new Vuex.Store({
         return null
       }
 
-      safeSetValue(variables, `${moduleName}.${itemName}['${name}']`, value)
-      console.log(name, value)
+      safeSetValue(variables, `${moduleName}['${itemName}']['${name}']`, value)
       setCssVariable(name, value)
     }
   }

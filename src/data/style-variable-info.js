@@ -340,5 +340,115 @@ export default {
     type: 'size',
     text: '大图标尺寸',
     textEn: 'lg icon size'
+  },
+  'action-bar-width': {
+    type: 'size',
+    text: '操作栏宽度'
+  },
+  'action-bar-height': {
+    type: 'size',
+    text: '操作栏宽度'
+  },
+  'action-bar-button-font-size': {
+    type: 'size',
+    text: '操作栏按钮文字大小'
+  },
+  'action-bar-button-font-weight': {
+    type: 'size',
+    text: '操作栏按钮文字字重'
+  },
+  'action-bar-button-disabled-opacity': {
+    type: 'size',
+    text: '操作栏禁用按钮透明度'
+  },
+  'action-bar-button-disabled-bg': {
+    type: 'color',
+    text: '操作栏禁用高亮按钮背景色',
+    textEn: 'action bar disabled button background color'
+  },
+  'action-bar-button-disabled-color': {
+    type: 'color',
+    text: '操作栏禁用按钮文字颜色',
+    textEn: 'action bar disabled button text color'
+  },
+  'action-bar-button-tap-bg': {
+    type: 'color',
+    text: '操作栏按钮点击态蒙层背景色',
+    textEn: 'action bar button mask color of click state'
+  },
+  'action-bar-button-color': {
+    type: 'color',
+    text: '操作栏按钮文字颜色',
+    textEn: 'action bar button text color'
+  },
+  'action-bar-button-color-highlight': {
+    type: 'color',
+    text: '操作栏高亮按钮文字颜色',
+    textEn: 'action bar highlight button text color'
+  },
+  'action-bar-button-fill': {
+    type: 'color',
+    text: '操作栏按钮背景色',
+    textEn: 'action bar button background color'
+  },
+  'action-bar-button-fill-highlight': {
+    type: 'color',
+    text: '操作栏高亮按钮背景色',
+    textEn: 'action bar highlight button background color'
+  },
+  'action-bar-text-color': {
+    type: 'color',
+    text: '操作栏文案文字颜色',
+    textEn: 'action bar text color'
+  },
+  'action-bar-text-font-size': {
+    type: 'size',
+    text: '操作栏文案文字大小',
+    textEn: 'action bar font size'
+  },
+  'action-bar-text-left': {
+    type: 'size',
+    text: '操作栏文案左侧间距',
+    textEn: 'action bar text left spaceing'
+  },
+  'action-sheet-height': {
+    type: 'size',
+    text: '操作面板普通选项的高度',
+    textEn: 'action sheet item height'
+  },
+  'action-sheet-color': {
+    type: 'color',
+    text: '操作面板普通选项的文字颜色',
+    textEn: 'action sheet item text color'
+  },
+  'action-sheet-color-highlight': {
+    type: 'color',
+    text: '操作面板高亮选项的文字颜色',
+    textEn: 'action sheet highlight item text color'
+  },
+  'action-sheet-color-cancel': {
+    type: 'color',
+    text: '操作面板取消项的文字颜色',
+    textEn: 'action sheet cancellation item text color'
+  },
+  'action-sheet-font-size': {
+    type: 'size',
+    text: '操作面板选项的文字大小',
+    textEn: 'action sheet item font size'
+  },
+  'action-sheet-bg': {
+    type: 'color',
+    text: '操作面板背景色',
+    textEn: 'action sheet background color'
+  },
+  'action-sheet-disabled-opacity': {
+    type: 'size',
+    text: '操作面板禁用选项透明度',
+    textEn: 'action sheet disabled item opacity'
+  },
+  'action-sheet-cancel-gap-bg': {
+    type: 'color',
+    text: '操作面板取消项与其他选项之间的间隔的颜色',
+    textEn: 'color of the interval between the cancellation item and other items'
   }
 }
