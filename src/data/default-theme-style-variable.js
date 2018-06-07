@@ -64,7 +64,8 @@ export default {
       'action-bar-button-tap-bg': 'color-bg-tap',
       'action-bar-text-color': 'color-primary',
       'action-bar-text-font-size': '36px',
-      'action-bar-text-left': 'h-gap-lg'
+      'action-bar-text-left': 'h-gap-lg',
+      'action-bar-zindex': 100
     },
     'action-sheet': {
       'action-sheet-height': '120px',
@@ -74,11 +75,11 @@ export default {
       'action-sheet-font-size': '30px',
       'action-sheet-bg': 'color-bg-base',
       'action-sheet-disabled-opacity': 'opacity-disabled',
-      'action-sheet-cancel-gap-bg': 'color-primary-background'
+      'action-sheet-cancel-gap-bg': 'color-primary-background',
+      'action-sheet-zindex': 1101
     },
     'agree': {
       'agree-fill': 'color-primary',
-      'agree-fill-inverse': 'color-bg-disabled',
       'agree-disabled-opacity': 'opacity-disabled'
     },
     'button': {
@@ -111,11 +112,11 @@ export default {
       'button-disabled-opacity': 'opacity-disabled'
     },
     'captcha': {
-      'captcha-zindex': 1400,
       'captcha-title-color': 'color-text-base',
       'captcha-title-font-size': 'font-heading-normal',
       'captcha-error-color': '#FF525D',
-      'captcha-countbtn-gap': 'h-gap-lg'
+      'captcha-countbtn-gap': 'h-gap-lg',
+      'captcha-zindex': 1400
     },
     'cashier': {
       'cashier-bg': 'color-bg-base',

@@ -411,6 +411,9 @@ export default {
     text: '操作栏文案左侧间距',
     textEn: 'action bar text left spaceing'
   },
+  'action-bar-zindex': {
+    type: 'size'
+  },
   'action-sheet-height': {
     type: 'size',
     text: '操作面板普通选项的高度',
@@ -450,5 +453,105 @@ export default {
     type: 'color',
     text: '操作面板取消项与其他选项之间的间隔的颜色',
     textEn: 'color of the interval between the cancellation item and other items'
+  },
+  'action-sheet-zindex': {
+    type: 'size'
+  },
+  'agree-fill': {
+    type: 'color',
+    text: '勾选按钮勾选状态颜色',
+    textEn: 'icon color of checked status'
+  },
+  'agree-fill-inverse': {
+    type: 'color',
+    text: '勾选按钮未勾选状态颜色',
+    textEn: 'icon color of unchecked status'
+  },
+  'agree-disabled-opacity': {
+    type: 'size',
+    text: '勾选按钮禁用透明度'
+  },
+  'captcha-title-color': {
+    type: 'color',
+    text: '验证码窗口标题文字颜色',
+    textEn: 'captcha window title text color'
+  },
+  'captcha-title-font-size': {
+    type: 'size',
+    text: '验证码窗口标题文字大小',
+    textEn: 'captcha window title text size'
+  },
+  'captcha-error-color': {
+    type: 'color',
+    text: '验证码窗口错误提示文字大小',
+    textEn: 'captcha window error text size'
+  },
+  'captcha-countbtn-gap': {
+    type: 'size',
+    text: '验证码窗口发送验证码按钮上下间距',
+    textEn: 'captcha window verification sending code button top/bottom margin'
+  },
+  'captcha-zindex': {
+    type: 'size'
+  },
+  'cashier-bg': {
+    type: 'color',
+    text: '收银台弹层背景色',
+    textEn: 'cashier background color'
+  },
+  'cashier-choose-title-font-size': {
+    type: 'size',
+    text: '收银台标题文字大小',
+    textEn: 'cashier title font size'
+  },
+  'cashier-choose-title-color': {
+    type: 'color',
+    text: '收银台标题文字颜色',
+    textEn: 'cashier title color'
+  },
+  'cashier-choose-amount-font-size': {
+    type: 'size',
+    text: '收银台支付金额文字大小',
+    textEn: 'cashier pay amount font size'
+  },
+  'cashier-choose-amount-color': {
+    type: 'color',
+    text: '收银台支付金额文字颜色',
+    textEn: 'cashier pay amount color'
+  },
+  'cashier-choose-describe-font-size': {
+    type: 'size',
+    text: '收银台支付描述文字大小',
+    textEn: 'cashier pay describe font size'
+  },
+  'cashier-choose-describe-color': {
+    type: 'color',
+    text: '收银台支付描述文字颜色',
+    textEn: 'cashier pay describe text color'
+  },
+  'cashier-choose-channel-font-size': {
+    type: 'size',
+    text: '收银台支付渠道文字大小',
+    textEn: 'cashier pay channel font size'
+  },
+  'cashier-choose-channel-color': {
+    type: 'color',
+    text: '收银台支付渠道文字颜色',
+    textEn: 'cashier pay channel text color'
+  },
+  'cashier-choose-channel-icon-color': {
+    type: 'color',
+    text: '收银台支付渠道图标颜色',
+    textEn: 'cashier pay channel icon color'
+  },
+  'cashier-choose-more-font-size': {
+    type: 'size',
+    text: '收银台更多支付渠道文字大小',
+    textEn: 'cashier more channels font size'
+  },
+  'cashier-choose-more-color': {
+    type: 'color',
+    text: '收银台更多支付渠道文字颜色',
+    textEn: 'cashier more channels text color'
   }
 }

@@ -10,6 +10,7 @@
         <div class="palette-edit-preview-box">
           <component v-bind:is="previewDemo"></component>
         </div>
+        <div class="palette-edit-decorate"></div>
         <div class="palette-edit-preview-tip">
           * 页面展示按照<span>devicePixelRatio = 2</span>进行了等比缩放
         </div>
@@ -27,12 +28,12 @@
             >
               <div for="" class="item-label">
                 {{name}}
-                <span v-if="styleVariableInfo[name].text">
+                <span v-if="styleVariableInfo[name] && styleVariableInfo[name].text">
                   {{styleVariableInfo[name].text}}
                 </span>
               </div>
               <el-color-picker
-                v-if="styleVariableInfo[name].type === 'color'"
+                v-if="styleVariableInfo[name] && styleVariableInfo[name].type === 'color'"
                 v-model="tmpStyleVariable[name].value"
                 size="mini"
                 show-alpha
@@ -92,7 +93,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
-import Demo from '../demos/action-sheet'
+import Demo from '../demos/cashier'
 import { defaultTheme, styleVariableInfo } from '../data'
 import {
   generateCssVariable,
@@ -289,6 +290,16 @@ export default {
           padding 20px
           box-sizing border-box
           zoom calc(375/750)
+      .palette-edit-decorate
+        position absolute
+        z-index 3
+        left 50%
+        bottom 105px
+        width 120px
+        height 4px
+        margin-left -60px
+        border-radius 4px
+        background #999
       .palette-edit-preview-tip
         margin-top 10px
         font-size 12px
@@ -362,10 +373,11 @@ export default {
     top 30px
   .palette-edit-boxshadow
     position absolute
-    bottom -10px
+    bottom -20px
     left 0
     right 0
     height 60px
     background linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, #fff 60%)
+    border-radius 0 0 60px 60px
     // opacity .9
 </style>

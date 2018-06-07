@@ -1,6 +1,6 @@
 <template>
   <div class="palette-demo palette-demo-action-sheet cleafix">
-    <md-button @click="value = true">唤起动作面板</md-button>
+    <md-button @click="value = true">Show ActionSheet</md-button>
     <md-action-sheet
       v-model="value"
       :title="title"
@@ -18,24 +18,24 @@ export default {
   data () {
     return {
       value: false,
-      title: '操作说明的title',
+      title: 'ActionSheet Title',
       options: [
         {
-          label: '选项1',
+          label: 'Normal Item',
           value: 0
         },
         {
-          label: '选项2',
+          label: 'HightLight Item',
           value: 1
         },
         {
-          label: '选项3',
+          label: 'Disabled Item',
           value: 2
         }
       ],
       defaultIndex: 1,
       invalidIndex: 2,
-      cancelText: '取消'
+      cancelText: 'Cancel'
     }
   },
   mounted () {
