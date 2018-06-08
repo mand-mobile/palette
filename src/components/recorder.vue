@@ -89,6 +89,7 @@ export default {
   box-shadow 0 2px 8px #ebebeb
   cursor pointer
   transition all .3s
+  background #fff
   // &:hover
   //   background #f5f5f5
   .palette-recorder-top

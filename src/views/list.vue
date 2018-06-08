@@ -40,7 +40,7 @@
     <template v-else>
       <palette-status
         imgUrl="//manhattan.didistatic.com/static/manhattan/mfd/result-page/network"
-        describe="没有找到主题，请返回重新选择"
+        describe="没有找到主题，请重新选择"
         :button="{
           text: '选择主题',
           handler () {

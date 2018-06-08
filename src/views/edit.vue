@@ -93,7 +93,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
-import Demo from '../demos/cashier'
+import Demo from '../demos/codebox'
 import { defaultTheme, styleVariableInfo } from '../data'
 import {
   generateCssVariable,

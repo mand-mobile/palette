@@ -553,5 +553,98 @@ export default {
     type: 'color',
     text: '收银台更多支付渠道文字颜色',
     textEn: 'cashier more channels text color'
-  }
+  },
+  'chart-line-color': {
+    type: 'color',
+    text: '图表线框颜色'
+  },
+  'chart-path-color': {
+    type: 'color',
+    text: '图表默认折线颜色(刷新生效)',
+    textEn: 'chart default polyline color (refresh takes effect)'
+  },
+  'chart-text-color': {
+    type: 'color',
+    text: '图表文字颜色'
+  },
+  'chart-label-size': {
+    type: 'size',
+    text: '图表横轴文字大小',
+    textEn: 'chart horizontal axis font size'
+  },
+  'chart-value-size': {
+    type: 'size',
+    text: '图表纵轴文字大小',
+    textEn: 'chart vertical axis font size'
+  },
+  'codebox-font-size': {
+    type: 'size',
+    text: '输入框(固定位数)文字大小',
+    textEn: 'input box(fixed length) text size'
+  },
+  'codebox-width': {
+    type: 'size',
+    text: '输入框(固定位数)宽度',
+    textEn: 'input box(fixed length) width'
+  },
+  'codebox-gutter': {
+    type: 'size',
+    text: '输入框左右间距',
+    textEn: 'input boxleft and right spacing'
+  },
+  'codebox-border-color': {
+    type: 'color',
+    text: '输入框(固定位数)边框颜色',
+    textEn: 'input box(fixed length) border color'
+  },
+  'codebox-border-active-color': {
+    type: 'color',
+    text: '获得焦点输入框(固定位数)边框颜色',
+    textEn: 'focused input box(fixed length) border color'
+  },
+  'codebox-blink-color': {
+    type: 'color',
+    text: '输入框(固定位数)光标颜色',
+    textEn: 'input box(fixed length) blink color'
+  },
+  'codebox-input-height': {
+    type: 'size',
+    text: '输入框(不限位数)高度',
+    textEn: 'input box(unlimited length) height'
+  },
+  'codebox-input-padding': {
+    type: 'size',
+    text: '输入框(不限位数)间距',
+    textEn: 'input box(unlimited length) padding'
+  },
+  'codebox-input-font-size': {
+    type: 'size',
+    text: '输入框(不限位数)文字大小',
+    textEn: 'input box(unlimited length) font size'
+  },
+  'codebox-input-border-color': {
+    type: 'color',
+    text: '输入框(不限位数)边框颜色',
+    textEn: 'input box(unlimited length) border color'
+  },
+  'codebox-input-radius': {
+    type: 'size',
+    text: '输入框(固定位数)边框圆角大小',
+    textEn: 'input box(fixed length) border color'
+  },
+  'codebox-dot-color': {
+    type: 'color',
+    text: '输入框(固定位数)掩码颜色',
+    textEn: 'input box(fixed length) mask color'
+  },
+  'date-picker-font-size': {
+    type: 'size',
+    text: '日期选择器文字大小',
+    textEn: 'date picker font size'
+  },
+  'date-time-picker-font-size': {
+    type: 'size',
+    text: '日期时间选择器文字大小',
+    textEn: 'date-time picker font size'
+  },
 }

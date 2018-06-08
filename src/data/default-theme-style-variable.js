@@ -146,12 +146,12 @@ export default {
       'codebox-border-color': 'color-border-base',
       'codebox-border-active-color': 'color-primary',
       'codebox-blink-color': 'color-primary',
+      'codebox-input-radius': 'radius-normal',
+      'codebox-dot-color': '#000',
       'codebox-input-height': '68px',
       'codebox-input-padding': '16px 32px',
       'codebox-input-font-size': '28px',
-      'codebox-input-border-color': 'color-border-base',
-      'codebox-input-radius': 'radius-normal',
-      'codebox-dot-color': '#000'
+      'codebox-input-border-color': 'color-border-base'
     },
     'date-picker': {
       'date-picker-font-size': 'font-body-normal',
