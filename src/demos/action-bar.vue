@@ -12,14 +12,14 @@ export default {
     return {
       data: [
         {
-          text: '普通'
+          text: 'Normal'
         },
         {
-          text: '禁用',
+          text: 'Disabled',
           disabled: true
         },
         {
-          text: '高亮'
+          text: 'Highlight'
         }
       ]
     }

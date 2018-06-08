@@ -6,6 +6,13 @@
       </div>
     </el-header>
     <el-main>
+      <el-alert
+        v-if="localStoreUnsupport"
+        :title="$t('localstorage.tip')"
+        type="warning"
+        center
+        show-icon
+      ></el-alert>
       <div class="em-inner">
         <router-view></router-view>
       </div>
@@ -19,6 +26,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import PaletteHeader from './components/header'
 import PaletteFooter from './components/footer'
 
@@ -27,6 +35,9 @@ export default {
   components: {
     PaletteHeader,
     PaletteFooter
+  },
+  computed: {
+    ...mapState(['localStoreUnsupport'])
   }
 }
 </script>
@@ -49,7 +60,7 @@ export default {
     box-shadow 0 2px 4px rgba(0, 0, 0, 0.05)
     background #FFF
   .el-main
-    padding 60px
+    padding 60px 0
   .el-footer
     position fixed
     z-index 100

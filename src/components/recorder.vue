@@ -9,11 +9,11 @@
       <div v-else>
         <el-input
           v-model.trim="title"
-          placeholder="请输入主题标题"
+          :placeholder="$t('recorder.placeholder')"
           @click.native.stop
         ></el-input>
-        <el-button size="small" @click.native.stop="changeTitle(false)">取消</el-button>
-        <el-button type="primary" size="small" @click.native.stop="changeTitle(true)">确认</el-button>
+        <el-button size="small" @click.native.stop="changeTitle(false)">{{ $t('recorder.cancel') }}</el-button>
+        <el-button type="primary" size="small" @click.native.stop="changeTitle(true)">{{ $t('recorder.confirm') }}</el-button>
       </div>
     </div>
     <div class="palette-recorder-detail">
@@ -22,16 +22,16 @@
         <li class="color-item" :style="{background: color['color-primary-tap']}"></li>
         <li class="color-item" :style="{background: color['color-primary-background']}"></li>
       </ul>
-      <p class="text">最近修改 {{dayjs(theme.lastModify).format("YYYY/MM/DD HH:mm")}}</p>
+      <p class="text">{{ `${$t('recorder.modify')} ${dayjs(theme.lastModify).format("YYYY/MM/DD HH:mm")}` }}</p>
     </div>
     <div class="palette-recorder-operate">
-      <el-tooltip class="item" effect="dark" content="编辑主题标题" placement="top">
-        <i class="el-icon-edit" @click.stop="editable = true"></i>
+      <el-tooltip class="item" effect="dark" :content="$t('recorder.edit')" placement="top">
+        <i class="el-icon-edit" @click.stop="$emit('edit', theme.index)"></i>
       </el-tooltip>
-      <el-tooltip class="item" effect="dark" content="下载主题" placement="top">
+      <el-tooltip class="item" effect="dark" :content="$t('recorder.download')" placement="top">
         <i class="el-icon-download" @click.stop="$emit('download', theme.index)"></i>
       </el-tooltip>
-      <el-tooltip class="item" effect="dark" content="删除主题" placement="top">
+      <el-tooltip class="item" effect="dark" :content="$t('recorder.delete')" placement="top">
         <i class="el-icon-delete" @click.stop="$emit('delete', theme.index)"></i>
       </el-tooltip>
     </div>
@@ -89,6 +89,7 @@ export default {
   box-shadow 0 2px 8px #ebebeb
   cursor pointer
   transition all .3s
+  background #fff
   // &:hover
   //   background #f5f5f5
   .palette-recorder-top
@@ -126,6 +127,7 @@ export default {
     right 20px
     i
       margin-left 10px
+      padding 5px
       color #ccc
       cursor pointer
 </style>

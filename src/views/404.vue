@@ -2,7 +2,7 @@
   <div class="palette-404">
     <palette-status
       imgUrl="//manhattan.didistatic.com/static/manhattan/mfd/result-page/lost"
-      describe="空空如也, 一切的星光都已陨灭"
+      :describe="$t('record.errorTip')"
     ></palette-status>
   </div>
 </template>

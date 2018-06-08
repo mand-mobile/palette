@@ -1,7 +1,31 @@
 <template>
   <div class="palette-list">
-    <palette-searcher></palette-searcher>
-    <template v-if="theme">
+    <div class="palette-list-top clearfix">
+      <palette-searcher
+        :placeholder="$t('list.searchTip')"
+        @search="onSearchComponents"
+      ></palette-searcher>
+      <el-button type="primary" round icon="el-icon-circle-check" @click="goToGenerate">
+        {{ $t('list.generateBtn') }}
+      </el-button>
+    </div>
+    <template v-if="searchComponents.length">
+      <div class="palette-list-category clearfix">
+        <ul>
+          <li
+            v-for="(component, index) in searchComponents"
+            :key="`item-${index}`"
+            class="palette-list-category-item"
+          >
+            <palette-card
+              :name="component.itemName"
+              @click="onClick(component.moduleName, component.itemName)"
+            ></palette-card>
+          </li>
+        </ul>
+      </div>
+    </template>
+    <template v-else-if="theme">
       <div
         v-for="(module, moduleName) in theme.data"
         :key="`module-${moduleName}`"
@@ -12,14 +36,14 @@
             <p class="text">{{moduleName}}</p>
             <p class="tip">
               <i class="el-icon-info"></i>
-              基础全局样式变量，可作用于所有组件
+              {{ $t('list.basicTip') }}
             </p>
           </template>
           <template v-else>
             <p class="text">{{moduleName}}</p>
             <p class="tip">
               <i class="el-icon-info"></i>
-              组件私有样式变量，仅作用于当前组件
+              {{ $t('list.componentsTip') }}
             </p>
           </template>
         </h3>
@@ -40,9 +64,9 @@
     <template v-else>
       <palette-status
         imgUrl="//manhattan.didistatic.com/static/manhattan/mfd/result-page/network"
-        describe="没有找到主题，请返回重新选择"
+        :describe="$t('list.errorTip')"
         :button="{
-          text: '选择主题',
+          text: $t('list.errorBtn'),
           handler () {
             $router.replace('/record')
           }
@@ -58,6 +82,7 @@ import PaletteSearcher from '../components/searcher'
 import PaletteCard from '../components/card'
 import PaletteEditor from '../components/editor'
 import PaletteStatus from '../components/status'
+import { traverseObject } from '../utils'
 
 export default {
   components: {
@@ -68,7 +93,8 @@ export default {
   },
   data () {
     return {
-      themeIndex: -1
+      themeIndex: -1,
+      searchComponents: []
     }
   },
   computed: {
@@ -95,6 +121,28 @@ export default {
           itemName
         }
       })
+    },
+    onSearchComponents (keyword) {
+      if (keyword && this.theme) {
+        const dataSource = this.theme.data
+        const components = []
+        traverseObject(dataSource, (key, value, path) => {
+          const moduleName = path[0]
+          const itemName = path[1]
+          if (~itemName.toLocaleLowerCase().indexOf(keyword.toLocaleLowerCase())) {
+            components.push({
+              moduleName,
+              itemName
+            })
+          }
+        }, false)
+        this.searchComponents = components
+      } else {
+        this.searchComponents = []
+      }
+    },
+    goToGenerate () {
+
     }
   }
 }
@@ -103,6 +151,11 @@ export default {
 <style lang="stylus">
 .palette-list
   padding-top 30px
+  .palette-list-top
+    .palette-searcher
+      float left
+    .el-button
+      float right
   .palette-list-category
     margin-top 30px
     ul
