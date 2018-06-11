@@ -1,20 +1,21 @@
 <template>
   <div class="palette-header">
     <el-col :span="12">
-      <div class="palette-header-logo"></div>
-      <div class="palette-header-name">Mand Mobile <span>Palette</span></div>
-      <div class="palette-header-version">v1.0.0-beta</div>
+      <template v-if="!hideLogo">
+        <div class="palette-header-logo"></div>
+        <div class="palette-header-name">Mand Mobile <span>Palette</span></div>
+        <div class="palette-header-version">v1.0.0-beta</div>
+      </template>
+      &nbsp;
     </el-col>
     <el-col :span="12">
       <div class="grid-content bg-purple-light">
         <div class="palette-header-github palette-header-operater">
           <a href="https://github.com/mand-mobile/palette" target="_blank"></a>
         </div>
-        <div class="palette-header-lang palette-header-operater">
+        <div class="palette-header-lang palette-header-operater" @click="changeLang">
           <div class="operater-select">
-            <!-- <span v-if="lang === 'en-US'">中文</span>
-            <span v-else>English</span> -->
-            <span>English</span>
+            <span>{{ switchLang }}</span>
           </div>
         </div>
       </div>
@@ -24,11 +25,33 @@
 
 <script>
 import { Header } from 'element-ui'
+import { localStore } from '../utils'
 
 export default {
   name: 'palette-header',
   components: {
     [Header.name]: Header
+  },
+  props: {
+    hideLogo: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    switchLang () {
+      return this.$i18n.locale === 'zh' ? 'English' : '中文'
+    }
+  },
+  mounted () {
+    console.log()
+  },
+  methods: {
+    changeLang () {
+      const lang = this.$i18n.locale === 'zh' ? 'en' : 'zh'
+      this.$i18n.locale = lang
+      localStore('lang', lang)
+    }
   }
 }
 </script>

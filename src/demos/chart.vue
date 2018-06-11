@@ -32,7 +32,7 @@ export default {
     }
   },
   methods: {
-    format(val) {
+    format (val) {
       return val + '%'
     }
   }

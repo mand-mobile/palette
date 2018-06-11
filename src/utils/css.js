@@ -12,14 +12,14 @@ export function setCssVariable (name, value) {
   document.body.style.setProperty(`--${name}`, value)
 }
 
-export function insertCssVariable (css) {
+export function insertCss (css, id, clear = true) {
   let isCssExisting = true
-  let elem = document.getElementById('theme-style-variable')
+  let elem = document.getElementById(id)
 
   if (!elem) {
     elem = document.createElement('style')
     elem.setAttribute('type', 'text/css')
-    elem.setAttribute('id', 'theme-style-variable')
+    elem.setAttribute('id', id)
     isCssExisting = false
   }
 
@@ -33,7 +33,9 @@ export function insertCssVariable (css) {
     document.getElementsByTagName('head')[0].appendChild(elem)
   }
 
-  document.body.setAttribute('style', '')
+  if (clear) {
+    document.body.setAttribute('style', '')
+  }
 }
 
 export function generateCssVariable (variables) {

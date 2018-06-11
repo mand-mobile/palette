@@ -1,13 +1,34 @@
 <template>
   <div class="palette-searcher">
     <i class="el-icon-search"></i>
-    <el-input placeholder="请输入内容" class="palette-searcher-input"></el-input>
+    <el-input
+      class="palette-searcher-input"
+      v-model.trim="value"
+      :placeholder="placeholder"
+      auto-complete="off"
+    ></el-input>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'palette-searcher'
+  name: 'palette-searcher',
+  props: {
+    placeholder: {
+      type: String,
+      default: ''
+    }
+  },
+  data () {
+    return {
+      value: ''
+    }
+  },
+  watch: {
+    value (val) {
+      this.$emit('search', val)
+    }
+  }
 }
 </script>
 

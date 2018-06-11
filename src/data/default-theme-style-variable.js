@@ -80,6 +80,7 @@ export default {
     },
     'agree': {
       'agree-fill': 'color-primary',
+      'agree-fill-inverse': 'color-bg-disabled',
       'agree-disabled-opacity': 'opacity-disabled'
     },
     'button': {
@@ -175,22 +176,20 @@ export default {
     },
     'drop-menu': {
       'drop-menu-height': '82px',
-      'drop-menu-color': 'color-text-link',
-      'drop-menu-font-size': 'font-body-normal',
-      'drop-menu-zindex': '1200',
       'drop-menu-bar-bg': 'color-bg-base',
       'drop-menu-bar-border-color': 'color-border-base',
+      'drop-menu-disabled-opacity': 'opacity-disabled',
+      'drop-menu-color': 'color-text-link',
+      'drop-menu-font-size': 'font-body-normal',
       'drop-menu-list-bg': 'color-bg-base',
-      'drop-menu-disabled-opacity': 'opacity-disabled'
+      'drop-menu-zindex': '1200'
     },
     'field': {
-      'field-padding': 'h-gap-lg',
       'field-padding-h': '32px',
       'field-padding-v': '29px',
       'field-title-font-size': 'font-body-normal',
-      'field-title-weight': 'font-weight-medium',
-      'field-title-color': 'color-text-base',
       'field-title-font-weight': 'font-weight-medium',
+      'field-title-color': 'color-text-base',
       'field-title-margin': '26px',
       'field-item-padding-v': '22px',
       'field-item-bg-color': 'color-bg-base',
@@ -210,9 +209,9 @@ export default {
       'icon-size-lg': '42px'
     },
     'image-viewer': {
-      'image-viewer-zindex': 1001,
       'image-viewer-index-font-size': '32px',
-      'image-viewer-index-bottom': '100px'
+      'image-viewer-index-bottom': '100px',
+      'image-viewer-zindex': 1001
     },
     'input-item': {
       'input-item-height': '100px',
@@ -234,25 +233,30 @@ export default {
     'notice-bar': {
       'notice-bar-fill': '#4A4C5B',
       'notice-bar-color': 'color-text-base-inverse',
+      'notice-bar-font-size': 'font-minor-large',
       'notice-bar-zindex': 1300
     },
     'number-keyboard': {
       'number-keyboard-width': '100%',
       'number-keyboard-height': '428px',
+      'number-keyboard-bg': '#ebebeb',
       'number-keyboard-key-height': '107px',
-      'number-keyboard-key-bg': '#ebebeb',
+      'number-keyboard-key-bg': 'color-bg-base',
       'number-keyboard-key-bg-tap': '#f0f0f0',
       'number-keyboard-key-confirm-bg': 'color-primary',
       'number-keyboard-key-confirm-bg-tap': '#dd7f49',
       'number-keyboard-key-font-size': '48px',
       'number-keyboard-key-color': 'color-text-minor',
       'number-keyboard-key-color-simple': '#000',
+      'number-keyboard-key-confirm-color': 'color-text-base-inverse',
+      'number-keyboard-key-bordr-color': 'color-border-base',
       'number-keyboard-zindex': 1403
     },
     'picker': {
       'picker-font-size': '30px',
       'picker-disabled-opacity': 0.2,
       'picker-color': 'color-text-base',
+      'picker-border-color': 'color-border-base',
       'picker-zindex': 1100
     },
     'popup': {
@@ -268,13 +272,10 @@ export default {
       'popup-zindex': '1000'
     },
     'radio': {
-      'radio-fill': 'color-primary-tap'
+      'radio-color': 'color-primary-tap'
     },
     'selector': {
-      'selector-height': '100px',
       'selector-disabled-opacity': 0.2,
-      'selector-font-size': '30px',
-      'selector-color': '#333',
       'selector-active-color': 'color-primary',
       'selector-zindex': '1102'
     },
@@ -283,10 +284,12 @@ export default {
       'stepper-disabled-opacity': 'opacity-disabled',
       'stepper-color': 'color-text-base',
       'stepper-height': '50px',
+      'stepper-font-size': 'font-body-large',
+      'stepper-input-font-size': 'font-body-normal',
       'stepper-width-button': '50px',
       'stepper-width-input': '60px',
-      'stepper-radius-button': '0 0 0 0',
-      'stepper-radius-input': '0 0 0 0'
+      'stepper-radius-button': '0',
+      'stepper-radius-input': '0'
     },
     'steps': {
       'steps-color': 'color-text-disabled',
@@ -304,19 +307,13 @@ export default {
       'switch-handle-color': '#fff',
       'switch-item-color-disabled': 'opacity-disabled'
     },
-    'tab-picker': {
-      'tab-picker-font-size': '28px',
-      'tab-picker-color': 'color-text-base',
-      'tab-picker-highlight-color': 'color-primary',
-      'tab-picker-min-height': '100px'
-    },
-    'tabs': {
-      'tab-color': 'color-primary-tap',
+    'tab-bar': {
+      'tab-height': '80px',
       'tab-font-size': '28px',
       'tab-text-color': 'color-text-base',
       'tab-bg': 'color-bg-base',
       'tab-border-color': 'color-border-minor',
-      'tab-height': '80px',
+      'tab-color': 'color-primary-tap',
       'tab-ink-bar-height': '3px',
       'tab-zindex': 101
     },
@@ -332,7 +329,7 @@ export default {
       'tip-font-size': '24px',
       'tip-color': '#fff',
       'tip-radius': 'radius-normal',
-      'tip-gap': '20px 50px 20px 30px',
+      'tip-padding': '20px 50px 20px 30px',
       'tip-close-size': '16px',
       'tip-zindex': 1300
     },
@@ -342,7 +339,7 @@ export default {
       'toast-color': '#ccc',
       'toast-radius': 'radius-normal',
       'toast-text-left': '88px',
-      'toast-gap': '26px',
+      'toast-padding': '26px',
       'toast-zindex': 1501
     }
   }

@@ -1,73 +1,66 @@
 <template>
   <div class="palette-edit clearfix" :style="{height: `${innerHeight}px`}">
     <div class="palette-edit-preview">
-      <div class="palette-edit-preview-inner">
-        <img
-          class="palette-edit-preview-frame"
-          src="//didi.github.io/cube-ui/img/iphoneX.38c8778.png"
-          alt=""
-        >
-        <div class="palette-edit-preview-box">
-          <component v-bind:is="previewDemo"></component>
-        </div>
-        <div class="palette-edit-decorate"></div>
-        <div class="palette-edit-preview-tip">
-          * 页面展示按照<span>devicePixelRatio = 2</span>进行了等比缩放
-        </div>
-      </div>
+      <palette-previewer :name="demoName"></palette-previewer>
     </div>
     <div class="palette-edit-content">
-      <div class="palette-edit-content-inner">
-        <h1 class="palette-edit-title">{{itemName}}</h1>
-        <div class="palette-edit-form clearfix" :key="tmp">
-          <template v-for="(value, name) in styleVariable">
-            <div
-              v-if="tmpStyleVariable[name]"
-              :key="`variable-${name}`"
-              class="palette-edit-item"
-            >
-              <div for="" class="item-label">
-                {{name}}
-                <span v-if="styleVariableInfo[name] && styleVariableInfo[name].text">
-                  {{styleVariableInfo[name].text}}
-                </span>
-              </div>
-              <el-color-picker
-                v-if="styleVariableInfo[name] && styleVariableInfo[name].type === 'color'"
-                v-model="tmpStyleVariable[name].value"
-                size="mini"
-                show-alpha
-                @change="onStyleValueChange(name, $event)"
+      <transition name="slide-fade">
+        <div class="palette-edit-content-inner" v-show="contentVisible">
+          <h1 class="palette-edit-title">{{itemName}}</h1>
+          <div class="palette-edit-form clearfix" :key="tmp">
+            <template v-for="(value, name) in styleVariable">
+              <div
+                v-if="tmpStyleVariable[name]"
+                :key="`variable-${name}`"
+                class="palette-edit-item"
               >
-              </el-color-picker>
-              <el-input
-                v-else
-                v-model="tmpStyleVariable[name].value"
-                size="mini"
-                @blur="onStyleValueChange(name, tmpStyleVariable[name].value)"
-              ></el-input>
-              <div class="item-operator">
-                <el-tooltip
-                  v-if="tmpStyleVariable[name].from"
-                  class="item"
-                  effect="dark"
-                  :content="`编辑全局变量${tmpStyleVariable[name].from}`"
-                  placement="bottom"
+                <div for="" class="item-label">
+                  {{name}}
+                  <span v-if="styleVariableInfo[name]">
+                    {{
+                      lang === 'zh'
+                      ? `/ ${styleVariableInfo[name].text || ''}`
+                      : `/ ${styleVariableInfo[name].textEn || '-'}`
+                    }}
+                  </span>
+                </div>
+                <el-color-picker
+                  v-if="styleVariableInfo[name] && styleVariableInfo[name].type === 'color'"
+                  v-model="tmpStyleVariable[name].value"
+                  size="mini"
+                  show-alpha
+                  @change="onStyleValueChange(name, $event)"
                 >
-                  <i class="item-tip" @click="goToOther(tmpStyleVariable[name].from)">
-                    <i class="el-icon-share"></i> {{ tmpStyleVariable[name].from }}
-                  </i>
-                </el-tooltip>
-                <el-tooltip class="item" effect="dark" content="恢复默认" placement="bottom">
-                  <i class="item-tip" @click="resetStyleValue(name)">
-                    <i class="item-tool el-icon-refresh"></i> 重置
-                  </i>
-                </el-tooltip>
+                </el-color-picker>
+                <el-input
+                  v-else
+                  v-model="tmpStyleVariable[name].value"
+                  size="mini"
+                  @blur="onStyleValueChange(name, tmpStyleVariable[name].value)"
+                ></el-input>
+                <div class="item-operator">
+                  <el-tooltip
+                    v-if="tmpStyleVariable[name].from"
+                    class="item"
+                    effect="dark"
+                    :content="`${$t('edit.tip')} ${tmpStyleVariable[name].from}`"
+                    placement="bottom"
+                  >
+                    <i class="item-tip" @click="goToOther(tmpStyleVariable[name].from)">
+                      <i class="el-icon-share"></i> {{ tmpStyleVariable[name].from }}
+                    </i>
+                  </el-tooltip>
+                  <el-tooltip class="item" effect="dark" :content="$t('edit.resetTip')" placement="bottom">
+                    <i class="item-tip" @click="resetStyleValue(name)">
+                      <i class="item-tool el-icon-refresh"></i> {{ $t('edit.resetBtn') }}
+                    </i>
+                  </el-tooltip>
+                </div>
               </div>
-            </div>
-          </template>
+            </template>
+          </div>
         </div>
-      </div>
+      </transition>
     </div>
     <div class="palette-edit-boxshadow"></div>
     <div class="palette-edit-operate">
@@ -77,7 +70,7 @@
         round
         @click="goBack"
       >
-        返回{{lastRoute.itemName}}
+        {{ `${$t('edit.backBtn')} ${lastRoute.itemName}` }}
       </el-button>
       <el-button
         type="danger"
@@ -85,35 +78,39 @@
         round
         @click="closeEditor"
       >
-        关闭编辑器
+        {{ $t('edit.closeBtn') }}
       </el-button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
-import Demo from '../demos/codebox'
+import { mapState, mapMutations, mapActions } from 'vuex'
+import PalettePreviewer from '../components/previewer'
 import { defaultTheme, styleVariableInfo } from '../data'
 import {
   generateCssVariable,
-  insertCssVariable,
+  insertCss,
   findKeyValue,
   findKeyFrom
 } from '../utils'
 
 export default {
   name: 'palette-edit',
+  components: {
+    PalettePreviewer
+  },
   data () {
     return {
       innerHeight: window.innerHeight - 120,
       themeIndex: this.$route.query.themeIndex,
       moduleName: this.$route.query.moduleName,
       itemName: this.$route.query.itemName,
+      demoName: this.$route.query.itemName,
       tmpStyleVariable: {},
       tmp: Date.now(),
       lastRoute: null,
-      previewDemo: Demo
+      contentVisible: false
     }
   },
   computed: {
@@ -127,39 +124,64 @@ export default {
       }
     },
     styleVariable () {
-      if (this.themeIndex < 0) {
+      if (this.themeIndex < 0 || !this.theme) {
         return null
       } else {
         return this.theme.data[this.moduleName][this.itemName]
       }
+    },
+    lang () {
+      return this.$i18n.locale
     }
   },
   mounted () {
     window.addEventListener('resize', () => {
       this.innerHeight = window.innerHeight - 120
     })
+    this.initCss()
     this.initCssVariable()
     this.initStyleValue()
+    this.contentVisible = true
   },
   methods: {
-    ...mapMutations(['updateTheme']),
+    ...mapMutations(['updateThemeVariables']),
+    ...mapActions({
+      getMandMobileCss: 'GET_MAND_MOBILE_CSS',
+      saveThemeStore: 'SAVE_THEMES_STORE'
+    }),
 
     onStyleValueChange (name, value) {
       if (this.getStyleValue(name) !== value) {
-        this.updateTheme({
+        this.updateThemeVariables({
           themeIndex: this.themeIndex,
           moduleName: this.moduleName,
           itemName: this.itemName,
           name,
           value
         })
+        this.saveThemeStore()
       }
     },
 
+    initCss () {
+      if (!this.theme) {
+        return
+      }
+      this.getMandMobileCss({
+        themeIndex: this.themeIndex,
+        type: 'lib'
+      }).then(res => {
+        if (res.status === 200 && res.data) {
+          insertCss(res.data, 'mand-mobile-css', false)
+        } else {
+          this.$message.error(this.$t('edit.cssError').replace('xxxxx', `mand-mobile v${this.theme.version} css file`))
+        }
+      })
+    },
     initCssVariable () {
       if (this.theme) {
         const variables = generateCssVariable(this.theme.data)
-        insertCssVariable(variables)
+        insertCss(variables, 'theme-style-variable')
       }
     },
 
@@ -211,13 +233,14 @@ export default {
     resetStyleValue (name) {
       const defaultValue = findKeyValue(defaultTheme, name)
       // reset theme variable
-      this.updateTheme({
+      this.updateThemeVariables({
         themeIndex: this.themeIndex,
         moduleName: this.moduleName,
         itemName: this.itemName,
         name,
         value: defaultValue
       })
+      this.saveThemeStore()
 
       // reset temporary variable
       this.$set(this.tmpStyleVariable, name, {
@@ -229,6 +252,7 @@ export default {
     },
 
     goToOther (key) {
+      this.contentVisible = false
       const path = findKeyFrom(this.theme.data, key)
       // temporarily save current route info
       this.lastRoute = {
@@ -236,11 +260,18 @@ export default {
         moduleName: this.moduleName,
         itemName: this.itemName
       }
-      this.loadStyleVariable(path[0], path[1])
+      setTimeout(() => {
+        this.loadStyleVariable(path[0], path[1])
+        this.contentVisible = true
+      }, 200)
     },
     goBack () {
-      this.loadStyleVariable(this.lastRoute.moduleName, this.lastRoute.itemName)
-      this.lastRoute = null
+      this.contentVisible = false
+      setTimeout(() => {
+        this.loadStyleVariable(this.lastRoute.moduleName, this.lastRoute.itemName)
+        this.lastRoute = null
+        this.contentVisible = true
+      }, 200)
     },
     closeEditor () {
       this.$router.replace({
@@ -267,47 +298,6 @@ export default {
     overflow scroll
     &::-webkit-scrollbar
       display none
-    .palette-edit-preview-inner
-      position relative
-      padding 30px 0 50px
-      .palette-edit-preview-frame
-        width 100%
-      .palette-edit-preview-box
-        position absolute
-        z-index 2
-        top 116px
-        left 14px
-        width 375px
-        height 740px
-        margin 0 14px
-        // padding 80px 0 0
-        background #fbfbfb
-        // opacity .5
-        box-sizing border-box
-        border-radius 0 0 56px 56px
-        overflow hidden
-        .palette-demo
-          padding 20px
-          box-sizing border-box
-          zoom calc(375/750)
-      .palette-edit-decorate
-        position absolute
-        z-index 3
-        left 50%
-        bottom 105px
-        width 120px
-        height 4px
-        margin-left -60px
-        border-radius 4px
-        background #999
-      .palette-edit-preview-tip
-        margin-top 10px
-        font-size 12px
-        text-align center
-        color #999
-        span
-          padding 0 5px
-          font-style italic
   .palette-edit-content
     position relative
     height 100%
@@ -340,8 +330,6 @@ export default {
               margin-left 10px
               font-size 12px
               color #999
-              &:before
-                content '/ '
           .item-operator
             float left
             display none
@@ -380,4 +368,12 @@ export default {
     background linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, #fff 60%)
     border-radius 0 0 60px 60px
     // opacity .9
+  .slide-fade-enter-active, .slide-fade-leave-active
+    transition all .2s ease
+  .slide-fade-enter
+    transform translateX(10px)
+    opacity 0
+  .slide-fade-leave-to
+    transform translateX(-10px)
+    opacity 0
 </style>

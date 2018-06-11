@@ -4,6 +4,7 @@ import Home from '@/views/home'
 import Record from '@/views/record'
 import List from '@/views/list'
 import Edit from '@/views/edit'
+import Generate from '@/views/generate'
 import Error from '@/views/404'
 
 Vue.use(Router)
@@ -11,7 +12,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'Home',
       component: Home
     },
@@ -29,6 +30,15 @@ export default new Router({
       path: '/edit',
       name: 'Edit',
       component: Edit
+    },
+    {
+      path: '/generate',
+      name: 'Generate',
+      component: Generate
+    },
+    {
+      path: '/',
+      redirect: '/home'
     },
     {
       path: '*',
