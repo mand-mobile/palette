@@ -61,7 +61,7 @@ export default {
     right 0
     padding 0 60px
     box-shadow 0 2px 4px rgba(0, 0, 0, 0.05)
-    background #FFF
+    background #fff
   .el-main
     padding 60px 0
   .el-footer
@@ -70,7 +70,7 @@ export default {
     bottom 0
     left 0
     right 0
-    background #FFF
+    background #fff
     box-shadow 0 -2px 4px rgba(0, 0, 0, 0.05)
   &.is-home
     .el-header
