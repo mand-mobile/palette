@@ -1,11 +1,11 @@
 <template>
   <div class="palette-header">
     <el-col :span="12">
-      <template v-if="!hideLogo">
+      <router-link v-if="!hideLogo" to="/home">
         <div class="palette-header-logo"></div>
         <div class="palette-header-name">Mand Mobile <span>Palette</span></div>
-        <div class="palette-header-version">v1.0.0-beta</div>
-      </template>
+        <div class="palette-header-version">{{ version }}</div>
+      </router-link>
       &nbsp;
     </el-col>
     <el-col :span="12">
@@ -36,6 +36,11 @@ export default {
     hideLogo: {
       type: Boolean,
       default: false
+    }
+  },
+  data () {
+    return {
+      version: process.env.version
     }
   },
   computed: {
