@@ -1,19 +1,45 @@
-# palette
+# Palette
 
-> A Vue.js Project for Mand Mobile
+> 🎨 A visual theme editing tool for Mand Mobile
 
-## Build Setup
+[Start Making Theme](https://mand-mobile.github.io/palette)
 
-``` bash
-# install dependencies
-npm install
+Using `Palette`, you can modify the style of [Mand Mobile](https://didi.github.io/mand-mobile) components and eventually generate `.styl` and `.css` files and then import the custom theme style file to your project.
 
-# serve with hot reload at localhost:8080
-npm run dev
+### Mand Mobile Style
 
-# build for production with minification
-npm run build
+#### Stylus
 
-# build for production and view the bundle analyzer report
-npm run build --report
+##### config .babelrc
+
+```javascript
+{
+    // ...
+    "plugins": [
+        ["import", { "libraryName": "mand-mobile", "libraryDirectory": "src" }]
+    ]
+}
 ```
+
+##### Import
+
+```javascript
+import { button, dialog } from 'mand-mobile'
+```
+
+Refer to [Mand Mobile - Custom Theme]: https://didi.github.io/mand-mobile/#/en-US/docs/theme
+
+#### Css
+
+```javascript
+import Vue from 'vue'
+import mandMobile from 'mand-mobile'
+import 'mand-mobile/lib/mand-mobile.css'
+
+Vue.use(mandMobile)
+```
+
+
+### How Palette works 
+
+<img src="http://manhattan.didistatic.com/static/manhattan/mand/palette-structure.jpg" width="800"/>
