@@ -30,6 +30,6 @@ export default {
 <style lang="stylus">
 .palette-demo-action-bar
   .md-action-bar
-    position absolute
+    position absolute !important
     padding-bottom 95px
 </style>

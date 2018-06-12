@@ -73,7 +73,7 @@ export default {
 <style lang="stylus">
 .palette-demo-all
   .md-action-bar
-    position absolute
+    position absolute !important
     padding-bottom 95px
   .md-field
     margin-bottom 30px
@@ -83,7 +83,7 @@ export default {
     color #666
   .md-picker
     .md-popup
-      position absolute
+      position absolute !important
       .md-popup-box
         padding-bottom 90px
 </style>

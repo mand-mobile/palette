@@ -35,9 +35,9 @@ export default {
 <style lang="stylus">
 .palette-demo-popup
   .md-popup
-    position static
+    position static !important
   .md-popup-mask, .md-popup-box
-    position absolute
+    position absolute !important
   .popup-content
     display flex
     justify-content center

@@ -49,5 +49,5 @@ export default {
   .md-action-sheet
     padding-bottom 95px
     .md-popup
-      position absolute
+      position absolute !important
 </style>

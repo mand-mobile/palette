@@ -58,7 +58,7 @@ export default {
 <style lang="stylus">
 .palette-demo-cashier
   .md-popup
-    position absolute
+    position absolute !important
     .md-popup-box
       padding-bottom 95px
   .choose-channel-item

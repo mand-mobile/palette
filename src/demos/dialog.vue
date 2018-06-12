@@ -64,5 +64,5 @@ export default {
   .md-dialog
     position static
   .md-popup
-    position absolute
+    position absolute !important
 </style>

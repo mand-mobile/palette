@@ -34,6 +34,6 @@ export default {
     margin-top 30px
   .md-number-keyboard
     .md-popup-box
-      position absolute
+      position absolute !important
       padding-bottom 95px
 </style>

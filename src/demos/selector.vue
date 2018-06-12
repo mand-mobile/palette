@@ -44,7 +44,7 @@ export default {
 .palette-demo-selector
   .md-selector
     .md-popup
-      position absolute
+      position absolute !important
       .md-popup-box
         padding-bottom 90px
 </style>

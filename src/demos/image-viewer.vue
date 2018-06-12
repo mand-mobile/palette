@@ -65,5 +65,5 @@ export default {
         width 100%
         height 100%
   .md-image-viewer
-    position absolute
+    position absolute !important
 </style>

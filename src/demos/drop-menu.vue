@@ -50,10 +50,10 @@ export default {
 <style lang="stylus">
 .palette-demo-drop-menu
   .md-drop-menu
-    position absolute
+    position absolute !important
     height 100%
     .md-drop-menu-bar
       height var(--drop-menu-height)
   .md-popup
-    position absolute
+    position absolute !important
 </style>
