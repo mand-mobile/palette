@@ -7,7 +7,7 @@
     >
     <div class="palette-previewer-box">
       <component
-        v-bind:is="demos[name]"
+        :is="demos[name]"
       ></component>
     </div>
     <div class="palette-previewer-decorate"></div>
@@ -22,13 +22,13 @@ export default {
   props: {
     name: {
       type: String,
-      default: '',
-      loadingInstance: ''
+      default: ''
     }
   },
   data () {
     return {
-      demos: {}
+      demos: {},
+      loadingInstance: ''
     }
   },
   created () {
