@@ -16,7 +16,7 @@
 	</a>
 </p>
 
-<h2 align="center">Mand Mobile Paletee</h2>
+<h2 align="center">Mand Mobile Palette</h2>
 
 > 🎨 A visual theme editing tool for Mand Mobile
 

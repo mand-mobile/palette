@@ -1,5 +1,5 @@
 <template>
-  <div class="paletee-animation-name">
+  <div class="palette-animation-name">
     <a href="http://animejs.com/" target="_blank">
       <svg width="252px" height="94px" viewBox="3 11 252 94" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs></defs>
@@ -44,7 +44,7 @@
 import anime from 'animejs'
 
 export default {
-  name: 'paletee-animation-name',
+  name: 'palette-animation-name',
   mounted () {
     anime({
       targets: 'path',

@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from '@/views/home'
 import Edit from '@/views/edit'
 import Error from '@/views/404'
 
-const Home = r => require.ensure([], () => r(require('@/views/home')), 'home')
 const Record = r => require.ensure([], () => r(require('@/views/record')), 'record')
 const List = r => require.ensure([], () => r(require('@/views/list')), 'list')
 const Generate = r => require.ensure([], () => r(require('@/views/generate')), 'generate')

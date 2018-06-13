@@ -77,7 +77,7 @@ const store = new Vuex.Store({
       return axios.get(`https://unpkg.com/mand-mobile@${version}/${type}/mand-mobile.variable.css`)
     },
     GET_THEMES_STORE ({ commit }) {
-      const themes = localStore('themes')
+      const themes = localStore('MAND_MOBILE_PALETTE_THEMES') || localStore('themes')
       if (themes) {
         commit('update', { themes })
       } else if (themes === null) {
@@ -88,7 +88,7 @@ const store = new Vuex.Store({
       return themes
     },
     SAVE_THEMES_STORE ({ state }) {
-      return localStore('themes', state.themes)
+      return localStore('MAND_MOBILE_PALETTE_THEMES', state.themes)
     }
   }
 })
