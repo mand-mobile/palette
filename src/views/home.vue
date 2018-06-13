@@ -2,7 +2,7 @@
   <div class="palette-home">
     <div class="palette-home-content">
       <img class="logo" src="//manhattan.didistatic.com/static/manhattan/do1_KC5q8Qqsz8BnUPAsJY5i" alt="">
-      <p class="name">Mand Mobile <span>Paletee</span></p>
+      <p class="name">Mand Mobile <span>Palette</span></p>
       <p class="describe"><span span v-html="$t('home.describe')"></span>，V<span>{{ version }}</span></p>
     </div>
     <div class="palette-home-operate">
@@ -11,17 +11,17 @@
       </router-link>
       <a href="https://github.com/mand-mobile/palette" target="_blank">GITHUB</a>
     </div>
-    <paletee-animation-name></paletee-animation-name>
+    <palette-animation-name></palette-animation-name>
     <p class="palette-home-copyright">Copyright © 2012-2018 Didi Chuxing. All Rights Reserved</p>
   </div>
 </template>
 
 <script>
-import paleteeAnimationName from '../components/animation-name'
+import paletteAnimationName from '../components/animation-name'
 export default {
   name: 'palette-home',
   components: {
-    [paleteeAnimationName.name]: paleteeAnimationName
+    [paletteAnimationName.name]: paletteAnimationName
   },
   data () {
     return {
@@ -81,7 +81,7 @@ export default {
       &:last-of-type
         border-color #759ce6
         color #759ce6
-  .paletee-animation-name
+  .palette-animation-name
     position absolute
     bottom 150px
     zoom .4
