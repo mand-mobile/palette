@@ -5,7 +5,7 @@
         :placeholder="$t('record.searchTip')"
         @search="onSearchTheme"
       ></palette-searcher>
-      <el-button type="primary" round icon="el-icon-circle-plus" @click="showThemeDialog(-1)">
+      <el-button type="primary" round icon="el-icon-circle-plus" @click="doCreateTheme">
         {{ $t('record.createBtn') }}
       </el-button>
     </div>
@@ -36,7 +36,7 @@
     <!-- theme info -->
     <el-dialog
       width="500px"
-      :title="$t('record.dialogTitle')"
+      title="sdfsdf"
       :visible.sync="themeFormVisible"
     >
       <el-form
@@ -66,12 +66,13 @@
             v-model="themeForm.version"
             :placeholder="$t('record.dialogThemeVersionTip')"
             disabled
-          >
-            <el-option label="区域一" value="shanghai"></el-option>
-            <el-option label="区域二" value="beijing"></el-option>
-          </el-select>
+          ></el-select>
         </el-form-item>
       </el-form>
+      <div class="dialog-header" slot="title">
+        <p class="title">{{ $t('record.dialogTitle') }}</p>
+        <p class="describe">{{ $t('record.dialogDescribe') }}</p>
+      </div>
       <div slot="footer" class="dialog-footer">
         <el-button @click="themeFormVisible = false">{{ $t('record.messageCancel') }}</el-button>
         <el-button type="primary" @click="doSaveTheme">{{ $t('record.messageConfirm') }}</el-button>
@@ -175,6 +176,13 @@ export default {
       }
       this.themeFormVisible = true
     },
+    doCreateTheme () {
+      if (this.themes && this.themes.length > 20) {
+        this.$message.error(this.$t('record.errorLimit'))
+        return
+      }
+      this.showThemeDialog(-1)
+    },
     doSaveTheme () {
       this.$refs.themeForm.validate(valid => {
         if (valid) {
@@ -211,6 +219,15 @@ export default {
         margin-right 0
     .palette-status
       margin-top 200px
+  .dialog-header
+    .title
+      font-size 18px
+      font-weight 500
+      color #333
+    .describe
+      margin-top 10px
+      font-size 12px
+      color #999
 
 .list-complete-item
   transition all 1s
