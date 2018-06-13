@@ -16,7 +16,7 @@
 	</a>
 </p>
 
-<h2 align="center">Paletee</h2>
+<h2 align="center">Mand Mobile Paletee</h2>
 
 > 🎨 A visual theme editing tool for Mand Mobile
 
@@ -24,7 +24,7 @@ Using `Palette`, you can modify the style of [Mand Mobile](https://didi.github.i
 
 - [Start Making Theme](https://mand-mobile.github.io/palette)
 
-Note: `Palette` is based on [Css Variable](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_variables), so please use it in the following [browsers](https://caniuse.com/#search=css%20variable).
+Note: `Palette` is based on [Css Variable](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_variables), please use it in the following [browsers](https://caniuse.com/#search=css%20variable).
 
 
 ### Mand Mobile Style
@@ -61,7 +61,7 @@ Vue.use(mandMobile)
 ```
 
 
-### How Palette works 
+### How Palette Works 
 
 <img src="http://manhattan.didistatic.com/static/manhattan/mand/palette-structure.jpg" width="800"/>
 
@@ -74,4 +74,6 @@ cd palette
 npm install
 npm run dev
 ```
+Open your browser and visit http://127.0.0.1:4000.
+
 
