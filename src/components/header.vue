@@ -55,7 +55,7 @@ export default {
     changeLang () {
       const lang = this.$i18n.locale === 'zh' ? 'en' : 'zh'
       this.$i18n.locale = lang
-      localStore('lang', lang)
+      localStore('MAND_MOBILE_PALETTE', lang)
     }
   }
 }

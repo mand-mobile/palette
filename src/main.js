@@ -27,7 +27,7 @@ Vue.use(VueI18n)
 Vue.use(VueClipboard)
 
 const i18n = new VueI18n({
-  locale: localStore('lang') || 'zh',
+  locale: localStore('MAND_MOBILE_PALETTE') || 'zh',
   messages
 })
 
