@@ -293,7 +293,7 @@ export default {
   overflow hidden
   .palette-edit-preview
     float left
-    width 432px
+    width 433px
     height 100%
     overflow scroll
     &::-webkit-scrollbar
