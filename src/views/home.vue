@@ -1,10 +1,16 @@
 <template>
   <div class="palette-home">
     <div class="palette-home-content">
-      <img class="logo" src="//manhattan.didistatic.com/static/manhattan/do1_KC5q8Qqsz8BnUPAsJY5i" alt="">
+      <div class="logo">
+        <img src="//manhattan.didistatic.com/static/manhattan/do1_KC5q8Qqsz8BnUPAsJY5i" alt="">
+        <i class="flash"></i>
+      </div>
       <p class="name">Mand Mobile <span>Palette</span></p>
       <p class="describe"><span span v-html="$t('home.describe')"></span>，V<span>{{ version }}</span></p>
     </div>
+    <a class="palette-home-github" href="https://github.com/mand-mobile/palette" target="_blank">
+      <img src="https://img.shields.io/github/stars/mand-mobile/palette.svg?style=social&label=Stars" alt="">
+    </a>
     <div class="palette-home-operate">
       <router-link to="/record">
         {{ $t('home.btn') }}
@@ -47,7 +53,25 @@ export default {
     flex-direction column
     align-items center
     .logo
+      position relative
       width 80px
+      overflow hidden
+      border-radius 80px
+      img
+        width 100%
+      .flash
+        position absolute
+        background #fff
+        width 10px
+        height 100%
+        top 0
+        left -50%
+        opacity 0.3
+        -webkit-transition all 0.25s ease-out
+        transition all 1s ease-out
+        -webkit-transform skewX(-25deg)
+        transform skewX(-25deg)
+        animation reflect 2s ease-in-out 1s
     .name
       margin-top 30px
       font-size 28px
@@ -60,6 +84,7 @@ export default {
       color #999
       font-size 12px
       a
+        margin 0 2px
         color #666
         font-weight 500
   .palette-home-operate
@@ -81,6 +106,9 @@ export default {
       &:last-of-type
         border-color #759ce6
         color #759ce6
+  .palette-home-github
+    display flex
+    margin-top 30px
   .palette-animation-name
     position absolute
     bottom 150px
@@ -90,4 +118,15 @@ export default {
     bottom 20px
     color #999
     font-size 12px
+
+@-webkit-keyframes reflect
+  0%
+    left -100%
+  100%
+    left 200%
+@keyframes reflect
+  0%
+    left -100%
+  100%
+    left 200%
 </style>
