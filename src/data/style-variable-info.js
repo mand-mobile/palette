@@ -347,7 +347,7 @@ export default {
   },
   'action-bar-height': {
     type: 'size',
-    text: '操作栏宽度'
+    text: '操作栏高度'
   },
   'action-bar-button-font-size': {
     type: 'size',
