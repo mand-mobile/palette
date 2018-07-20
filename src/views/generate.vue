@@ -71,7 +71,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['themes']),
+    ...mapState(['themes', 'mandMobileInfo']),
     theme () {
       const themeIndex = this.themeIndex
       if (themeIndex < 0) {
@@ -84,10 +84,19 @@ export default {
   created () {
     this.themeIndex = this.$route.query.themeIndex
     this.initCss()
+
+    if (!this.mandMobileInfo) {
+      this.getMandMobileInfo()
+        .catch(error => {
+          error.message &&
+            this.$message(error.message)
+        })
+    }
   },
   methods: {
     ...mapActions({
-      getMandMobileCss: 'GET_MAND_MOBILE_CSS'
+      getMandMobileCss: 'GET_MAND_MOBILE_CSS',
+      getMandMobileInfo: 'GET_MAND_MOBILE_RELEASE'
     }),
 
     initCss () {
@@ -149,7 +158,7 @@ export default {
         const blob = new Blob([content], {
           type: 'text/plain;charset=utf-8'
         })
-        FileSaver.saveAs(blob, `${this.theme.title}.${ext}`)
+        FileSaver.saveAs(blob, `mand-mobile.${this.mandMobileInfo}-${this.theme.title}.${ext}`)
       } catch (error) {
         downgrade(content)
       }

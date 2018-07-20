@@ -140,6 +140,20 @@ export default {
       'chart-label-size': '22px',
       'chart-value-size': '20px'
     },
+    'check-box': {
+      'checkbox-color': 'color-text-base',
+      'checkbox-font-size': '32px',
+      'checkbox-space': '8px',
+      'checkbox-container-space': '-8px',
+      'checkbox-disabled-opacity': 'opacity-disabled',
+      'checkbox-tap-color': '#3ca0e6',
+      'checkbox-bg-tap-color': 'rgba(#3ca0e6, 0.05)',
+      'checkbox-border-color': 'color-border-minor',
+      'checkbox-border-radius': '3px'
+    },
+    'check-list': {
+      'checklist-tap-color': 'color-primary-tap'
+    },
     'codebox': {
       'codebox-font-size': 'font-body-normal',
       'codebox-width': '80px',

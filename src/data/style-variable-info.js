@@ -1332,11 +1332,39 @@ export default {
     textEn: 'keyboard confirm key text color'
   },
   'number-keyboard-key-bordr-color': {
-    type: 'color',
-    text: '键盘按键边框颜色',
-    textEn: 'keyboard key border color'
+    type: 'color'
   },
   'number-keyboard-zindex': {
     type: 'size'
+  },
+  'checkbox-color': {
+    type: 'color'
+  },
+  'checkbox-font-size': {
+    type: 'size'
+  },
+  'checkbox-space': {
+    type: 'size'
+  },
+  'checkbox-container-space': {
+    type: 'size'
+  },
+  'checkbox-disabled-opacity': {
+    type: 'size'
+  },
+  'checkbox-tap-color': {
+    type: 'color'
+  },
+  'checkbox-bg-tap-color': {
+    type: 'color'
+  },
+  'checkbox-border-color': {
+    type: 'color'
+  },
+  'checkbox-border-radius': {
+    type: 'size'
+  },
+  'checklist-tap-color': {
+    type: 'color'
   }
 }
