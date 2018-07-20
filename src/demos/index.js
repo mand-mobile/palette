@@ -5,6 +5,8 @@ import button from './button'
 import captcha from './captcha'
 import cashier from './cashier'
 import chart from './chart'
+import checkbox from './check-box'
+import checklist from './check-list'
 import codebox from './codebox'
 import datePicker from './date-picker'
 import dialog from './dialog'
@@ -36,6 +38,8 @@ export default {
   captcha,
   cashier,
   chart,
+  'check-box': checkbox,
+  'check-list': checklist,
   codebox,
   'date-picker': datePicker,
   dialog,
