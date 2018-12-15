@@ -59,7 +59,7 @@ const store = new Vuex.Store({
   },
   actions: {
     GET_MAND_MOBILE_RELEASE ({ commit }) {
-      return axios.get(`https://unpkg.com/mand-mobile/package.json?${Date.now()}`)
+      return axios.get(`https://unpkg.com/mand-mobile@1/package.json?${Date.now()}`)
         .then(res => {
           if (res.status === 200) {
             commit('update', {

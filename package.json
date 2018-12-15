@@ -1,6 +1,6 @@
 {
   "name": "palette",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Mand Mobile Theme Customization Tool",
   "author": "xuxiaoyan",
   "scripts": {
@@ -16,7 +16,7 @@
     "element-ui": "^2.3.9",
     "fastclick": "^1.0.6",
     "file-saver": "^1.3.8",
-    "mand-mobile": "1.5.0",
+    "mand-mobile": "1.6.5",
     "vue": "^2.5.2",
     "vue-clipboard2": "^0.1.1",
     "vue-i18n": "^7.8.0",

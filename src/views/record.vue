@@ -64,9 +64,13 @@
         >
           <el-select
             v-model="themeForm.version"
-            :placeholder="$t('record.dialogThemeVersionTip')"
             disabled
           ></el-select>
+          <!-- <el-select
+            v-model="themeForm.version"
+            :placeholder="$t('record.dialogThemeVersionTip')"
+            disabled
+          ></el-select> -->
         </el-form-item>
       </el-form>
       <div class="dialog-header" slot="title">
