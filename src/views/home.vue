@@ -8,15 +8,15 @@
       <p class="name">Mand Mobile <span>Palette</span></p>
       <p class="describe"><span span v-html="$t('home.describe')"></span>，V<span>{{ version }}</span></p>
     </div>
-    <a class="palette-home-github" href="https://github.com/mand-mobile/palette" target="_blank">
-      <img src="https://img.shields.io/github/stars/mand-mobile/palette.svg?style=social&label=Stars" alt="">
-    </a>
     <div class="palette-home-operate">
       <router-link to="/record">
         {{ $t('home.btn') }}
       </router-link>
       <a href="https://github.com/mand-mobile/palette" target="_blank">GITHUB</a>
     </div>
+    <a class="palette-home-github" href="https://github.com/mand-mobile/palette" target="_blank">
+      <img src="https://img.shields.io/github/stars/mand-mobile/palette.svg?style=social&label=Stars" alt="">
+    </a>
     <palette-animation-name></palette-animation-name>
     <p class="palette-home-copyright">Copyright © 2012-2018 Didi Chuxing. All Rights Reserved</p>
   </div>
@@ -54,7 +54,7 @@ export default {
     align-items center
     .logo
       position relative
-      width 80px
+      width 100px
       overflow hidden
       border-radius 80px
       img
@@ -73,7 +73,7 @@ export default {
         transform skewX(-25deg)
         animation reflect 2s ease-in-out 1s
     .name
-      margin-top 30px
+      margin-top 50px
       font-size 28px
       font-family DINAlternate-Bold,AvenirNext-Medium,Microsoft Yahei,Lato,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Verdana,Tahoma,sans-serif
       color #333
@@ -94,7 +94,7 @@ export default {
       width 180px
       height 40px
       border solid .5px #ccc
-      border-radius 2px
+      border-radius 40px
       text-align center
       line-height 40px
       -webkit-font-smoothing antialiased
@@ -108,7 +108,6 @@ export default {
         color #759ce6
   .palette-home-github
     display flex
-    margin-top 30px
   .palette-animation-name
     position absolute
     bottom 150px

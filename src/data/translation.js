@@ -18,7 +18,7 @@ export default {
       delete: '删除主题'
     },
     home: {
-      describe: '可视化<a href="https://didi.github.io/mand-mobile" target="_blank">Mand Mobile</a>主题编辑器',
+      describe: '可视化<a href="https://mand-mobile.github.io" target="_blank">Mand Mobile</a>主题编辑器',
       btn: '开始制作主题'
     },
     record: {
@@ -79,7 +79,7 @@ export default {
       delete: 'Delete theme'
     },
     home: {
-      describe: 'A visual theme editing tool for <a href="https://didi.github.io/mand-mobile" target="_blank">Mand Mobile</a>',
+      describe: 'A visual theme editing tool for <a href="https://mand-mobile.github.io" target="_blank">Mand Mobile</a>',
       btn: 'Start Making Theme'
     },
     record: {
