@@ -34,7 +34,10 @@ export default {
       dialogDescribe: '目前仅支持最新版本的Mand Mobile',
       dialogThemeName: '主题标题',
       dialogThemeVersion: 'mand-mobile',
-      dialogThemeVersionTip: '请选择mand-mobile版本'
+      dialogThemeVersionTip: '请选择mand-mobile版本',
+      importDialogTitle: '导入主题',
+      importDialogText: ['将文件拖到此处，或', '点击上传'],
+      errorImport: '导入失败'
     },
     list: {
       basicTip: '基础全局样式变量，可作用于所有组件',
@@ -95,7 +98,10 @@ export default {
       dialogDescribe: 'Currently only supports the latest version of Mand Mobile',
       dialogThemeName: 'Theme Title',
       dialogThemeVersion: 'mand-mobile',
-      dialogThemeVersionTip: 'Please select the mand-mobile version'
+      dialogThemeVersionTip: 'Please select the mand-mobile version',
+      importDialogTitle: 'Import themes',
+      importDialogText: ['Drop file here or', 'upload'],
+      errorImport: 'Import failed'
     },
     list: {
       basicTip: 'Basic global style variables that apply to all components',

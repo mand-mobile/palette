@@ -5,9 +5,13 @@
         :placeholder="$t('record.searchTip')"
         @search="onSearchTheme"
       ></palette-searcher>
-      <el-button type="primary" round icon="el-icon-circle-plus" @click="doCreateTheme">
-        {{ $t('record.createBtn') }}
-      </el-button>
+      <div class="palette-button-wrap">
+        <el-button type="primary" round icon="el-icon-circle-plus" @click="doCreateTheme">
+          {{ $t('record.createBtn') }}
+        </el-button>
+        <el-button type="primary" icon="el-icon-share" circle @click="doShareThemes"></el-button>
+        <el-button type="danger" icon="el-icon-upload" circle @click="doImportThemes"></el-button>
+      </div>
     </div>
     <div class="palette-record-list clearfix">
       <template
@@ -82,14 +86,32 @@
         <el-button type="primary" @click="doSaveTheme">{{ $t('record.messageConfirm') }}</el-button>
       </div>
     </el-dialog>
+    <el-dialog
+      width="500px"
+      :title="$t('record.importDialogTitle')"
+      :visible.sync="importFormVisible"
+      >
+      <el-upload
+        class="palette-importer"
+        drag
+        action="''"
+        :show-file-list="false"
+        :http-request="importHandler"
+        >
+        <i class="el-icon-upload"></i>
+        <div class="el-upload__text">{{ $t('record.importDialogText')[0] }}<em>{{ $t('record.importDialogText')[1] }}</em></div>
+      </el-upload>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
+import dayjs from 'dayjs'
 import PaletteSearcher from '../components/searcher'
 import PaletteRecorder from '../components/recorder'
 import PaletteStatus from '../components/status'
+import { downloadText } from '../utils'
 
 export default {
   components: {
@@ -101,7 +123,8 @@ export default {
     return {
       searchThemes: [],
       themeFormVisible: false,
-      themeForm: {}
+      themeForm: {},
+      importFormVisible: false
     }
   },
   computed: {
@@ -122,10 +145,11 @@ export default {
       })
   },
   methods: {
-    ...mapMutations(['createTheme', 'deleteTheme', 'updateThemeInfo']),
+    ...mapMutations(['update', 'createTheme', 'deleteTheme', 'updateThemeInfo']),
     ...mapActions({
       getMandMobileInfo: 'GET_MAND_MOBILE_RELEASE',
-      saveThemeStore: 'SAVE_THEMES_STORE'
+      saveThemeStore: 'SAVE_THEMES_STORE',
+      getThemesStore: 'GET_THEMES_STORE'
     }),
     onDelete (themeIndex) {
       this.$confirm(this.$t('record.messageDescribe'), this.$t('record.messageTitle'), {
@@ -187,6 +211,20 @@ export default {
       }
       this.showThemeDialog(-1)
     },
+    doShareThemes () {
+      this.getThemesStore()
+        .then(themes => {
+          const contentText = JSON.stringify(themes)
+          if (!contentText) {
+            return
+          }
+          const filename = `palette-${dayjs().format('YYYY-MM-DD')}.json`
+          downloadText(contentText, filename)
+        })
+    },
+    doImportThemes () {
+      this.importFormVisible = true
+    },
     doSaveTheme () {
       this.$refs.themeForm.validate(valid => {
         if (valid) {
@@ -199,6 +237,29 @@ export default {
           this.saveThemeStore()
         }
       })
+    },
+    importHandler (payload) {
+      this.importFormVisible = false
+      const { file } = payload
+
+      try {
+        const fileReader = new FileReader()
+        fileReader.onload = (event) => {
+          const contentText = event.target.result
+          const themes = JSON.parse(contentText)
+          this.update({ themes })
+          this.saveThemeStore()
+        }
+        FileReader.onabort = error => {
+          throw error
+        }
+        FileReader.onerror = error => {
+          throw error
+        }
+        fileReader.readAsText(file)
+      } catch (error) {
+        this.$message.error(this.$t('record.errorImport'))
+      }
     }
   }
 }
@@ -210,7 +271,7 @@ export default {
   .palette-record-top
     .palette-searcher
       float left
-    .el-button
+    .palette-button-wrap
       float right
   .palette-record-list
     margin-top 30px
@@ -232,6 +293,11 @@ export default {
       margin-top 10px
       font-size 12px
       color #999
+  .palette-importer
+    .el-upload
+      display block
+    .el-upload-dragger
+      width 100%
 
 .list-complete-item
   transition all 1s
