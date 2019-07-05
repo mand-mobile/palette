@@ -1,82 +1,86 @@
 <template>
   <div class="palette-demo palette-demo-all cleafix">
-    <div class="container">
-      <div class="banner">
-        <img src="//img-hxy021.didistatic.com/static/strategymis/insurancePlatform_spu/uploads/27fb7f097ca218d743f816836bc7ea4a" alt="">
-      </div>
-      <md-tab-bar
-        :titles="titles"
-      ></md-tab-bar>
-      <md-field title="投保人" class="block">
-        <md-input-item
-          title="投保人姓名"
-          placeholder="请填写投保人姓名"
-          is-highlight
-        ></md-input-item>
-        <md-input-item
-          title="身份证号"
-          placeholder="请填写投保人身份证号"
-        ></md-input-item>
-      </md-field>
-      <md-field title="被保人" class="block">
-        <md-input-item
-          title="被保人姓名"
-          placeholder="请填写被保人姓名"
-          is-highlight
-        ></md-input-item>
-        <md-field-item
-          title="与投保人关系"
-          arrow="arrow-right"
-          :value="relation"
-          @click="isPickerShow = true"
-          solid
-        ></md-field-item>
-        <md-picker
-          v-model="isPickerShow"
-          :data="pickerData"
-          title="选择与投保人关系"
-        ></md-picker>
-        <md-input-item
-          title="身份证号"
-          placeholder="请填写被保人身份证号"
-        ></md-input-item>
-        <md-input-item
-          title="手机号"
-          type="phone"
-          placeholder="请填写被保人手机号"
-        ></md-input-item>
-      </md-field>
-      <md-agree v-model="isAgreeChecked">
-        本人承诺投保人已充分了解本保险产品，并保证投保信息的真实性，理解并同意
-      </md-agree>
+    <div class="section checkbox">
+      <md-check-box name="day" v-model="type" label="Daily" disabled/>
+      <md-check-box name="month" v-model="type" label="Monthly"/>
+      <md-check-box name="season" v-model="type" label="Quarterly"/>
     </div>
-    <md-action-bar :actions="actionBarData">
-      &yen;128.00
+    <md-field class="section" title="Policy holder">
+      <md-input-item title="Name" placeholder="Please fill in the name of the policy holder"></md-input-item>
+      <md-input-item title="ID" placeholder="Please fill in the ID number of the policy holder"></md-input-item>
+    </md-field>
+    <md-field class="section" title="Insured">
+      <md-input-item title="Name" placeholder="Please fill in the name of the insured"></md-input-item>
+      <md-field-item title="Relation" :content="relation" arrow @click="isPickerShow = true" solid></md-field-item>
+      <md-picker v-model="isPickerShow" :data="pickerData" @confirm="onPickerConfirm"></md-picker>
+      <md-input-item title="ID" placeholder="Please fill in the ID number of the insured"></md-input-item>
+      <md-input-item
+        title="Phone"
+        type="phone"
+        placeholder="Please fill in the phone number of the insured"
+      ></md-input-item>
+    </md-field>
+    <md-agree class="agree" v-model="isAgree">
+      <p
+        class="agree-text"
+      >I promise that the insured will fully understand the insurance product and guarantee the authenticity of the insurance information, understand and agree</p>
+    </md-agree>
+    <md-action-bar class="action-bar" :actions="actionBarData">
+      <p class="price">&yen;128.00</p>
+      <md-tag
+        size="small"
+        shape="circle"
+        sharp="bottom-left"
+        type="fill"
+        fill-color="linear-gradient(90deg, #FC7353 0%, #FC9153 100%)"
+        font-color="#fff"
+      >discount</md-tag>
     </md-action-bar>
   </div>
+</div>
 </template>
 
 <script>
+import { Dialog } from "mand-mobile"
 export default {
-  data () {
+  name: "app",
+
+  data() {
     return {
-      relation: '本人',
-      isAgreeChecked: true,
+      type: '',
+      relation: 'Self',
+      isAgree: false,
       isPickerShow: false,
-      titles: ['5万', '10万', '20万'],
-      actionBarData: [{
-        text: '我要投保'
-      }],
-      pickerData: [[
-        { text: '本人' },
-        { text: '父母' },
-        { text: '配偶' },
-        { text: '子女' }
-      ]]
+      actionBarData: [
+        {
+          text: "Insured",
+          onClick() {
+            Dialog.succeed({
+              title: 'Success',
+              content: 'Congratulations',
+              confirmText: 'Yes',
+              cancelText: 'Cancel'
+            });
+          }
+        }
+      ],
+      pickerData: [
+        [
+          { text: 'Self' },
+          { text: 'Parents' },
+          { text: 'Spouse' },
+          { text: 'Children' }
+        ]
+      ]
+    };
+  },
+
+  methods: {
+    onPickerConfirm(values) {
+      this.relation = values[0].text
     }
   }
-
-}
+};
 </script>
 
 <style lang="stylus">
@@ -85,14 +89,12 @@ export default {
   .container
     height 1480px
     overflow scroll
-  .banner
-    img
-      width 100%
+  .section
+    margin-bottom 20px
+    background #FFF
   .md-action-bar
     position absolute !important
     padding-bottom 95px
-  // .md-field
-  //   margin-bottom 30px
   .md-agree
     padding 32px
     margin-bottom 200px
@@ -103,4 +105,15 @@ export default {
       position absolute !important
       .md-popup-box
         padding-bottom 90px
+  .action-bar 
+    .price
+      font-weight 500
+      font-size 32px
+      color #FF823A
+      small
+        margin-left 5px
+        font-size 16px
+        color #858B9C
+    .md-tag
+      margin-left 5px
 </style>

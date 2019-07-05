@@ -24,7 +24,7 @@
       <md-dialog
         v-model="dialog1"
         title="Dialog With Icon"
-        icon="circle-right"
+        icon="clock"
         :closable="true"
         :appendTo="container"
         :btns="[

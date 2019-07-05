@@ -1,13 +1,17 @@
 <template>
   <div class="palette-demo palette-demo-captcha cleafix">
-    <md-button @click="value = true">Show Captcha</md-button>
+    <md-button @click="value = true">Show Captcha Brief</md-button>
+    <md-button @click="showError">Show Captcha Error</md-button>
     <md-captcha
       ref="captcha"
       v-model="value"
       title="Enter confirmation code"
+      brief="Brief tips"
+      :count="30"
       countNormalText="send verification code"
       countActiveText="Reissued after {$1} seconds"
       :appendTo="container"
+      :key="tmp"
       mask
       system
     >
@@ -20,19 +24,27 @@
 export default {
   data () {
     return {
+      tmp: Date.now(),
       value: false,
       container: document.querySelector('.palette-edit-preview-box')
     }
   },
   mounted () {
     this.value = true
-    this.$refs.captcha.setError('Error Message')
+  },
+  methods: {
+    showError () {
+      this.$refs.captcha.setError('Error Message')
+      this.value = true
+    }
   }
 }
 </script>
 
 <style lang="stylus">
 .palette-demo-captcha
+  .md-button
+    margin-bottom 20px
   .md-dialog
     position static
   .md-popup

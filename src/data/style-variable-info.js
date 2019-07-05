@@ -4,16 +4,6 @@ export default {
     text: '第一主色，常用于按钮和不可点击的高亮文字',
     textEn: '1st main color for buttons & highlight text which is not clickable'
   },
-  'color-primary-tap': {
-    type: 'color',
-    text: '第二主色，常用于链接和选中元素样式',
-    textEn: '2nd main color for links and selected element'
-  },
-  'color-primary-background': {
-    type: 'color',
-    text: '第三主色，常用于各种容器背景',
-    textEn: '3rd main color for background'
-  },
   'color-text-base': {
     type: 'color',
     text: '默认文字颜色',
@@ -23,6 +13,11 @@ export default {
     type: 'color',
     text: '默认文字反色',
     textEn: 'default inverse text color'
+  },
+  'color-text-body': {
+    type: 'color',
+    text: '正文文字颜色',
+    textEn: 'body text color'
   },
   'color-text-minor': {
     type: 'color',
@@ -36,7 +31,7 @@ export default {
   },
   'color-text-disabled': {
     type: 'color',
-    text: '不可用文字颜色',
+    text: '禁用文字颜色',
     textEn: 'disabled text color'
   },
   'color-text-placeholder': {
@@ -54,15 +49,20 @@ export default {
     text: '链接文字颜色',
     textEn: 'link text color'
   },
+  'color-text-warn': {
+    type: 'color',
+    text: '警示文字颜色',
+    textEn: 'waning text color'
+  },
+  'color-text-error': {
+    type: 'color',
+    text: '错误文字颜色',
+    textEn: 'error text color'
+  },
   'color-border-base': {
     type: 'color',
     text: '默认条目间隙颜色',
     textEn: 'defalut gap color of items'
-  },
-  'color-border-minor': {
-    type: 'color',
-    text: '辅助条目间隙颜色',
-    textEn: 'auxiliary gap color of items'
   },
   'color-border-element': {
     type: 'color',
@@ -74,12 +74,15 @@ export default {
     text: '默认背景色',
     textEn: 'default background color'
   },
+  'color-bg-inverse': {
+    type: 'color'
+  },
   'color-bg-disabled': {
     type: 'color',
     text: '禁用元素背景色',
     textEn: 'background color for disabeld element'
   },
-  'color-bg-mask': {
+  'color-mask': {
     type: 'color',
     text: '遮罩层背景色',
     textEn: 'background color for mask layer'
@@ -88,11 +91,6 @@ export default {
     type: 'color',
     text: '元素点击态蒙层背景色',
     textEn: 'background color for element click state'
-  },
-  'color-bg-tap-highlight': {
-    type: 'color',
-    text: '高亮元素点击态蒙层背景色',
-    textEn: 'background color for highlight element click state'
   },
   'font-heading-large': {
     type: 'size',
@@ -108,6 +106,16 @@ export default {
     type: 'size',
     text: '标题普通',
     textEn: 'normal title'
+  },
+  'font-caption-large': {
+    type: 'size',
+    text: '次标题大号',
+    textEn: 'large subtitle'
+  },
+  'font-caption-normal': {
+    type: 'size',
+    text: '次标题普通',
+    textEn: 'normal subtitle'
   },
   'font-body-large': {
     type: 'size',
@@ -129,17 +137,29 @@ export default {
     text: '辅文普通',
     textEn: 'normal minor'
   },
+  'font-weight-light': {
+    type: 'other',
+    text: '字重细'
+  },
   'font-weight-normal': {
     type: 'other',
-    text: '文字粗细普通'
+    text: '字重普通'
   },
   'font-weight-medium': {
     type: 'other',
-    text: '文字粗细中等'
+    text: '字重中等'
   },
-  'font-weight-bold': {
+  'font-weight-semibold': {
     type: 'other',
-    text: '文字粗细特粗'
+    text: '字重粗'
+  },
+  'font-family-normal': {
+    type: 'other',
+    text: '普通字体'
+  },
+  'font-family-number': {
+    type: 'other',
+    text: '数字字体'
   },
   'radius-normal': {
     type: 'size',
@@ -152,6 +172,11 @@ export default {
   'border-width-base': {
     type: 'size',
     text: '基础边框大小'
+  },
+  'h-gap-xs': {
+    type: 'size',
+    text: '水平间隙特小',
+    textEn: 'special small horizontal gap'
   },
   'h-gap-sm': {
     type: 'size',
@@ -168,9 +193,19 @@ export default {
     text: '水平间隙大',
     textEn: 'large horizontal gap'
   },
+  'h-gap-sl': {
+    type: 'size',
+    text: '水平间隙特大',
+    textEn: 'special large horizontal gap'
+  },
+  'v-gap-xs': {
+    type: 'size',
+    text: '垂直间隙特小',
+    textEn: 'special small vertical gap'
+  },
   'v-gap-sm': {
     type: 'size',
-    text: '垂直间隙大',
+    text: '垂直间隙小',
     textEn: 'small vertical gap'
   },
   'v-gap-md': {
@@ -183,6 +218,11 @@ export default {
     text: '垂直间隙大',
     textEn: 'large vertical gap'
   },
+  'v-gap-sl': {
+    type: 'size',
+    text: '垂直间隙特大',
+    textEn: 'special large vertical gap'
+  },
   'shadow-bottom': {
     type: 'other',
     text: '阴影下'
@@ -192,134 +232,171 @@ export default {
     text: '阴影上'
   },
   'opacity-disabled': {
-    type: 'other',
+    type: 'opacity',
     text: '禁用透明度'
+  },
+  'ease-in-out-quint': {
+    type: 'other'
+  },
+  'support-for-ie': {
+    type: 'switch',
+    text: 'Stylus内置变量，是否支持IE',
+    textEn: 'Stylus built-in variables, whether to support IE'
+  },
+  'bill-bg': {
+    type: 'color',
+    text: '账单背景色',
+    textEn: 'bill background color'
+  },
+  'bill-name-font-size': {
+    type: 'size',
+    text: '账单标题字体大小',
+    textEn: 'bill title font size'
+  },
+  'bill-name-color': {
+    type: 'color',
+    text: '账单标题字体颜色',
+    textEn: 'bill title font color'
+  },
+  'bill-no-font-size': {
+    type: 'size',
+    text: '账单号字体大小',
+    textEn: 'bill title font size'
+  },
+  'bill-no-color': {
+    type: 'color',
+    text: '账单号字体颜色',
+    textEn: 'bill number font color'
+  },
+  'bill-description-font-size': {
+    type: 'size',
+    text: '账单描述字体大小',
+    textEn: 'bill description font size'
+  },
+  'bill-description-color': {
+    type: 'color',
+    text: '账单描述字体颜色',
+    textEn: 'bill description font color'
   },
   'button-primary-fill': {
     type: 'color',
-    text: '主按钮背景色',
+    text: '主要按钮背景色',
     textEn: 'primary button background color'
   },
-  'button-primary-fill-disabled': {
+  'button-default-fill': {
     type: 'color',
-    text: '主按钮禁用状态背景色',
-    textEn: 'disabled primary button background color'
+    text: '默认按钮背景色',
+    textEn: 'default button background color'
   },
-  'button-primary-fill-tap': {
+  'button-disabled-fill': {
     type: 'color',
-    text: '主按钮点击状态蒙层背景色',
-    textEn: 'primary button background color of click state'
+    text: '禁用按钮背景色',
+    textEn: 'disabled button background color'
   },
-  'button-primary-width': {
-    type: 'size',
-    text: '主按钮宽度'
-  },
-  'button-primary-height': {
-    type: 'size',
-    text: '主按钮高度'
-  },
-  'button-primary-font-size': {
-    type: 'size',
-    text: '主按钮文字大小'
-  },
-  'button-primary-font-weight': {
-    type: 'other',
-    text: '主按钮文字字重'
-  },
-  'button-primary-radius': {
-    type: 'size',
-    text: '主按钮边角半径'
-  },
-  'button-ghost-fill': {
+  'button-warning-fill': {
     type: 'color',
-    text: '线性按钮背景色',
-    textEn: 'ghost button background color'
+    text: '警示按钮背景色',
+    textEn: 'warning button background color'
   },
-  'button-ghost-fill-tap': {
+  'button-primary-active-fill': {
     type: 'color',
-    text: '线性按钮点击态蒙层背景色',
-    textEn: 'ghost button mask color of click state'
+    text: '主要按钮激活态背景色',
+    textEn: 'active primary button background color'
   },
-  'button-ghost-primary-fill-tap': {
+  'button-default-active-fill': {
     type: 'color',
-    text: '主线性按钮点击态蒙层背景色',
-    textEn: 'ghost-primary button mask color of click state'
+    text: '默认按钮激活态背景色',
+    textEn: 'active default button background color'
   },
-  'button-ghost-width': {
-    type: 'size',
-    text: '大线性按钮宽度',
-    textEn: 'large ghost button width'
-  },
-  'button-ghost-height': {
-    type: 'size',
-    text: '大线性按钮高度',
-    textEn: 'large ghost button height'
-  },
-  'button-ghost-width-sm': {
-    type: 'size',
-    text: '小线性按钮宽度',
-    textEn: 'small ghost button width'
-  },
-  'button-ghost-height-sm': {
-    type: 'size',
-    text: '小线性按钮高度',
-    textEn: 'small ghost button height'
-  },
-  'button-ghost-font-size': {
-    type: 'size',
-    text: '线性按钮字体大小'
-  },
-  'button-ghost-color': {
+  'button-warning-active-fill': {
     type: 'color',
-    text: '线性按钮文字和边框颜色',
-    textEn: 'ghost button text and border color'
+    text: '警示按钮激活态背景色',
+    textEn: 'active warning button background color'
   },
-  'button-ghost-primary-color': {
+  'button-primary-plain-active-fill': {
     type: 'color',
-    text: '主线性按钮文字和边框颜色',
-    textEn: 'ghost-primary button text and border color'
+    text: '主要朴素按钮激活态背景色',
+    textEn: 'active plain primary button background color'
   },
-  'button-ghost-radius': {
-    type: 'size',
-    text: '线性按钮边角半径'
-  },
-  'button-link-fill': {
+  'button-default-plain-active-fill': {
     type: 'color',
-    text: '链接按钮背景色',
-    textEn: 'link button background color'
+    text: '默认朴素按钮激活态背景色',
+    textEn: 'active plain default button background color'
   },
-  'button-link-fill-tap': {
+  'button-warning-plain-active-fill': {
     type: 'color',
-    text: '链接按钮点击态蒙层背景色',
-    textEn: 'link button mask color of click state'
+    text: '警示朴素按钮激活态背景色',
+    textEn: 'active plain warning button background color'
   },
-  'button-link-width': {
-    type: 'size',
-    text: '链接按钮宽度'
-  },
-  'button-link-height': {
-    type: 'size',
-    text: '链接按钮高度'
-  },
-  'button-link-color': {
+  'button-primary-color': {
     type: 'color',
-    text: '链接按钮文字颜色',
-    textEn: 'link button text color'
+    text: '主要按钮字体颜色',
+    textEn: 'primary button font color'
   },
-  'button-link-border': {
+  'button-default-color': {
     type: 'color',
-    text: '链接按钮上下边框颜色',
-    textEn: 'link button border color'
+    text: '默认按钮字体颜色',
+    textEn: 'default button font color'
   },
-  'button-icon-gap': {
-    type: 'size',
-    text: '按钮图标与文字间距',
-    textEn: 'gap size between icon and text'
+  'button-disabled-color': {
+    type: 'color',
+    text: '禁用按钮字体颜色',
+    textEn: 'disabled button font color'
   },
-  'button-disabled-opacity': {
+  'button-warning-color': {
+    type: 'color',
+    text: '警示按钮字体颜色',
+    textEn: 'warning button font color'
+  },
+  'button-primary-plain-color': {
+    type: 'color',
+    text: '主要朴素按钮字体颜色',
+    textEn: 'plain primary button font color'
+  },
+  'button-default-plain-color': {
+    type: 'color',
+    text: '默认朴素按钮字体颜色',
+    textEn: 'plain default button font color'
+  },
+  'button-disabled-plain-color': {
+    type: 'color',
+    text: '禁用朴素按钮字体颜色',
+    textEn: 'plain disabled button font color'
+  },
+  'button-warning-plain-color': {
+    type: 'color',
+    text: '警示朴素按钮字体颜色',
+    textEn: 'plain warning button font color'
+  },
+  'button-height': {
     type: 'size',
-    text: '按钮禁用透明度',
-    textEn: 'opacity of disabled button'
+    text: '普通尺寸按钮高度',
+    textEn: 'normal size button height'
+  },
+  'button-small-height': {
+    type: 'size',
+    text: '小按钮高度',
+    textEn: 'small size button height'
+  },
+  'button-font-size': {
+    type: 'size',
+    text: '普通尺寸按钮字体大小',
+    textEn: 'normal size button font size'
+  },
+  'button-small-font-size': {
+    type: 'size',
+    text: '小按钮字体大小',
+    textEn: 'small size button font size'
+  },
+  'button-font-weight': {
+    type: 'size',
+    text: '按钮字重',
+    textEn: 'button font weight'
+  },
+  'button-radius': {
+    type: 'size',
+    text: '按钮圆角大小',
+    textEn: 'button radius size'
   },
   'icon-size-xs': {
     type: 'size',
@@ -349,67 +426,21 @@ export default {
     type: 'size',
     text: '操作栏高度'
   },
-  'action-bar-button-font-size': {
+  'action-bar-slot-height': {
     type: 'size',
-    text: '操作栏按钮文字大小'
+    text: ''
   },
-  'action-bar-button-font-weight': {
+  'action-bar-padding-v': {
     type: 'size',
-    text: '操作栏按钮文字字重'
+    text: ''
   },
-  'action-bar-button-disabled-opacity': {
+  'action-bar-padding-h': {
     type: 'size',
-    text: '操作栏禁用按钮透明度'
+    text: ''
   },
-  'action-bar-button-disabled-bg': {
-    type: 'color',
-    text: '操作栏禁用高亮按钮背景色',
-    textEn: 'action bar disabled button background color'
-  },
-  'action-bar-button-disabled-color': {
-    type: 'color',
-    text: '操作栏禁用按钮文字颜色',
-    textEn: 'action bar disabled button text color'
-  },
-  'action-bar-button-tap-bg': {
-    type: 'color',
-    text: '操作栏按钮点击态蒙层背景色',
-    textEn: 'action bar button mask color of click state'
-  },
-  'action-bar-button-color': {
-    type: 'color',
-    text: '操作栏按钮文字颜色',
-    textEn: 'action bar button text color'
-  },
-  'action-bar-button-color-highlight': {
-    type: 'color',
-    text: '操作栏高亮按钮文字颜色',
-    textEn: 'action bar highlight button text color'
-  },
-  'action-bar-button-fill': {
-    type: 'color',
-    text: '操作栏按钮背景色',
-    textEn: 'action bar button background color'
-  },
-  'action-bar-button-fill-highlight': {
-    type: 'color',
-    text: '操作栏高亮按钮背景色',
-    textEn: 'action bar highlight button background color'
-  },
-  'action-bar-text-color': {
-    type: 'color',
-    text: '操作栏文案文字颜色',
-    textEn: 'action bar text color'
-  },
-  'action-bar-text-font-size': {
+  'action-bar-button-gap': {
     type: 'size',
-    text: '操作栏文案文字大小',
-    textEn: 'action bar font size'
-  },
-  'action-bar-text-left': {
-    type: 'size',
-    text: '操作栏文案左侧间距',
-    textEn: 'action bar text left spaceing'
+    text: ''
   },
   'action-bar-zindex': {
     type: 'size'
@@ -418,6 +449,11 @@ export default {
     type: 'size',
     text: '操作面板普通选项的高度',
     textEn: 'action sheet item height'
+  },
+  'action-sheet-padding-h': {
+    type: 'size',
+    text: '',
+    textEn: ''
   },
   'action-sheet-color': {
     type: 'color',
@@ -445,7 +481,7 @@ export default {
     textEn: 'action sheet background color'
   },
   'action-sheet-disabled-opacity': {
-    type: 'size',
+    type: 'opacity',
     text: '操作面板禁用选项透明度',
     textEn: 'action sheet disabled item opacity'
   },
@@ -468,7 +504,7 @@ export default {
     textEn: 'icon color of unchecked status'
   },
   'agree-disabled-opacity': {
-    type: 'size',
+    type: 'opacity',
     text: '勾选按钮禁用透明度'
   },
   'captcha-title-color': {
@@ -481,15 +517,40 @@ export default {
     text: '验证码窗口标题文字大小',
     textEn: 'captcha window title text size'
   },
+  'captcha-color': {
+    type: 'color',
+    text: '验证码窗口正文字体颜色',
+    textEn: 'captcha body text color'
+  },
+  'captcha-font-size': {
+    type: 'size',
+    text: '验证码窗口错误提示文字大小',
+    textEn: 'captcha body text size'
+  },
+  'captcha-footer-font-size': {
+    type: 'size',
+    text: '验证码窗口底部提示文字大小',
+    textEn: 'captcha footer text size'
+  },
   'captcha-error-color': {
     type: 'color',
-    text: '验证码窗口错误提示文字大小',
+    text: '验证码窗口错误提示文字颜色',
+    textEn: 'captcha window error text size'
+  },
+  'captcha-brief-color': {
+    type: 'color',
+    text: '验证码窗口提示文字颜色',
     textEn: 'captcha window error text size'
   },
   'captcha-countbtn-gap': {
     type: 'size',
     text: '验证码窗口发送验证码按钮上下间距',
     textEn: 'captcha window verification sending code button top/bottom margin'
+  },
+  'captcha-btn-color': {
+    type: 'color',
+    text: '验证码窗口发送验证码按钮字体颜色',
+    textEn: 'captcha window verification sending code button font color'
   },
   'captcha-zindex': {
     type: 'size'
@@ -529,15 +590,35 @@ export default {
     text: '收银台支付描述文字颜色',
     textEn: 'cashier pay describe text color'
   },
-  'cashier-choose-channel-font-size': {
+  'cashier-choose-channel-title-font-size': {
     type: 'size',
     text: '收银台支付渠道文字大小',
     textEn: 'cashier pay channel font size'
   },
-  'cashier-choose-channel-color': {
+  'cashier-choose-channel-title-color': {
     type: 'color',
     text: '收银台支付渠道文字颜色',
     textEn: 'cashier pay channel text color'
+  },
+  'cashier-choose-channel-title-action-font-size': {
+    type: 'size',
+    text: '收银台支付渠道操作按钮文字大小',
+    textEn: 'cashier pay channel action button font size'
+  },
+  'cashier-choose-channel-title-action-color': {
+    type: 'color',
+    text: '收银台支付渠道操作按钮文字颜色',
+    textEn: 'cashier pay channel action button text color'
+  },
+  'cashier-choose-channel-desc-font-size': {
+    type: 'size',
+    text: '收银台支付渠道备注文字大小',
+    textEn: 'cashier pay channel description font size'
+  },
+  'cashier-choose-channel-desc-color': {
+    type: 'color',
+    text: '收银台支付渠道备注文字颜色',
+    textEn: 'cashier pay channel description text color'
   },
   'cashier-choose-channel-icon-color': {
     type: 'color',
@@ -577,25 +658,130 @@ export default {
     text: '图表纵轴文字大小',
     textEn: 'chart vertical axis font size'
   },
+  'chart-value-size': {
+    type: 'size',
+    text: '图表纵轴文字大小',
+    textEn: 'chart vertical axis font size'
+  },
+  'cell-item-min-height': {
+    type: 'size',
+    text: '列表项最小高度',
+    textEn: ''
+  },
+  'cell-item-padding-v': {
+    type: 'size',
+    text: '列表项上下留白间距',
+    textEn: ''
+  },
+  'cell-item-multilines-padding-v': {
+    type: 'size',
+    text: '多行列表项上下留白间距',
+    textEn: ''
+  },
+  'cell-item-title-color': {
+    type: 'color',
+    text: '列表项标题字体颜色',
+    textEn: ''
+  },
+  'cell-item-title-font-size': {
+    type: 'size',
+    text: '列表项标题字体大小',
+    textEn: ''
+  },
+  'cell-item-brief-color': {
+    type: 'color',
+    text: '列表项简述字体颜色',
+    textEn: ''
+  },
+  'cell-item-brief-font-size': {
+    type: 'size',
+    text: '列表项简述字体大小',
+    textEn: ''
+  },
+  'cell-item-right-color': {
+    type: 'color',
+    text: '列表项右侧内容字体颜色',
+    textEn: ''
+  },
+  'cell-item-right-font-size': {
+    type: 'size',
+    text: '列表项右侧内容字体大小',
+    textEn: ''
+  },
+  'cell-item-border-color': {
+    type: 'color',
+    text: '列表项边框颜色',
+    textEn: ''
+  },
+  'check-color': {
+    type: 'color',
+    text: '选中复选项图标颜色',
+    textEn: 'checked option icon color'
+  },
+  'checkbox-color': {
+    type: 'color',
+    text: '复选框字体颜色',
+    textEn: 'check box font color'
+  },
+  'checkbox-font-size': {
+    type: 'size',
+    text: '复选框字体大小',
+    textEn: 'check box font size'
+  },
+  'checkbox-disabled-color': {
+    type: 'color',
+    text: '禁用复选框颜色',
+    textEn: 'disabled check box color'
+  },
+  'checkbox-active-color': {
+    type: 'color',
+    text: '选中复选框字体颜色',
+    textEn: 'checked box font color'
+  },
+  'checkbox-active-border-color': {
+    type: 'color',
+    text: '选中复选框边框颜色',
+    textEn: 'checked box border color'
+  },
+  'checkbox-border-radius': {
+    type: 'size',
+    text: '复选框圆角大小',
+    textEn: 'checked box border radius'
+  },
+  'codebox-color': {
+    type: 'color',
+    text: '输入框字体颜色',
+    textEn: 'input box font color'
+  },
   'codebox-font-size': {
     type: 'size',
-    text: '输入框(固定位数)文字大小',
-    textEn: 'input box(fixed length) text size'
+    text: '输入框字体大小',
+    textEn: 'input box font size'
   },
   'codebox-width': {
     type: 'size',
     text: '输入框(固定位数)宽度',
     textEn: 'input box(fixed length) width'
   },
+  'codebox-height': {
+    type: 'size',
+    text: '输入框(固定位数)高度',
+    textEn: 'input box(fixed length) height'
+  },
   'codebox-gutter': {
     type: 'size',
-    text: '输入框左右间距',
+    text: '输入框(固定位数)左右间距',
     textEn: 'input boxleft and right spacing'
   },
   'codebox-border-color': {
     type: 'color',
     text: '输入框(固定位数)边框颜色',
     textEn: 'input box(fixed length) border color'
+  },
+  'codebox-border-width': {
+    type: 'size',
+    text: '输入框(固定位数)边框宽',
+    textEn: 'input box(fixed length) border width'
   },
   'codebox-border-active-color': {
     type: 'color',
@@ -607,35 +793,20 @@ export default {
     text: '输入框(固定位数)光标颜色',
     textEn: 'input box(fixed length) blink color'
   },
-  'codebox-input-height': {
+  'codebox-holder-space': {
     type: 'size',
-    text: '输入框(不限位数)高度',
-    textEn: 'input box(unlimited length) height'
-  },
-  'codebox-input-padding': {
-    type: 'size',
-    text: '输入框(不限位数)间距',
-    textEn: 'input box(unlimited length) padding'
-  },
-  'codebox-input-font-size': {
-    type: 'size',
-    text: '输入框(不限位数)文字大小',
-    textEn: 'input box(unlimited length) font size'
-  },
-  'codebox-input-border-color': {
-    type: 'color',
-    text: '输入框(不限位数)边框颜色',
-    textEn: 'input box(unlimited length) border color'
-  },
-  'codebox-input-radius': {
-    type: 'size',
-    text: '输入框(固定位数)边框圆角大小',
-    textEn: 'input box(fixed length) border color'
+    text: '输入框(不固定位数)左右留白间距',
+    textEn: 'input box(not fixed length) left and right white space'
   },
   'codebox-dot-color': {
     type: 'color',
-    text: '输入框(固定位数)掩码颜色',
-    textEn: 'input box(fixed length) mask color'
+    text: '输入框掩码颜色',
+    textEn: 'input box mask color'
+  },
+  'codebox-disabled-color': {
+    type: 'color',
+    text: '',
+    textEn: ''
   },
   'picker-font-size': {
     type: 'size',
@@ -680,6 +851,11 @@ export default {
     text: '模态窗边框圆角大小',
     textEn: 'dialog border radius'
   },
+  'dialog-body-padding': {
+    type: 'size',
+    text: '模态窗留白间距',
+    textEn: 'dialog padding'
+  },
   'dialog-title-font-size': {
     type: 'size',
     text: '模态窗标题字体大小',
@@ -709,6 +885,11 @@ export default {
     type: 'size',
     text: '模态窗动作按钮文字大小',
     textEn: 'dialog action button font size'
+  },
+  'dialog-action-font-weight': {
+    type: 'size',
+    text: '模态窗动作按钮文字字重',
+    textEn: 'dialog action button font weight'
   },
   'dialog-action-border-color': {
     type: 'color',
@@ -749,7 +930,7 @@ export default {
     textEn: 'drop-menu bar selected item text color'
   },
   'drop-menu-disabled-opacity': {
-    type: 'size',
+    type: 'opacity',
     text: '下拉菜单菜单栏禁用项目透明度',
     textEn: 'drop-menu bar disabled item opacity'
   },
@@ -757,6 +938,11 @@ export default {
     type: 'size',
     text: '下拉菜单菜单栏字体大小',
     textEn: 'drop-menu bar font size'
+  },
+  'drop-menu-font-weight': {
+    type: 'size',
+    text: '下拉菜单菜单栏字重',
+    textEn: 'drop-menu bar font weight'
   },
   'drop-menu-zindex': {
     type: 'size'
@@ -1230,30 +1416,50 @@ export default {
     text: '弹出层标题栏背景色',
     textEn: 'popup title bar background color'
   },
-  'popup-title-bar-border-color': {
-    type: 'color',
-    text: '弹出层标题栏边框颜色',
-    textEn: 'popup title bar border color'
-  },
   'popup-title-bar-height': {
     type: 'size',
     text: '弹出层标题栏高度',
     textEn: 'popup title bar height'
+  },
+  'popup-title-bar-height-large': {
+    type: 'size',
+    text: '弹出层标题栏高度（有描述时）',
+    textEn: 'popup title bar height(with description)'
+  },
+  'popup-title-bar-radius': {
+    type: 'size',
+    text: '弹出层标题栏圆角大小',
+    textEn: 'popup title bar radius size'
   },
   'popup-title-bar-font-size-button': {
     type: 'size',
     text: '弹出层标题栏按钮字体大小',
     textEn: 'popup title bar button font size'
   },
+  'popup-title-bar-font-weight-button': {
+    type: 'size',
+    text: '弹出层标题栏按钮字重',
+    textEn: 'popup title bar button font weight'
+  },
   'popup-title-bar-font-size-title': {
     type: 'size',
     text: '弹出层标题栏标题字体大小',
     textEn: 'popup title bar title font size'
   },
+  'popup-title-bar-font-size-describe': {
+    type: 'size',
+    text: '弹出层标题栏描述字体大小',
+    textEn: 'popup title bar description font size'
+  },
   'popup-title-bar-color-title': {
     type: 'color',
     text: '弹出层标题栏标题颜色',
     textEn: 'popup title bar title color'
+  },
+  'popup-title-bar-color-describe': {
+    type: 'color',
+    text: '弹出层标题栏描述颜色',
+    textEn: 'popup title bar description color'
   },
   'popup-title-bar-color-button-left': {
     type: 'color',
@@ -1337,34 +1543,4 @@ export default {
   'number-keyboard-zindex': {
     type: 'size'
   },
-  'checkbox-color': {
-    type: 'color'
-  },
-  'checkbox-font-size': {
-    type: 'size'
-  },
-  'checkbox-space': {
-    type: 'size'
-  },
-  'checkbox-container-space': {
-    type: 'size'
-  },
-  'checkbox-disabled-opacity': {
-    type: 'size'
-  },
-  'checkbox-tap-color': {
-    type: 'color'
-  },
-  'checkbox-bg-tap-color': {
-    type: 'color'
-  },
-  'checkbox-border-color': {
-    type: 'color'
-  },
-  'checkbox-border-radius': {
-    type: 'size'
-  },
-  'checklist-tap-color': {
-    type: 'color'
-  }
 }

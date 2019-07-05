@@ -19,8 +19,8 @@
     <div class="palette-recorder-detail">
       <ul class="color-list clearfix">
         <li class="color-item" :style="{background: color['color-primary']}"></li>
-        <li class="color-item" :style="{background: color['color-primary-tap']}"></li>
-        <li class="color-item" :style="{background: color['color-primary-background']}"></li>
+        <li class="color-item" :style="{background: color['color-text-warn']}"></li>
+        <li class="color-item" :style="{background: color['color-bg-base']}"></li>
       </ul>
       <p class="text">{{ `${$t('recorder.modify')} ${dayjs(theme.lastModify).format("YYYY/MM/DD HH:mm")}` }}</p>
     </div>
@@ -52,7 +52,11 @@ export default {
   },
   computed: {
     color () {
-      return this.theme.data.basic.color
+      return {
+        ...this.theme.data.basic['Brand Color'],
+        ...this.theme.data.basic['Text Color'],
+        ...this.theme.data.basic['Border & Background Color']
+      }
     }
   },
   methods: {
@@ -87,6 +91,7 @@ export default {
   padding 20px
   box-sizing border-box
   box-shadow 0 2px 8px #ebebeb
+  border-radius 4px
   cursor pointer
   transition all .3s
   background #fff

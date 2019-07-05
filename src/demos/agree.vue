@@ -10,6 +10,11 @@
         本人承诺投保人已充分了解本保险产品，并保证投保信息的真实性，理解并同意
       </md-agree>
     </div>
+    <div class="palette-demo-block">
+      <md-agree v-model="checked2">
+        本人承诺投保人已充分了解本保险产品，并保证投保信息的真实性，理解并同意
+      </md-agree>
+    </div>
   </div>
 </template>
 
@@ -18,7 +23,8 @@ export default {
   data () {
     return {
       checked0: true,
-      checked1: true
+      checked1: true,
+      checked2: false
     }
   }
 }
@@ -27,7 +33,8 @@ export default {
 <style lang="stylus">
 .palette-demo-agree
   .palette-demo-block
-    margin-top 30px
+    padding 20px
+    background #FFF
   .md-agree
     color #666
 </style>

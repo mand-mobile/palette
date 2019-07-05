@@ -6,7 +6,13 @@
         @search="onSearchTheme"
       ></palette-searcher>
       <div class="palette-button-wrap">
-        <el-button type="primary" round icon="el-icon-circle-plus" @click="doCreateTheme">
+        <el-button
+          type="primary"
+          round
+          :loading="mandMobileInfoLoading"
+          icon="el-icon-circle-plus"
+          @click="doCreateTheme"
+        >
           {{ $t('record.createBtn') }}
         </el-button>
         <el-button type="primary" icon="el-icon-share" circle @click="doShareThemes"></el-button>
@@ -111,7 +117,7 @@ import dayjs from 'dayjs'
 import PaletteSearcher from '../components/searcher'
 import PaletteRecorder from '../components/recorder'
 import PaletteStatus from '../components/status'
-import { downloadText } from '../utils'
+import { downloadText, safeGetValue } from '../utils'
 
 export default {
   components: {
@@ -122,6 +128,7 @@ export default {
   data () {
     return {
       searchThemes: [],
+      mandMobileInfoLoading: false,
       themeFormVisible: false,
       themeForm: {},
       importFormVisible: false
@@ -137,17 +144,11 @@ export default {
       }
     }
   },
-  mounted () {
-    this.getMandMobileInfo()
-      .catch(error => {
-        error.message &&
-          this.$message(error.message)
-      })
-  },
   methods: {
     ...mapMutations(['update', 'createTheme', 'deleteTheme', 'updateThemeInfo']),
     ...mapActions({
       getMandMobileInfo: 'GET_MAND_MOBILE_RELEASE',
+      getMandMobileVariables: 'GET_MAND_MOBILE_VARIABLES',
       saveThemeStore: 'SAVE_THEMES_STORE',
       getThemesStore: 'GET_THEMES_STORE'
     }),
@@ -209,7 +210,19 @@ export default {
         this.$message.error(this.$t('record.errorLimit'))
         return
       }
-      this.showThemeDialog(-1)
+      this.mandMobileInfoLoading = true
+      this.getMandMobileInfo().then(() => {
+        this.showThemeDialog(-1)
+      }).catch(() => {
+        this.$message({
+          message: this.$t('record.errorMandMobile'),
+          type: 'warning'
+        })
+        // error.message &&
+        //   this.$message(error.message)
+      }).finally(() => {
+        this.mandMobileInfoLoading = false
+      })
     },
     doShareThemes () {
       this.getThemesStore()
@@ -230,11 +243,29 @@ export default {
         if (valid) {
           this.themeFormVisible = false
           if (this.themeForm.themeIndex < 0) {
-            this.createTheme(this.themeForm)
+            this.getMandMobileVariables({
+              version: this.themeForm.version,
+              type: 'lib'
+            }).then(res => {
+              if (res && res.length) {
+                this.createTheme({
+                  themeInfo: this.themeForm,
+                  variables: {
+                    basic: safeGetValue(res[0], 'data', {}),
+                    components: safeGetValue(res[1], 'data', {})
+                  }
+                })
+                this.saveThemeStore()
+              } else {
+                this.$message({
+                  message: this.$t('record.errorMandMobileVariables'),
+                  type: 'warning'
+                })
+              }
+            })
           } else {
             this.updateThemeInfo(this.themeForm)
           }
-          this.saveThemeStore()
         }
       })
     },
@@ -277,10 +308,10 @@ export default {
     margin-top 30px
     .palette-recorder
       float left
-      width 48%
+      width 32%
       margin-bottom 20px
-      margin-right 4%
-      &:nth-child(2n)
+      margin-right 2%
+      &:nth-child(3n)
         margin-right 0
     .palette-status
       margin-top 200px

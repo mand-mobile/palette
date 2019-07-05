@@ -42,7 +42,8 @@ export default {
 <style lang="stylus">
 .palette-demo-chart
   .palette-demo-block
-    margin-top 50px
+    padding 50px 0
+    background #fff
     svg
       display block
       margin 0 auto

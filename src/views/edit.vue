@@ -16,7 +16,7 @@
               >
                 <div for="" class="item-label">
                   {{name}}
-                  <span v-if="styleVariableInfo[name]">
+                  <span v-if="styleVariableInfo[name] && (styleVariableInfo[name].text || styleVariableInfo[name].textEn)">
                     {{
                       lang === 'zh'
                       ? `/ ${styleVariableInfo[name].text || ''}`
@@ -24,45 +24,67 @@
                     }}
                   </span>
                 </div>
-                <el-color-picker
-                  v-if="styleVariableInfo[name] && styleVariableInfo[name].type === 'color'"
-                  v-model="tmpStyleVariable[name].value"
-                  size="mini"
-                  show-alpha
-                  @change="onStyleValueChange(name, $event)"
-                >
-                </el-color-picker>
-                <el-input
-                  v-else
-                  v-model="tmpStyleVariable[name].value"
-                  size="mini"
-                  @blur="onStyleValueChange(name, tmpStyleVariable[name].value)"
-                ></el-input>
-                <div class="item-operator">
-                  <el-tooltip
-                    v-if="tmpStyleVariable[name].from"
-                    class="item"
-                    effect="dark"
-                    :content="`${$t('edit.tip')} ${tmpStyleVariable[name].from}`"
-                    placement="bottom"
-                  >
-                    <i class="item-tip" @click="goToOther(tmpStyleVariable[name].from)">
-                      <i class="el-icon-share"></i> {{ tmpStyleVariable[name].from }}
-                    </i>
-                  </el-tooltip>
-                  <el-tooltip class="item" effect="dark" :content="$t('edit.resetTip')" placement="bottom">
-                    <i class="item-tip" @click="resetStyleValue(name)">
-                      <i class="item-tool el-icon-refresh"></i> {{ $t('edit.resetBtn') }}
-                    </i>
-                  </el-tooltip>
-                </div>
+                <template v-if="styleVariableInfo[name]">
+                  <template v-if="styleVariableInfo[name].type === 'color'">
+                    <el-input
+                      v-model="tmpStyleVariable[name].value"
+                      class="small"
+                      size="medium"
+                      readonly
+                    ></el-input>
+                    <el-color-picker
+                      v-model="tmpStyleVariable[name].value"
+                      size="medium"
+                      show-alpha
+                      @change="onStyleValueChange(name, $event)"
+                    ></el-color-picker>
+                  </template>
+                  <el-switch
+                    v-else-if="styleVariableInfo[name].type === 'switch'"
+                    v-model="tmpStyleVariable[name].value"
+                    @change="onStyleValueChange(name, $event)"
+                  ></el-switch>
+                  <el-slider
+                    v-else-if="styleVariableInfo[name].type === 'opacity'"
+                    v-model="tmpStyleVariable[name].value"
+                    :step="0.01"
+                    :max="1"
+                    show-input
+                    :show-input-controls="false"
+                    @change="onStyleValueChange(name, $event)"
+                  ></el-slider>
+                  <el-input
+                    v-else
+                    v-model="tmpStyleVariable[name].value"
+                    size="medium"
+                    @blur="onStyleValueChange(name, tmpStyleVariable[name].value)"
+                  ></el-input>
+                  <div class="item-operator">
+                    <el-tooltip class="item" effect="dark" :content="$t('edit.resetTip')" placement="bottom">
+                      <i class="item-tip" @click="resetStyleValue(name)">
+                        <i class="item-tool el-icon-refresh-left"></i> {{ $t('edit.resetBtn') }}
+                      </i>
+                    </el-tooltip>
+                    <el-tooltip
+                      v-if="tmpStyleVariable[name].from"
+                      class="item"
+                      effect="dark"
+                      :content="`${$t('edit.tip')} ${tmpStyleVariable[name].from}`"
+                      placement="bottom"
+                    >
+                      <i class="item-tip" @click="goToOther(tmpStyleVariable[name].from)">
+                        <i class="item-tool el-icon-copy-document"></i> {{ tmpStyleVariable[name].from }}
+                      </i>
+                    </el-tooltip>
+                  </div>
+                </template>
               </div>
             </template>
           </div>
         </div>
       </transition>
     </div>
-    <div class="palette-edit-boxshadow"></div>
+    <!-- <div class="palette-edit-boxshadow"></div> -->
     <div class="palette-edit-operate">
       <el-button
         v-if="lastRoute"
@@ -87,12 +109,13 @@
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
 import PalettePreviewer from '../components/previewer'
-import { defaultTheme, styleVariableInfo } from '../data'
+import { styleVariableInfo } from '../data'
 import {
   generateCssVariable,
   insertCss,
   findKeyValue,
-  findKeyFrom
+  findKeyFrom,
+  safeGetValue
 } from '../utils'
 
 export default {
@@ -110,7 +133,8 @@ export default {
       tmpStyleVariable: {},
       tmp: Date.now(),
       lastRoute: null,
-      contentVisible: false
+      contentVisible: false,
+      test: ''
     }
   },
   computed: {
@@ -149,6 +173,10 @@ export default {
       getMandMobileCss: 'GET_MAND_MOBILE_CSS',
       saveThemeStore: 'SAVE_THEMES_STORE'
     }),
+
+    formatTooltip (val) {
+      return val / 100
+    },
 
     onStyleValueChange (name, value) {
       if (this.getStyleValue(name) !== value) {
@@ -210,10 +238,10 @@ export default {
       for (const name in styleVariable) {
         if (styleVariable.hasOwnProperty(name)) {
           const styleValue = styleVariable[name]
-          this.tmpStyleVariable[name] = {
+          this.$set(this.tmpStyleVariable, name, {
             value: this.getStyleValue(name),
             from: styleVariableInfo.hasOwnProperty(styleValue) ? styleValue : ''
-          }
+          })
         }
       }
 
@@ -222,16 +250,21 @@ export default {
     getStyleValue (name) {
       const styleVariable = this.styleVariable
       let styleValue = styleVariable[name]
+      const type = safeGetValue(styleVariableInfo[name], 'type')
 
       // Find value when the value is a basic variable
-      if (styleVariableInfo.hasOwnProperty(styleValue)) {
+      while (styleVariableInfo.hasOwnProperty(styleValue)) {
         styleValue = findKeyValue(this.theme.data, styleValue)
+      }
+
+      if (type === 'opacity') {
+        styleValue = +styleValue
       }
 
       return styleValue
     },
     resetStyleValue (name) {
-      const defaultValue = findKeyValue(defaultTheme, name)
+      const defaultValue = findKeyValue(this.theme.default, name)
       // reset theme variable
       this.updateThemeVariables({
         themeIndex: this.themeIndex,
@@ -310,22 +343,29 @@ export default {
       padding 30px 0 50px
       .palette-edit-title
         font-size 28px
+        font-family DINPro-Medium, DIN Alternate, "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif
         color #333
         .current-theme
           font-size 14px
           color #999
           line-height 34px
       .palette-edit-form
+        background #FFF
+        margin-top 15px
+        padding 0 20px
+        box-sizing border-box
+        border-radius 6px
         .palette-edit-item
           position relative
           float left
           width 100%
-          margin-top 15px
+          margin-bottom 15px
           .item-label
             float left
             width 100%
             line-height 40px
             font-size 14px
+            color #666
             span
               margin-left 10px
               font-size 12px
@@ -333,6 +373,7 @@ export default {
           .item-operator
             float left
             display none
+            transition all .5s
           .item-tip
             float left
             margin-left 15px
@@ -343,15 +384,26 @@ export default {
           .item-tool
             position relative
             float left
-            top 2px
+            top 3px
             margin-right 5px
             color #ccc
           .el-color-picker
             float left
           .el-input
             float left
-            width 140px
+            width 240px
             overflow hidden
+            &.small
+              width 204px
+          .el-slider
+            float left
+            width 320px
+            .el-slider__runway
+              width 240px !important
+            .el-slider__input, .el-input
+              width 60px
+          .el-switch
+            float left
           &:hover
             .item-operator
               display block

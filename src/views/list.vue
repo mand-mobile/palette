@@ -33,14 +33,14 @@
       >
         <h3 class="palette-list-category-title">
           <template v-if="moduleName === 'basic'">
-            <p class="text">{{moduleName}}</p>
+            <p class="text">Basic</p>
             <p class="tip">
               <i class="el-icon-info"></i>
               {{ $t('list.basicTip') }}
             </p>
           </template>
           <template v-else>
-            <p class="text">{{moduleName}}</p>
+            <p class="text">Components</p>
             <p class="tip">
               <i class="el-icon-info"></i>
               {{ $t('list.componentsTip') }}
@@ -192,10 +192,10 @@ export default {
     .palette-list-category-item
       position relative
       float left
-      width 18%
+      width 18.4%
       margin-bottom 15px
-      margin-right 2.5%
-      padding-bottom 18%
+      margin-right 2%
+      padding-bottom 18.4%
       box-sizing border-box
       &:nth-child(5n)
         margin-right 0

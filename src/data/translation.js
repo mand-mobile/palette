@@ -37,7 +37,9 @@ export default {
       dialogThemeVersionTip: '请选择mand-mobile版本',
       importDialogTitle: '导入主题',
       importDialogText: ['将文件拖到此处，或', '点击上传'],
-      errorImport: '导入失败'
+      errorImport: '导入失败',
+      errorMandMobile: 'Mand Mobile信息获取失败',
+      errorMandMobileVariables: 'Mand Mobile样式变量获取失败'
     },
     list: {
       basicTip: '基础全局样式变量，可作用于所有组件',
@@ -52,7 +54,7 @@ export default {
       closeBtn: '关闭编辑器',
       resetBtn: '重置',
       resetTip: '恢复默认值',
-      tip: '编辑全局变量',
+      tip: '编辑父级变量',
       previewTip: '* 页面展示按照<span>devicePixelRatio = 2</span>进行了等比缩放',
       loadingTip: '加载组件中...',
       cssError: 'xxxxx 加载失败'
@@ -101,7 +103,9 @@ export default {
       dialogThemeVersionTip: 'Please select the mand-mobile version',
       importDialogTitle: 'Import themes',
       importDialogText: ['Drop file here or', 'upload'],
-      errorImport: 'Import failed'
+      errorImport: 'Import failed',
+      errorMandMobile: 'Mand Mobile information failed to be obtained',
+      errorMandMobileVariables: 'Mand Mobile stylus variables acquisition failed'
     },
     list: {
       basicTip: 'Basic global style variables that apply to all components',
@@ -116,7 +120,7 @@ export default {
       closeBtn: 'Close Editor',
       resetBtn: 'reset',
       resetTip: 'reset default value',
-      tip: 'edit global variable',
+      tip: 'edit parent variable',
       previewTip: '* Page display scaled by <span>devicePixelRatio = 2</span>',
       loadingTip: 'Loading component...',
       cssError: 'Failed to load xxxxx'

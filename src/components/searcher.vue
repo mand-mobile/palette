@@ -49,6 +49,7 @@ export default {
     outline none
     border-radius 40px
     border none
-    border solid 1px #f0f0f0
+    // border solid 1px #f0f0f0
     box-sizing border-box
+    box-shadow 0 2px 8px #ebebeb
 </style>

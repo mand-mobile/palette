@@ -24,6 +24,7 @@ export default {
         {
           icon: 'cashier-icon-1',
           text: '招商银行储蓄卡(0056)支付',
+          desc: '当前银行维护中',
           value: '001'
         },
         {
@@ -61,7 +62,7 @@ export default {
     position absolute !important
     .md-popup-box
       padding-bottom 95px
-  .choose-channel-item
+  .md-cashier-channel-item
     .item-icon.cashier-icon-1
       background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABHklEQVR4Ae2WgUYEURSGh70oQIB6gh6gHmBsqhfqHdq2hAJTUYAACMCytqQISUDAVpsEsWi09TX/XFcxYeJ0E/vzMf4z7uc6cJMQWi6l1egU5AUYkfszXZp8TVFmBfwyWbhZU0UcXKrbdWMJ5ZLwNaIwl5CY1BPen8HgAtoT1dn6pJ/dnRoKn64p01mpztQpj1eGwsNlyuTPsDX92W/P+A70j6FQ3BxR5nI3dP4bNDPeochmYZTD+xvsz8HBvP8evWhmLvScb1Cm3/Mo6sLcXLg5BcMHQhgO1BkL+8fUjP6NLLw9MRB+R0h19h+F4x3WYSystVe/rx/zJ0+MXtxHVNstxBO6ZqKw2tiLINxJQrzULenKxjvVWV3W3GLwfAD9KR4TBA12SgAAAABJRU5ErkJggg==') center no-repeat
       background-size 26px

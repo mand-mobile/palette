@@ -34,8 +34,10 @@ export default {
 
 <style lang="stylus">
 .palette-demo-popup
+  position relative
+  height 100%
   .md-popup
-    position static !important
+    position absolute !important
   .md-popup-mask, .md-popup-box
     position absolute !important
   .popup-content

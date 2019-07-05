@@ -7,7 +7,7 @@
     >
     <div class="palette-previewer-box">
       <component
-        :is="demos[name]"
+        :is="demos[name] || demos['all-in-one']"
       ></component>
     </div>
     <div class="palette-previewer-decorate"></div>
@@ -62,12 +62,14 @@ export default {
     width 375px
     height 740px
     margin 0 14px
+    padding-bottom 30px
     // padding 80px 0 0
-    background #fbfbfb
+    background #ebebeb
     // opacity .5
     box-sizing border-box
     border-radius 0 0 56px 56px
     overflow hidden
+    overflow-y auto
     .palette-demo
       padding 20px
       box-sizing border-box

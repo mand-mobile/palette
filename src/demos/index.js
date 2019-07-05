@@ -1,12 +1,13 @@
 import actionBar from './action-bar'
 import actionSheet from './action-sheet'
 import agree from './agree'
+import bill from './bill'
 import button from './button'
 import captcha from './captcha'
 import cashier from './cashier'
+import cellItem from './cell-item'
 import chart from './chart'
-import checkbox from './check-box'
-import checklist from './check-list'
+import check from './check'
 import codebox from './codebox'
 import datePicker from './date-picker'
 import dialog from './dialog'
@@ -29,22 +30,25 @@ import tag from './tag'
 import tip from './tip'
 import toast from './toast'
 import allInOne from './all-in-one'
+// import brandColor from './brand-color'
 
 export default {
   'action-bar': actionBar,
   'action-sheet': actionSheet,
   agree,
+  bill,
   button,
   captcha,
   cashier,
   chart,
-  'check-box': checkbox,
-  'check-list': checklist,
+  'cell-item': cellItem,
+  check,
   codebox,
   'date-picker': datePicker,
   dialog,
   'drop-menu': dropMenu,
   field,
+  'field-item': field,
   icon,
   'image-viewer': imageViewer,
   'input-item': inputItem,
@@ -61,7 +65,5 @@ export default {
   tag,
   tip,
   toast,
-  color: allInOne,
-  font: allInOne,
-  other: allInOne
+  'all-in-one': allInOne
 }

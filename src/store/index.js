@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import { defaultTheme, styleVariableInfo } from '../data'
+import { styleVariableInfo } from '../data'
+import _ from 'lodash/lang'
 import {
   safeGetValue,
   safeSetValue,
@@ -25,10 +26,11 @@ const store = new Vuex.Store({
         state[key] = data[key]
       })
     },
-    createTheme (state, themeInfo) {
+    createTheme (state, { themeInfo, variables }) {
       const index = state.themes.length
       const newTheme = {
-        data: JSON.parse(JSON.stringify(defaultTheme)),
+        data: _.cloneDeep(variables),
+        default: _.cloneDeep(variables),
         lastModify: Date.now(),
         index,
         ...themeInfo
@@ -59,7 +61,7 @@ const store = new Vuex.Store({
   },
   actions: {
     GET_MAND_MOBILE_RELEASE ({ commit }) {
-      return axios.get(`https://unpkg.com/mand-mobile@1/package.json?${Date.now()}`)
+      return axios.get('https://unpkg.com/mand-mobile@2/package.json' + `?${Date.now()}`)
         .then(res => {
           if (res.status === 200) {
             commit('update', {
@@ -67,6 +69,16 @@ const store = new Vuex.Store({
             })
           }
         })
+    },
+    GET_MAND_MOBILE_VARIABLES ({ commit, state }, { version, type }) {
+      if (!version) {
+        return
+      }
+      const variables0 = axios.get(`https://unpkg.com/mand-mobile@${version}/${type}/theme.basic.json`)
+      const variables1 = axios.get(`https://unpkg.com/mand-mobile@${version}/${type}/theme.components.json`)
+      // const variables0 = axios.get(`/static/theme.basic.json`)
+      // const variables1 = axios.get(`/static/theme.components.json`)
+      return Promise.all([variables0, variables1])
     },
     GET_MAND_MOBILE_CSS ({ commit, state }, { themeIndex, type }) {
       const theme = state.themes[themeIndex]
@@ -77,7 +89,7 @@ const store = new Vuex.Store({
       return axios.get(`https://unpkg.com/mand-mobile@${version}/${type}/mand-mobile.variable.css`)
     },
     GET_THEMES_STORE ({ commit }) {
-      const themes = localStore('MAND_MOBILE_PALETTE_THEMES') || localStore('themes')
+      const themes = localStore('MAND_MOBILE_PALETTE_THEMES_2') || localStore('themes')
       if (themes) {
         commit('update', { themes })
       } else if (themes === null) {
@@ -88,7 +100,7 @@ const store = new Vuex.Store({
       return themes
     },
     SAVE_THEMES_STORE ({ state }) {
-      return localStore('MAND_MOBILE_PALETTE_THEMES', state.themes)
+      return localStore('MAND_MOBILE_PALETTE_THEMES_2', state.themes)
     }
   }
 })

@@ -49,7 +49,6 @@ export default {
     }
   },
   mounted () {
-    console.log()
   },
   methods: {
     changeLang () {
@@ -75,9 +74,10 @@ export default {
   .palette-header-name
     float left
     margin-left 10px
-    font-family DINAlternate-Bold
+    font-family DINPro-Medium, DIN Alternate, "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif
     font-size 20px
     line-height 60px
+    color #333
     span
       color #048efa
       // font-style italic
