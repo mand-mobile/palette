@@ -1,24 +1,26 @@
 <template>
   <div class="palette-home">
-    <div class="palette-home-content">
-      <div class="logo">
-        <img src="//manhattan.didistatic.com/static/manhattan/do1_KC5q8Qqsz8BnUPAsJY5i" alt="">
-        <i class="flash"></i>
+    <div class="palette-home-container">
+      <div class="palette-home-content">
+        <div class="logo">
+          <img src="//manhattan.didistatic.com/static/manhattan/do1_KC5q8Qqsz8BnUPAsJY5i" alt="">
+          <i class="flash"></i>
+        </div>
+        <p class="name">Mand Mobile <span>Palette</span></p>
+        <p class="describe"><span span v-html="$t('home.describe')"></span>，v<span>{{ version }}</span></p>
       </div>
-      <p class="name">Mand Mobile <span>Palette</span></p>
-      <p class="describe"><span span v-html="$t('home.describe')"></span>，V<span>{{ version }}</span></p>
+      <div class="palette-home-operate">
+        <router-link to="/record">
+          {{ $t('home.btn') }}
+        </router-link>
+        <a href="https://github.com/mand-mobile/palette" target="_blank">GITHUB</a>
+      </div>
+      <a class="palette-home-github" href="https://github.com/mand-mobile/palette" target="_blank">
+        <img src="https://img.shields.io/github/stars/mand-mobile/palette.svg?style=social&label=Stars" alt="">
+      </a>
     </div>
-    <div class="palette-home-operate">
-      <router-link to="/record">
-        {{ $t('home.btn') }}
-      </router-link>
-      <a href="https://github.com/mand-mobile/palette" target="_blank">GITHUB</a>
-    </div>
-    <a class="palette-home-github" href="https://github.com/mand-mobile/palette" target="_blank">
-      <img src="https://img.shields.io/github/stars/mand-mobile/palette.svg?style=social&label=Stars" alt="">
-    </a>
-    <palette-animation-name></palette-animation-name>
-    <p class="palette-home-copyright">Copyright © 2012-2018 Didi Chuxing. All Rights Reserved</p>
+    <palette-animation-name v-show="animationShow"></palette-animation-name>
+    <p class="palette-home-copyright">Copyright © 2012-2019 Didi Chuxing. All Rights Reserved</p>
   </div>
 </template>
 
@@ -31,8 +33,14 @@ export default {
   },
   data () {
     return {
-      version: process.env.version
+      version: process.env.version,
+      animationShow: false
     }
+  },
+  mounted () {
+    setTimeout(() => {
+      this.animationShow = true
+    }, 1000)
   }
 }
 </script>
@@ -48,6 +56,9 @@ export default {
   justify-content center
   align-items center
   flex-direction column
+  .palette-home-container
+    position relative
+    z-index 3
   .palette-home-content
     display flex
     flex-direction column
@@ -93,7 +104,7 @@ export default {
     a
       width 180px
       height 40px
-      border solid .5px #ccc
+      // border solid .5px #ccc
       border-radius 40px
       text-align center
       line-height 40px
@@ -101,13 +112,14 @@ export default {
       text-decoration none
       &:first-of-type
         margin-right 20px
-        border-color #ab5ab3
-        color #ab5ab3
+        background-color #ab5ab3
+        color #fff
       &:last-of-type
-        border-color #759ce6
-        color #759ce6
+        background-color #759ce6
+        color #fff
   .palette-home-github
     display flex
+    justify-content center
   .palette-animation-name
     position absolute
     bottom 150px

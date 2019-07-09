@@ -30,9 +30,13 @@ export default {
 
 <style lang="stylus">
 .palette-demo-number-keyboard
+  // position relative
+  // height 100%
   .md-button
     margin-top 30px
   .md-number-keyboard
+    .md-popup
+      position absolute
     .md-popup-box
       position absolute !important
       padding-bottom 95px

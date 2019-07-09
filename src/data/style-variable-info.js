@@ -138,19 +138,19 @@ export default {
     textEn: 'normal minor'
   },
   'font-weight-light': {
-    type: 'other',
+    type: 'size',
     text: '字重细'
   },
   'font-weight-normal': {
-    type: 'other',
+    type: 'size',
     text: '字重普通'
   },
   'font-weight-medium': {
-    type: 'other',
+    type: 'size',
     text: '字重中等'
   },
   'font-weight-semibold': {
-    type: 'other',
+    type: 'size',
     text: '字重粗'
   },
   'font-family-normal': {
@@ -417,6 +417,11 @@ export default {
     type: 'size',
     text: '大图标尺寸',
     textEn: 'lg icon size'
+  },
+  'icon-font-family': {
+    type: 'other',
+    text: '图标字体',
+    textEn: ''
   },
   'action-bar-width': {
     type: 'size',
@@ -808,20 +813,35 @@ export default {
     text: '',
     textEn: ''
   },
+  'picker-padding-h': {
+    type: 'size',
+    text: '选择器左右留白大小',
+    textEn: 'picker left and right gap size'
+  },
   'picker-font-size': {
     type: 'size',
-    text: '选择器文字大小',
-    textEn: 'picker font size'
+    text: '选择器选项字体大小',
+    textEn: 'picker options font size'
   },
   'picker-disabled-opacity': {
-    type: 'size',
+    type: 'opacity',
     text: '选择器禁用项透明度',
-    textEn: 'picker disabled item opacity'
+    textEn: 'picker disabled option opacity'
   },
   'picker-color': {
     type: 'color',
-    text: '选择器文字颜色',
-    textEn: 'picker text color'
+    text: '选择器字体颜色',
+    textEn: 'picker options font color'
+  },
+  'picker-color-active': {
+    type: 'color',
+    text: '选择器选中项字体颜色',
+    textEn: 'picker selected options font color'
+  },
+  'picker-font-weight-active': {
+    type: 'color',
+    text: '选择器选中项字重',
+    textEn: 'picker selected options font weight'
   },
   'picker-border-color': {
     type: 'color',
@@ -972,6 +992,21 @@ export default {
     text: '区域垂直填充大小',
     textEn: 'field vertical padding size'
   },
+  'field-bg-color': {
+    type: 'color',
+    text: '区域背景色',
+    textEn: 'field background color'
+  },
+  'field-header-gap': {
+    type: 'size',
+    text: '区域头部与正文间隔大小',
+    textEn: 'gap size between field header and body'
+  },
+  'field-footer-gap': {
+    type: 'size',
+    text: '区域底部与正文间隔大小',
+    textEn: 'gap size between field footer and body'
+  },
   'field-title-font-size': {
     type: 'size',
     text: '区域标题字体大小',
@@ -987,25 +1022,45 @@ export default {
     text: '区域标题颜色',
     textEn: 'field title color'
   },
-  'field-title-margin': {
+  'field-brief-font-size': {
     type: 'size',
-    text: '区域标题距下方间距',
-    textEn: 'field title spacing from below'
+    text: '区域摘要字体大小',
+    textEn: 'field briefs font size'
+  },
+  'field-brief-color': {
+    type: 'color',
+    text: '区域摘要颜色',
+    textEn: 'field briefs color'
+  },
+  'field-action-font-size': {
+    type: 'size',
+    text: '区域动作按钮字体大小',
+    textEn: 'field actions font size'
+  },
+  'field-action-color': {
+    type: 'color',
+    text: '区域动作按钮颜色',
+    textEn: 'field actions color'
+  },
+  'field-item-min-height': {
+    type: 'size',
+    text: '区域条目最小高度',
+    textEn: 'field item minimum height'
   },
   'field-item-padding-v': {
     type: 'size',
     text: '区域条目垂直填充大小',
     textEn: 'field item vertical padding size'
   },
-  'field-item-bg-color': {
-    type: 'color',
-    text: '区域条目背景色',
-    textEn: 'field item background color'
+  'field-item-title-width': {
+    type: 'size',
+    text: '区域条目标题固定宽度',
+    textEn: 'field item title fixed width'
   },
-  'field-item-bg-tap-color': {
-    type: 'color',
-    text: '区域条目点击态背景色',
-    textEn: 'field item background color of click state'
+  'field-item-title-gap': {
+    type: 'size',
+    text: '区域条目标题与内容间距大小',
+    textEn: 'gap size between field item title and content'
   },
   'field-item-color': {
     type: 'color',
@@ -1017,30 +1072,55 @@ export default {
     text: '区域条目字体大小',
     textEn: 'field item font size'
   },
-  'field-item-icon-color': {
+  'field-item-font-weight': {
+    type: 'size',
+    text: '区域条目字体大小',
+    textEn: 'field item font weight'
+  },
+  'field-item-placeholder-color': {
     type: 'color',
-    text: '区域条目箭头图标颜色',
-    textEn: 'field item arrow icon color'
+    text: '区域条目占位符颜色',
+    textEn: 'field item placeholder color'
+  },
+  'field-item-addon-color': {
+    type: 'color',
+    text: '区域条目附加信息字体颜色',
+    textEn: 'field item extra information font color'
+  },
+  'field-item-addon-font-size': {
+    type: 'size',
+    text: '区域条目附加信息字体大小',
+    textEn: 'field item extra information font size'
   },
   'field-item-border-color': {
-    type: 'color',
+    type: 'size',
     text: '区域条目边框颜色',
     textEn: 'field item border color'
   },
-  'field-item-color-disabled': {
+  'field-item-children-font-size': {
     type: 'size',
-    text: '区域禁用条目透明度',
-    textEn: 'field disabled item opacity'
+    text: '区域条目子内容字体大小',
+    textEn: 'field item children content font size'
   },
-  'field-item-brief-font-size': {
-    type: 'size',
-    text: '区域条目描述字体大小',
-    textEn: 'field item description font size'
-  },
-  'field-item-brief-color': {
+  'detail-item-title-color': {
     type: 'color',
-    text: '区域条目描述文字颜色',
-    textEn: 'field item description color'
+    text: '清单项标题颜色',
+    textEn: 'detail item title color'
+  },
+  'detail-item-font-size': {
+    type: 'size',
+    text: '清单项字体大小',
+    textEn: 'detail item font size'
+  },
+  'detail-item-content-color': {
+    type: 'color',
+    text: '清单项内容字体颜色',
+    textEn: 'detail item content font color'
+  },
+  'detail-item-gap': {
+    type: 'size',
+    text: '清单项上下间距大小',
+    textEn: 'detail item vertical gap size'
   },
   'image-viewer-index-font-size': {
     type: 'size',
@@ -1089,14 +1169,19 @@ export default {
     text: '表单错误信息字体大小',
     textEn: 'input item error message font size'
   },
+  'input-item-font-size-brief': {
+    type: 'size',
+    text: '表单简要信息字体大小',
+    textEn: 'input item brief message font size'
+  },
   'input-item-font-weight': {
     type: 'size',
-    text: '表单文字字重',
+    text: '表单字体字重',
     textEn: 'input item font weight'
   },
   'input-item-color': {
     type: 'color',
-    text: '表单文字颜色',
+    text: '表单字体颜色',
     textEn: 'input item text color'
   },
   'input-item-title-latent-color': {
@@ -1105,29 +1190,58 @@ export default {
     textEn: 'input item floating title color'
   },
   'input-item-color-disabled': {
-    type: 'size',
-    text: '禁用表单透明度',
-    textEn: 'disabled input item opacity'
+    type: 'color',
+    text: '禁用表单字体颜色',
+    textEn: 'disabled input item font color'
   },
   'input-item-color-error': {
     type: 'color',
     text: '表单错误提示颜色(标题，内容，边框)',
     textEn: 'input item error message color(title, content, border)'
   },
+  'input-item-color-brief': {
+    type: 'color',
+    text: '表单简要信息字体颜色',
+    textEn: 'input item brief message color'
+  },
   'input-item-placeholder': {
     type: 'color',
-    text: '表单占位符文字颜色',
+    text: '表单占位符字体颜色',
     textEn: 'input item placeholder color'
   },
-  'input-item-placeholder-highlight': {
+  'input-item-color-highlight': {
     type: 'color',
-    text: '高亮表单占位符文字颜色',
-    textEn: 'highlight input item placeholder color'
+    text: '表单高亮颜色(边框)',
+    textEn: 'input item highlight color(border)'
   },
   'input-item-icon': {
     type: 'color',
     text: '表单图标颜色',
     textEn: 'input item icon color'
+  },
+  'slider-bg-base': {
+    type: 'color',
+    text: '进度条背景色',
+    textEn: ''
+  },
+  'slider-bg-tap': {
+    type: 'color',
+    text: '已完成进度背景色',
+    textEn: ''
+  },
+  'slider-handle-bg': {
+    type: 'color',
+    text: '进度条滑块背景色',
+    textEn: ''
+  },
+  'landscape-width': {
+    type: 'size'
+  },
+  'landscape-fullscreen-bg': {
+    type: 'color'
+  },
+  'landscape-zindex': {
+    type: 'size'
   },
   'notice-bar-fill': {
     type: 'color',
@@ -1147,6 +1261,31 @@ export default {
   'notice-bar-zindex': {
     type: 'size'
   },
+  'notice-bar-border-radius': {
+    type: 'size',
+    text: '通知栏圆角大小(round = true)',
+    textEn: 'notice bar border radius(round = true)'
+  },
+  'notice-bar-fill-warning': {
+    type: 'color',
+    text: '通知栏警告主题背景色(type = warning)',
+    textEn: 'notice bar of warning theme background color(type = warning)'
+  },
+  'notice-bar-color-warning': {
+    type: 'color',
+    text: '通知栏警告主题字体颜色(type = warning)',
+    textEn: 'notice bar of warning theme font color(type = warning)'
+  },
+  'notice-bar-fill-activity': {
+    type: 'color',
+    text: '通知栏活动主题背景色(type = activity)',
+    textEn: 'notice bar of activity theme background color(type = activity)'
+  },
+  'notice-bar-color-activity': {
+    type: 'color',
+    text: '通知栏活动主题字体颜色(type = activity)',
+    textEn: 'notice bar of activity theme font color(type = activity)'
+  },
   'switch-fill': {
     type: 'color',
     text: '开关开启状态背景色',
@@ -1163,7 +1302,7 @@ export default {
     textEn: 'switch knob color'
   },
   'switch-item-color-disabled': {
-    type: 'size',
+    type: 'opacity',
     text: '禁用开关透明度',
     textEn: 'disabled switch opacity'
   },
@@ -1173,7 +1312,7 @@ export default {
     textEn: 'stepper background color'
   },
   'stepper-disabled-opacity': {
-    type: 'size',
+    type: 'opacity',
     text: '禁用步进器透明度',
     textEn: 'disabled stepper opacity'
   },
@@ -1238,38 +1377,76 @@ export default {
   'tab-color': {
     type: 'color',
     text: '选中标签高亮颜色',
-    textEn: 'selected tab color'
+    textEn: 'selected tab item color'
   },
   'tab-font-size': {
     type: 'size',
     text: '标签文字大小',
-    textEn: 'tab font size'
+    textEn: 'tab item font size'
+  },
+  'tab-font-weight': {
+    type: 'size',
+    text: '标签文字字重',
+    textEn: 'tab item font weight'
   },
   'tab-text-color': {
     type: 'color',
     text: '标签文字颜色',
-    textEn: 'tab text color'
+    textEn: 'tab item text color'
+  },
+  'tab-active-color': {
+    type: 'color',
+    text: '选中标签颜色',
+    textEn: 'active tab item color'
+  },
+  'tab-disabled-color': {
+    type: 'color',
+    text: '禁用标签颜色',
+    textEn: 'disabled tab item color'
   },
   'tab-bg': {
     type: 'color',
     text: '标签背景色',
-    textEn: 'tab background color'
-  },
-  'tab-border-color': {
-    type: 'color',
-    text: '标签边框颜色',
-    textEn: 'tab border color'
+    textEn: 'tab item background color'
   },
   'tab-height': {
     type: 'size',
     text: '标签高度'
   },
-  'tab-ink-bar-height': {
+  'tab-ink-height': {
     type: 'size',
     text: '选中标签下划线高度',
-    textEn: 'selected tab underline height'
+    textEn: 'selected tab item underline height'
+  },
+  'tab-offset': {
+    type: 'size',
+    text: '标签条左右两侧留白',
+    textEn: 'tab bar left and right padding'
+  },
+  'tab-item-gap': {
+    type: 'size',
+    text: '标签左右两侧留白',
+    textEn: 'tab item left and right padding'
   },
   'tab-zindex': {
+    type: 'size'
+  },
+  'tab-picker-height': {
+    type: 'size',
+    text: '选择器内容区域高度',
+    textEn: 'picker content height'
+  },
+  'tab-picker-h-gap': {
+    type: 'size',
+    text: '选择器内容左右两侧留白大小',
+    textEn: 'picker content left and right padding'
+  },
+  'tab-picker-bg': {
+    type: 'color',
+    text: '选择器背景颜色',
+    textEn: 'picker background color'
+  },
+  'tab-picker-zindex': {
     type: 'size'
   },
   'steps-color': {
@@ -1282,7 +1459,7 @@ export default {
     text: '步骤(已完成和当前)高亮颜色',
     textEn: 'step(completed and current) highlight color'
   },
-  'steps-border': {
+  'steps-border-size': {
     type: 'size',
     text: '步骤横线样式',
     textEn: 'step horizontal line style'
@@ -1292,7 +1469,7 @@ export default {
     text: '步骤(已完成和当前)横线样式',
     textEn: 'step(completed and current) horizontal line style'
   },
-  'steps-size': {
+  'steps-icon-size': {
     type: 'size',
     text: '步骤图标尺寸',
     textEn: 'step icon size'
@@ -1304,13 +1481,43 @@ export default {
   },
   'steps-text-font-size': {
     type: 'size',
-    text: '步骤字体大小',
+    text: '步骤标题字体大小',
     textEn: 'step font size'
   },
   'steps-text-color': {
     type: 'color',
-    text: '步骤文字颜色',
+    text: '步骤标题颜色',
     textEn: 'step text color'
+  },
+  'steps-desc-color': {
+    type: 'color',
+    text: '步骤介绍颜色',
+    textEn: 'step description color'
+  },
+  'steps-desc-font-size': {
+    type: 'size',
+    text: '步骤介绍字体大小',
+    textEn: 'step description font size'
+  },
+  'steps-text-gap-horizontal': {
+    type: 'size',
+    text: '步骤标题水平间距',
+    textEn: 'step title horizontal gap size'
+  },
+  'steps-text-gap-vertical': {
+    type: 'size',
+    text: '步骤标题垂直间距',
+    textEn: 'step title vertical gap size'
+  },
+  'steps-transition-delay': {
+    type: 'size',
+    text: '步骤变更动效延迟',
+    textEn: 'step change motion delay'
+  },
+  'tip-fill-opacity': {
+    type: 'opacity',
+    text: '气泡背景透明度',
+    textEn: 'tip background opacity'
   },
   'tip-fill': {
     type: 'color',
@@ -1323,7 +1530,7 @@ export default {
     textEn: 'tip font size'
   },
   'tip-color': {
-    type: 'size',
+    type: 'color',
     text: '气泡文字颜色',
     textEn: 'tip text color'
   },
@@ -1341,6 +1548,9 @@ export default {
     type: 'size',
     text: '气泡关闭按钮大小',
     textEn: 'tip close button size'
+  },
+  'tip-shadow': {
+    type: 'other'
   },
   'tip-zindex': {
     type: 'size'
@@ -1384,7 +1594,7 @@ export default {
     textEn: 'selector option height'
   },
   'selector-disabled-opacity': {
-    type: 'size',
+    type: 'opacity',
     text: '选择器禁用选项透明度',
     textEn: 'selector disabled option opacity'
   },
@@ -1406,10 +1616,40 @@ export default {
   'selector-zindex': {
     type: 'size'
   },
+  'swiper-indicator-fill': {
+    type: 'color',
+    text: '指示点高亮颜色',
+    textEn: 'indicator highlight color'
+  },
   'radio-color': {
     type: 'color',
     text: '选中选项高亮颜色',
     textEn: 'selected option highlight color'
+  },
+  'result-page-image-size': {
+    type: 'size',
+    text: '结果页图片尺寸',
+    textEn: ''
+  },
+  'result-page-title-font-size': {
+    type: 'size',
+    text: '结果页标题字体大小',
+    textEn: ''
+  },
+  'result-page-describe-font-size': {
+    type: 'size',
+    text: '结果页描述字体大小',
+    textEn: ''
+  },
+  'result-page-title-color': {
+    type: 'color',
+    text: '结果页标题字体颜色',
+    textEn: ''
+  },
+  'result-page-describe-color': {
+    type: 'color',
+    text: '结果页描述字体颜色',
+    textEn: ''
   },
   'popup-title-bar-bg': {
     type: 'color',
@@ -1522,10 +1762,20 @@ export default {
     text: '键盘按键字体大小',
     textEn: 'keyboard key font size'
   },
+  'number-keyboard-key-font-weight': {
+    type: 'size',
+    text: '键盘按键字重',
+    textEn: 'keyboard key font weight'
+  },
   'number-keyboard-key-color': {
     type: 'color',
     text: '键盘按键文字颜色',
     textEn: 'keyboard key text color'
+  },
+  'number-keyboard-key-border-color': {
+    type: 'color',
+    text: '键盘按键边框颜色',
+    textEn: 'keyboard key border color'
   },
   'number-keyboard-key-color-simple': {
     type: 'color',

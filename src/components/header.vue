@@ -18,6 +18,11 @@
             <span>{{ switchLang }}</span>
           </div>
         </div>
+        <div class="palette-header-lang palette-header-operater">
+          <div class="operater-select">
+            <a href="https://mand-mobile.github.io/1x-palette" target="_blank">1.x</a>
+          </div>
+        </div>
       </div>
     </el-col>
   </div>
@@ -106,9 +111,10 @@ export default {
     border solid 1px #ddd
     cursor pointer
     transition all .3s
-    .operater-select
+    .operater-select, .operater-select a
       font-size 12px
       color #048EFA
+      text-decoration none
     &:hover
       opacity .5
     &.palette-header-github

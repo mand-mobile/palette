@@ -10,8 +10,8 @@
     <div class="palette-demo-block">
       <div class="md-toast has-icon">
         <div class="md-toast-content">
-          <md-icon name="circle-alert" size="lg" />
-          <span>Toast With Icon</span>
+          <md-icon name="warn" size="lg" />
+          <div class="md-toast-text">Toast With Icon</div>
         </div>
       </div>
     </div>

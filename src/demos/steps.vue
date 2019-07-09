@@ -1,10 +1,6 @@
 <template>
   <div class="palette-demo palette-demo-steps cleafix">
-    <md-steps
-      :steps="steps"
-      :current="1"
-    >
-    </md-steps>
+    <md-steps :steps="steps" :current="currentStep" transition></md-steps>
   </div>
 </template>
 
@@ -12,28 +8,33 @@
 export default {
   data () {
     return {
+      currentStep: 1,
       steps: [
         {
-          name: '开通理财账户'
+          name: '登录',
         },
         {
-          name: '验证手机号'
+          name: '开通',
         },
         {
-          name: '开通成功'
-        }
-      ]
+          name: '验证',
+        },
+        {
+          name: '成功',
+        },
+      ],
     }
+  },
+  mounted () {
+
   }
 }
 </script>
 
 <style lang="stylus">
 .palette-demo-steps
-  .tabs-content
-    display flex
-    justify-content center
-    align-items center
-    height 400px
-    background #fff
+  background #FFF
+  .md-steps
+    .bar
+      zoom 2
 </style>

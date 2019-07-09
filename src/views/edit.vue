@@ -30,7 +30,7 @@
                       v-model="tmpStyleVariable[name].value"
                       class="small"
                       size="medium"
-                      readonly
+                      disabled
                     ></el-input>
                     <el-color-picker
                       v-model="tmpStyleVariable[name].value"
@@ -53,6 +53,13 @@
                     :show-input-controls="false"
                     @change="onStyleValueChange(name, $event)"
                   ></el-slider>
+                  <el-input
+                    type="textarea"
+                    v-else-if="styleVariableInfo[name].type === 'other'"
+                    v-model="tmpStyleVariable[name].value"
+                    :rows="4"
+                    @blur="onStyleValueChange(name, tmpStyleVariable[name].value)"
+                  ></el-input>
                   <el-input
                     v-else
                     v-model="tmpStyleVariable[name].value"
@@ -395,6 +402,10 @@ export default {
             overflow hidden
             &.small
               width 204px
+          .el-textarea
+            float left
+            width 480px
+            overflow hidden
           .el-slider
             float left
             width 320px

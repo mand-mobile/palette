@@ -1,11 +1,12 @@
 <template>
   <div class="palette-demo palette-demo-selector cleafix">
-    <md-radio
-      ref="radio"
-      :options="data"
-      :default-index="1"
-    >
-    </md-radio>
+    <md-field>
+      <md-field-item title="婚姻状况" solid>
+        <md-radio name="2" v-model="marriage" label="已婚" inline />
+        <md-radio name="1" v-model="marriage" label="未婚" inline />
+        <md-radio name="3" v-model="marriage" label="保密" inline />
+      </md-field-item>
+    </md-field>
   </div>
 </template>
 
@@ -13,22 +14,7 @@
 export default {
   data () {
     return {
-      value: false,
-      data: [
-        {
-          text: 'Option 1',
-          disabled: true
-        },
-        {
-          text: 'Option 2'
-        },
-        {
-          text: 'Option 3'
-        },
-        {
-          text: 'Option 4'
-        }
-      ]
+      marriage: '2',
     }
   },
   mounted () {

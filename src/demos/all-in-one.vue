@@ -1,43 +1,43 @@
 <template>
   <div class="palette-demo palette-demo-all cleafix">
-    <div class="section checkbox">
-      <md-check-box name="day" v-model="type" label="Daily" disabled/>
-      <md-check-box name="month" v-model="type" label="Monthly"/>
-      <md-check-box name="season" v-model="type" label="Quarterly"/>
+    <div class="palette-demo-container">
+      <div class="section checkbox">
+        <md-check-box name="day" v-model="type" label="Daily" disabled/>
+        <md-check-box name="month" v-model="type" label="Monthly"/>
+        <md-check-box name="season" v-model="type" label="Quarterly"/>
+      </div>
+      <md-field class="section">
+        <md-field-item solid title="Amount">
+          <md-stepper slot="right" read-only/>
+        </md-field-item>
+      </md-field>
+      <md-field class="section" title="Policy holder">
+        <md-input-item title="Name" value="Li Lei"></md-input-item>
+        <md-input-item title="ID" value="1234567" disabled></md-input-item>
+      </md-field>
+      <md-field class="section" title="Insured">
+        <md-input-item title="Name" placeholder="Please fill in the name of the insured"></md-input-item>
+        <md-field-item title="Relation" :content="relation" arrow @click="isPickerShow = true" solid></md-field-item>
+        <md-picker v-model="isPickerShow" :data="pickerData" @confirm="onPickerConfirm"></md-picker>
+      </md-field>
+      <md-agree class="agree" v-model="isAgree">
+        <p
+          class="agree-text"
+        >I promise that the insured will fully understand the insurance product and guarantee the authenticity of the insurance information, understand and agree</p>
+      </md-agree>
+      <md-action-bar class="action-bar" :actions="actionBarData">
+        <md-amount :value="1234" has-separator class="price"></md-amount>
+        <md-tag
+          size="small"
+          shape="circle"
+          sharp="bottom-left"
+          type="fill"
+          fill-color="linear-gradient(90deg, #FC7353 0%, #FC9153 100%)"
+          font-color="#fff"
+        >discount</md-tag>
+      </md-action-bar>
     </div>
-    <md-field class="section" title="Policy holder">
-      <md-input-item title="Name" placeholder="Please fill in the name of the policy holder"></md-input-item>
-      <md-input-item title="ID" placeholder="Please fill in the ID number of the policy holder"></md-input-item>
-    </md-field>
-    <md-field class="section" title="Insured">
-      <md-input-item title="Name" placeholder="Please fill in the name of the insured"></md-input-item>
-      <md-field-item title="Relation" :content="relation" arrow @click="isPickerShow = true" solid></md-field-item>
-      <md-picker v-model="isPickerShow" :data="pickerData" @confirm="onPickerConfirm"></md-picker>
-      <md-input-item title="ID" placeholder="Please fill in the ID number of the insured"></md-input-item>
-      <md-input-item
-        title="Phone"
-        type="phone"
-        placeholder="Please fill in the phone number of the insured"
-      ></md-input-item>
-    </md-field>
-    <md-agree class="agree" v-model="isAgree">
-      <p
-        class="agree-text"
-      >I promise that the insured will fully understand the insurance product and guarantee the authenticity of the insurance information, understand and agree</p>
-    </md-agree>
-    <md-action-bar class="action-bar" :actions="actionBarData">
-      <p class="price">&yen;128.00</p>
-      <md-tag
-        size="small"
-        shape="circle"
-        sharp="bottom-left"
-        type="fill"
-        fill-color="linear-gradient(90deg, #FC7353 0%, #FC9153 100%)"
-        font-color="#fff"
-      >discount</md-tag>
-    </md-action-bar>
   </div>
-</div>
 </template>
 
 <script>
@@ -47,7 +47,7 @@ export default {
 
   data() {
     return {
-      type: '',
+      type: 'month',
       relation: 'Self',
       isAgree: false,
       isPickerShow: false,
@@ -86,12 +86,20 @@ export default {
 <style lang="stylus">
 .palette-demo-all
   padding 0 !important
-  .container
-    height 1480px
+  height 100%
+  overflow hidden
+  .palette-demo-container
+    height 100%
     overflow scroll
   .section
     margin-bottom 20px
     background #FFF
+  .checkbox
+    padding 20px 32px
+    .md-check-box
+      margin-right 20px
+      box-shadow 0 0 10px #E2E4EA
+      border none
   .md-action-bar
     position absolute !important
     padding-bottom 95px
@@ -108,12 +116,14 @@ export default {
   .action-bar 
     .price
       font-weight 500
-      font-size 32px
+      font-size 48px
       color #FF823A
       small
         margin-left 5px
         font-size 16px
         color #858B9C
     .md-tag
+      position relative
       margin-left 5px
+      top -20%
 </style>

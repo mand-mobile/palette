@@ -2,33 +2,33 @@
   <div class="palette-demo palette-demo-icon cleafix">
     <div class="palette-demo-block">
       <div class="icon-list">
-        <md-icon name="circle-right" size="xs"></md-icon>
-        <md-icon name="circle-cross" size="xs"></md-icon>
-        <md-icon name="circle-alert" size="xs"></md-icon>
+        <md-icon name="right" size="xs"></md-icon>
+        <md-icon name="wrong" size="xs"></md-icon>
+        <md-icon name="security" size="xs"></md-icon>
       </div>
       <p>xs</p>
     </div>
     <div class="palette-demo-block">
       <div class="icon-list">
-        <md-icon name="circle-right" size="sm"></md-icon>
-        <md-icon name="circle-cross" size="sm"></md-icon>
-        <md-icon name="circle-alert" size="sm"></md-icon>
+        <md-icon name="right" size="sm"></md-icon>
+        <md-icon name="wrong" size="sm"></md-icon>
+        <md-icon name="security" size="sm"></md-icon>
       </div>
       <p>sm</p>
     </div>
     <div class="palette-demo-block">
       <div class="icon-list">
-        <md-icon name="circle-right" size="md"></md-icon>
-        <md-icon name="circle-cross" size="md"></md-icon>
-        <md-icon name="circle-alert" size="md"></md-icon>
+        <md-icon name="right" size="md"></md-icon>
+        <md-icon name="wrong" size="md"></md-icon>
+        <md-icon name="security" size="md"></md-icon>
       </div>
       <p>md</p>
     </div>
     <div class="palette-demo-block">
       <div class="icon-list">
-        <md-icon name="circle-right" size="lg"></md-icon>
-        <md-icon name="circle-cross" size="lg"></md-icon>
-        <md-icon name="circle-alert" size="lg"></md-icon>
+        <md-icon name="right" size="lg"></md-icon>
+        <md-icon name="wrong" size="lg"></md-icon>
+        <md-icon name="security" size="lg"></md-icon>
       </div>
       <p>lg</p>
     </div>

@@ -24,8 +24,13 @@
       ></md-input-item>
       <md-input-item
         title="Floating Title"
-        placeholder="Floating Title Input"
+        value="Floating Title Input"
         is-title-latent
+        clearable
+      ></md-input-item>
+      <md-input-item
+        title="Brief"
+        brief="Brief message"
         clearable
       ></md-input-item>
       <md-input-item
