@@ -1671,6 +1671,11 @@ export default {
     text: '弹出层标题栏圆角大小',
     textEn: 'popup title bar radius size'
   },
+  'popup-title-bar-radius-large': {
+    type: 'size',
+    text: '弹出层标题栏（大圆角模式）圆角大小',
+    textEn: 'popup title bar(large-radius pattern) radius size'
+  },
   'popup-title-bar-font-size-button': {
     type: 'size',
     text: '弹出层标题栏按钮字体大小',
