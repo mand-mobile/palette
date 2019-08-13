@@ -1017,6 +1017,11 @@ export default {
     text: '区域标题字重',
     textEn: 'field title font weight'
   },
+  'field-title-font-weight-android': {
+    type: 'size',
+    text: '区域标题字重（用于安卓设备，需不小于700）',
+    textEn: 'field title font weight(for android devices, need to be no less than 700)'
+  },
   'field-title-color': {
     type: 'color',
     text: '区域标题颜色',
@@ -1178,6 +1183,11 @@ export default {
     type: 'size',
     text: '表单字体字重',
     textEn: 'input item font weight'
+  },
+  'input-item-font-weight-android': {
+    type: 'size',
+    text: '表单字体字重（用于安卓设备，需不小于700）',
+    textEn: 'input item font weight(for android devices, need to be no less than 700)'
   },
   'input-item-color': {
     type: 'color',
