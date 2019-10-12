@@ -1459,6 +1459,33 @@ export default {
   'tab-picker-zindex': {
     type: 'size'
   },
+  'textarea-item-font-size': {
+    type: 'size'
+  },
+  'textarea-item-font-weight': {
+    type: 'size'
+  },
+  'textarea-item-line-height': {
+    type: 'size'
+  },
+  'textarea-item-icon': {
+    type: 'color'
+  },
+  'textarea-item-color': {
+    type: 'color'
+  },
+  'textarea-item-color-error': {
+    type: 'color'
+  },
+  'textarea-item-color-disabled': {
+    type: 'color'
+  },
+  'textarea-item-placeholder-color': {
+    type: 'color'
+  },
+  'textarea-item-placeholder-weight': {
+    type: 'size'
+  },
   'steps-color': {
     type: 'color',
     text: '步骤默认颜色',

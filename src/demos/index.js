@@ -34,6 +34,7 @@ import tabBar from './tab-bar'
 import tabs from './tabs'
 import tabPicker from './tab-picker'
 import tag from './tag'
+import textareaItem from './textarea-item'
 import tip from './tip'
 import toast from './toast'
 import allInOne from './all-in-one'
@@ -77,6 +78,7 @@ export default {
   'tab-picker': tabPicker,
   tag,
   tabs,
+  'textarea-item': textareaItem,
   tip,
   toast,
   'all-in-one': allInOne
