@@ -143,13 +143,14 @@ export default {
       const dataSource = this.theme.data
       this.cssLoading = true
       traverseObject(dataSource, (key, value, path) => {
-        if (styleVariableInfo.hasOwnProperty(value)) {
+        while (styleVariableInfo.hasOwnProperty(value)) {
           value = findKeyValue(dataSource, value)
         }
+        console.log(key, value)
         content = content.replace(new RegExp(`var\\(--${key.trim()}\\)`, 'g'), value)
       })
 
-      this.saveFile(content, 'css')
+      // this.saveFile(content, 'css')
       this.copyContent = content
       this.cssLoading = false
     },
@@ -204,6 +205,7 @@ export default {
     pre
       color #666
       overflow-x scroll
+      white-space normal
     .el-button
       position absolute
       top 30px
