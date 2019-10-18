@@ -150,7 +150,7 @@ export default {
         content = content.replace(new RegExp(`var\\(--${key.trim()}\\)`, 'g'), value)
       })
 
-      // this.saveFile(content, 'css')
+      this.saveFile(content, 'css')
       this.copyContent = content
       this.cssLoading = false
     },
