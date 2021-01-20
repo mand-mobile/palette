@@ -63,7 +63,7 @@ Vue.use(mandMobile)
 
 ### How Palette Works 
 
-<img src="http://manhattan.didistatic.com/static/manhattan/mand/palette-structure.jpg" width="800"/>
+<img src="https://img-hxy02.didistatic.com/static/manhattan/mand/palette-structure.jpg" width="800"/>
 
 
 ### Development
