@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "animejs": "^2.2.0",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "dayjs": "^1.8.12",
     "element-ui": "^2.10.0",
     "fastclick": "^1.0.6",
